@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>传统中式滋补行业分析 2025</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,600;1,400;1,600;1,700&family=Hanken+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ===== VIEWPORT BASE ===== */
+html, body { height: 100%; overflow-x: hidden; margin: 0; padding: 0; }
+html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+:root {
+  --cobalt: #1B4FD8;
+  --cobalt-light: #3B6EF8;
+  --cobalt-dim: #4A6FBF;
+  --cream: #F5F2EB;
+  --cream-dark: #EAE6DC;
+  --ink: #1A1A1A;
+  --ink-mid: #3D3D3D;
+  --ink-light: #6B6B6B;
+  --grid-line: rgba(27,79,216,0.10);
+  --up: #1B7A4D;
+  --dn: #C0392B;
+  --title-size: clamp(2rem, 5vw, 4.5rem);
+  --h2-size: clamp(1.3rem, 3vw, 2.4rem);
+  --h3-size: clamp(1rem, 2vw, 1.5rem);
+  --body-size: clamp(0.72rem, 1.2vw, 1rem);
+  --small-size: clamp(0.6rem, 0.9vw, 0.8rem);
+  --slide-padding: clamp(1.5rem, 5vw, 5rem);
+  --content-gap: clamp(0.6rem, 1.5vw, 1.5rem);
+}
+.slide {
+  width: 100vw; height: 100vh; height: 100dvh;
+  overflow: hidden; scroll-snap-align: start;
+  display: flex; flex-direction: column; position: relative;
+  background: var(--cream);
+  font-family: 'Hanken Grotesk', sans-serif;
+}
+/* grid paper bg */
+.slide::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: 0;
+}
+/* cobalt top bar */
+.slide-bar { height: 4px; background: var(--cobalt); position: relative; z-index: 10; flex-shrink: 0; }
+.slide-content { flex: 1; padding: var(--slide-padding); display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 2; overflow: hidden; }
+.slide-footer {
+  padding: clamp(0.5rem,1.2vw,1rem) var(--slide-padding);
+  display: flex; align-items: center; justify-content: space-between;
+  flex-shrink: 0; position: relative; z-index: 2;
+  border-top: 1px solid rgba(27,79,216,0.15);
+}
+.slide-footer .fn { font-size: var(--small-size); color: var(--ink-light); font-family: 'JetBrains Mono', monospace; }
+.slide-footer .pg { font-size: var(--small-size); color: var(--cobalt); font-family: 'JetBrains Mono', monospace; font-weight: 500; }
+
+/* pixel-glitch deco */
+.deco-pixel { position: absolute; z-index: 1; pointer-events: none; }
+.deco-pixel svg rect { fill: var(--cobalt); opacity: 0.12; }
+
+/* nav dots */
+#nav-dots {
+  position: fixed; right: clamp(0.8rem,2vw,2rem); top: 50%; transform: translateY(-50%);
+  display: flex; flex-direction: column; gap: 8px; z-index: 100;
+}
+#nav-dots span {
+  width: 6px; height: 6px; border-radius: 50%; background: rgba(27,79,216,0.25);
+  cursor: pointer; transition: all 0.2s; display: block;
+}
+#nav-dots span.active { background: var(--cobalt); transform: scale(1.4); }
+
+/* section label */
+.sec-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: var(--small-size); color: var(--cobalt);
+  letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.5em;
+}
+/* headings */
+h1 { font-family: 'Newsreader', Georgia, serif; font-style: italic; font-weight: 600; font-size: var(--title-size); color: var(--ink); line-height: 1.05; margin: 0 0 0.4em; }
+h2 { font-family: 'Newsreader', Georgia, serif; font-style: italic; font-weight: 600; font-size: var(--h2-size); color: var(--ink); line-height: 1.1; margin: 0 0 0.5em; }
+h3 { font-family: 'Hanken Grotesk', sans-serif; font-weight: 600; font-size: var(--h3-size); color: var(--ink); margin: 0 0 0.4em; }
+p, li { font-size: var(--body-size); color: var(--ink-mid); line-height: 1.55; }
+.up { color: var(--up); } .dn { color: var(--dn); }
+.cobalt { color: var(--cobalt); }
+
+/* KPI cards */
+.kpi-grid { display: grid; gap: clamp(0.5rem,1.2vw,1rem); }
+.kpi-grid.col3 { grid-template-columns: repeat(3,1fr); }
+.kpi-grid.col4 { grid-template-columns: repeat(4,1fr); }
+.kpi-card {
+  background: white; border: 1px solid rgba(27,79,216,0.2);
+  border-top: 3px solid var(--cobalt);
+  padding: clamp(0.8rem,1.5vw,1.4rem);
+  border-radius: 2px;
+}
+.kpi-card .label { font-size: var(--small-size); color: var(--ink-light); margin-bottom: 0.3em; }
+.kpi-card .val { font-family: 'Newsreader', serif; font-style: italic; font-size: clamp(1.4rem,3vw,2.4rem); font-weight: 600; color: var(--ink); }
+.kpi-card .yoy { font-family: 'JetBrains Mono', monospace; font-size: var(--small-size); margin-top: 0.2em; }
+
+/* bar chart */
+.bar-list { display: flex; flex-direction: column; gap: clamp(0.3rem,0.6vh,0.6rem); }
+.bar-row { display: grid; grid-template-columns: 11em 1fr 5em; align-items: center; gap: 0.6rem; }
+.bar-row .name { font-size: var(--small-size); color: var(--ink-mid); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bar-row .bar-wrap { background: rgba(27,79,216,0.07); border-radius: 1px; height: 10px; overflow: hidden; }
+.bar-row .bar-fill { height: 100%; background: var(--cobalt); border-radius: 1px; transition: width 0.6s; }
+.bar-row .bar-val { font-family: 'JetBrains Mono', monospace; font-size: var(--small-size); color: var(--ink); text-align: right; }
+
+/* table */
+.data-table { width: 100%; border-collapse: collapse; font-size: var(--small-size); }
+.data-table thead th { background: var(--cobalt); color: white; padding: 0.5em 0.7em; text-align: left; font-weight: 500; font-family: 'Hanken Grotesk', sans-serif; white-space: nowrap; }
+.data-table tbody tr { border-bottom: 1px solid rgba(27,79,216,0.1); }
+.data-table tbody tr:nth-child(even) { background: rgba(27,79,216,0.04); }
+.data-table tbody td { padding: 0.45em 0.7em; color: var(--ink-mid); }
+.data-table .num { text-align: right; font-family: 'JetBrains Mono', monospace; }
+.data-table .bold { font-weight: 600; color: var(--ink); }
+
+/* 2×2 bubble chart area */
+#bubble-canvas { width: 100%; height: 100%; }
+
+/* scrollable slides */
+.slide.scrollable { overflow-y: auto; height: auto; min-height: 100vh; scroll-snap-align: none; }
+.slide.scrollable .slide-content { overflow-y: auto; }
+
+/* iframe embed */
+.iframe-wrap { flex: 1; position: relative; }
+.iframe-wrap iframe { width: 100%; height: 100%; border: none; }
+
+/* title slide special */
+.slide-title { background: var(--ink); }
+.slide-title::before { background-image: linear-gradient(rgba(27,79,216,0.18) 1px, transparent 1px), linear-gradient(90deg, rgba(27,79,216,0.18) 1px, transparent 1px); }
+.slide-title h1 { color: var(--cream); }
+.slide-title .sec-label { color: var(--cobalt-light); }
+.slide-title .slide-footer { border-top: 1px solid rgba(255,255,255,0.1); }
+.slide-title .slide-footer .fn, .slide-title .slide-footer .pg { color: rgba(255,255,255,0.45); }
+
+/* section divider */
+.slide-divider { background: var(--cobalt); }
+.slide-divider::before { background-image: linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px); }
+.slide-divider h2 { color: white; font-size: clamp(2rem,6vw,5rem); }
+.slide-divider .sec-label { color: rgba(255,255,255,0.65); }
+.slide-divider .slide-footer { border-top: 1px solid rgba(255,255,255,0.15); }
+.slide-divider .slide-footer .fn, .slide-divider .slide-footer .pg { color: rgba(255,255,255,0.4); }
+
+/* MA×ATW scoring */
+.score-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(0.5rem,1vw,1rem); }
+.score-item { background: white; border: 1px solid rgba(27,79,216,0.15); border-radius: 2px; padding: clamp(0.6rem,1.2vw,1rem); }
+.score-item .dim { font-size: var(--small-size); color: var(--ink-light); margin-bottom: 0.3em; }
+.score-item .track-name { font-weight: 600; color: var(--ink); font-size: var(--body-size); margin-bottom: 0.5em; }
+.score-dots { display: flex; gap: 3px; }
+.score-dots .dot { width: 10px; height: 10px; border-radius: 50%; border: 1px solid rgba(27,79,216,0.3); }
+.score-dots .dot.filled { background: var(--cobalt); border-color: var(--cobalt); }
+
+@media (max-height: 700px) { :root { --slide-padding: clamp(1rem,3vw,2.5rem); --content-gap: clamp(0.4rem,1vw,1rem); --title-size: clamp(1.5rem,4vw,3rem); --h2-size: clamp(1.1rem,2.5vw,1.8rem); } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.2s !important; } html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<!-- NAV DOTS -->
+<div id="nav-dots">
+  <span data-idx="0" title="封面"></span>
+  <span data-idx="1" title="目录"></span>
+  <span data-idx="2" title="整体市场"></span>
+  <span data-idx="3" title="按产品GMV"></span>
+  <span data-idx="4" title="产品增速矩阵"></span>
+  <span data-idx="5" title="按功效GMV"></span>
+  <span data-idx="6" title="投放概览"></span>
+  <span data-idx="7" title="赛道投放明细"></span>
+  <span data-idx="8" title="广告主投放"></span>
+  <span data-idx="9" title="MA×ATW评分维度"></span>
+  <span data-idx="10" title="MA×ATW产品气泡图"></span>
+  <span data-idx="11" title="MA×ATW功效气泡图"></span>
+  <span data-idx="12" title="各赛道Top客户"></span>
+</div>
+
+<!-- ===== SLIDE 0: 封面 ===== -->
+<div class="slide slide-title">
+  <div class="slide-bar"></div>
+  <div class="slide-content" style="justify-content:flex-end;padding-bottom:clamp(2rem,6vh,6rem);">
+    <!-- deco -->
+    <svg class="deco-pixel" style="top:6%;right:8%;width:clamp(80px,12vw,180px);height:auto;opacity:0.3" viewBox="0 0 120 120">
+      <rect x="0" y="0" width="12" height="12" fill="#3B6EF8"/><rect x="16" y="0" width="12" height="12" fill="#3B6EF8"/><rect x="32" y="0" width="12" height="12" fill="#3B6EF8"/>
+      <rect x="0" y="16" width="12" height="12" fill="#3B6EF8"/><rect x="0" y="32" width="12" height="12" fill="#3B6EF8"/>
+      <rect x="16" y="16" width="12" height="12" fill="#3B6EF8" opacity="0.5"/>
+      <rect x="48" y="0" width="12" height="12" fill="#3B6EF8" opacity="0.3"/><rect x="64" y="0" width="12" height="12" fill="#3B6EF8" opacity="0.2"/>
+      <rect x="0" y="48" width="12" height="12" fill="#3B6EF8" opacity="0.4"/><rect x="0" y="64" width="12" height="12" fill="#3B6EF8" opacity="0.2"/>
+    </svg>
+    <div class="sec-label">传统中式滋补行业 · 2025全年</div>
+    <h1>赛道全景<br>与机会诊断</h1>
+    <div style="width:clamp(40px,8vw,100px);height:3px;background:var(--cobalt);margin:1.2em 0;"></div>
+    <p style="color:rgba(245,242,235,0.6);max-width:480px;font-size:var(--body-size);">数据来源：淘天/抖音/京东 GMV · 小红书搜索量 · 笔记数 · 曝光量 · 品牌投放金额<br>分析维度：42个产品赛道 · 13个功效维度</p>
+  </div>
+  <div class="slide-footer"><span class="fn">传统中式滋补行业分析</span><span class="pg">01 / 13</span></div>
+</div>
+
+<!-- ===== SLIDE 1: 目录 ===== -->
+<div class="slide">
+  <div class="slide-bar"></div>
+  <div class="slide-content">
+    <div class="sec-label">Agenda</div>
+    <h2>本报告结构</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(0.5rem,1.5vw,1.5rem);margin-top:var(--content-gap);">
+      <div style="display:flex;flex-direction:column;gap:clamp(0.4rem,1vh,0.8rem);">
+        <div style="display:flex;align-items:flex-start;gap:0.8em;">
+          <span style="font-family:'JetBrains Mono',monospace;color:var(--cobalt);font-size:var(--small-size);padding-top:0.15em;min-width:1.6em;font-weight:500;">01</span>
+          <div><div style="font-weight:600;font-size:var(--body-size);color:var(--ink);">整体市场规模 &amp; 增速</div><div style="font-size:var(--small-size);color:var(--ink-light);">GMV总量、增速、市场结构</div></div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:0.8em;">
+          <span style="font-family:'JetBrains Mono',monospace;color:var(--cobalt);font-size:var(--small-size);padding-top:0.15em;min-width:1.6em;font-weight:500;">02</span>
+          <div><div style="font-weight:600;font-size:var(--body-size);color:var(--ink);">细分市场 — 按产品分</div><div style="font-size:var(--small-size);color:var(--ink-light);">42个赛道GMV排名与增速</div></div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:0.8em;">
+          <span style="font-family:'JetBrains Mono',monospace;color:var(--cobalt);font-size:var(--small-size);padding-top:0.15em;min-width:1.6em;font-weight:500;">03</span>
+          <div><div style="font-weight:600;font-size:var(--body-size);color:var(--ink);">细分市场 — 按功效分</div><div style="font-size:var(--small-size);color:var(--ink-light);">13个功效心智GMV分布</div></div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:0.8em;">
+          <span style="font-family:'JetBrains Mono',monospace;color:var(--cobalt);font-size:var(--small-size);padding-top:0.15em;min-width:1.6em;font-weight:500;">04</span>
+          <div><div style="font-weight:600;font-size:var(--body-size);color:var(--ink);">小红书投放情况</div><div style="font-size:var(--small-size);color:var(--ink-light);">品牌渗透 · 客户分布 · 各赛道投放YoY</div></div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:clamp(0.4rem,1vh,0.8rem);">
+        <div style="display:flex;align-items:flex-start;gap:0.8em;">
+          <span style="font-family:'JetBrains Mono',monospace;color:var(--cobalt);font-size:var(--small-size);padding-top:0.15em;min-width:1.6em;font-weight:500;">05</span>
+          <div><div style="font-weight:600;font-size:var(--body-size);color:var(--ink);">MA × ATW 评分框架</div><div style="font-size:var(--small-size);color:var(--ink-light);">内容势能 · 决策链路 · 解决方案成熟度</div></div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:0.8em;">
+          <span style="font-family:'JetBrains Mono',monospace;color:var(--cobalt);font-size:var(--small-size);padding-top:0.15em;min-width:1.6em;font-weight:500;">06</span>
+          <div><div style="font-weight:600;font-size:var(--body-size);color:var(--ink);">MA × ATW 气泡图</div><div style="font-size:var(--small-size);color:var(--ink-light);">产品维度 + 功效维度各一张</div></div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:0.8em;">
+          <span style="font-family:'JetBrains Mono',monospace;color:var(--cobalt);font-size:var(--small-size);padding-top:0.15em;min-width:1.6em;font-weight:500;">07</span>
+          <div><div style="font-weight:600;font-size:var(--body-size);color:var(--ink);">各赛道 Top 20 客户</div><div style="font-size:var(--small-size);color:var(--ink-light);">GMV · 投放金额 · 渗透率</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer"><span class="fn">目录</span><span class="pg">02 / 13</span></div>
+</div>
+
+<!-- ===== SLIDE 2: 整体市场 ===== -->
+<div class="slide">
+  <div class="slide-bar"></div>
+  <div class="slide-content">
+    <div class="sec-label">Part 01 · 整体市场规模</div>
+    <h2>中式滋补大盘：398.7亿，同比 <span class="up">+13.1%</span></h2>
+    <div class="kpi-grid col4" style="margin:var(--content-gap) 0;">
+      <div class="kpi-card">
+        <div class="label">2025年 大盘GMV</div>
+        <div class="val">398.7<span style="font-size:0.55em">亿</span></div>
+        <div class="yoy up">↑ 13.1% YoY</div>
+      </div>
+      <div class="kpi-card">
+        <div class="label">赛道数（≥2亿）</div>
+        <div class="val">42<span style="font-size:0.55em">条</span></div>
+        <div class="yoy" style="color:var(--ink-light);">按产品细分口径</div>
+      </div>
+      <div class="kpi-card">
+        <div class="label">已匹配小红书客户</div>
+        <div class="val">79<span style="font-size:0.55em">家</span></div>
+        <div class="yoy" style="color:var(--ink-light);">Y25 投放净额 1.49亿</div>
+      </div>
+      <div class="kpi-card">
+        <div class="label">整体广告 Takerate</div>
+        <div class="val">0.37<span style="font-size:0.55em">%</span></div>
+        <div class="yoy up">↑ 较24年 提升</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--content-gap);">
+      <div style="background:white;border:1px solid rgba(27,79,216,0.15);padding:clamp(0.8rem,1.5vw,1.2rem);border-radius:2px;">
+        <div style="font-weight:600;font-size:var(--body-size);margin-bottom:0.6em;color:var(--ink);">🏆 规模 Top 3 赛道</div>
+        <div style="display:flex;flex-direction:column;gap:0.4em;">
+          <div style="display:flex;justify-content:space-between;"><span style="font-size:var(--small-size);">🥚 燕窝</span><span style="font-family:'JetBrains Mono',monospace;font-size:var(--small-size);"><b>69.7亿</b> <span class="up">+10.8%</span></span></div>
+          <div style="display:flex;justify-content:space-between;"><span style="font-size:var(--small-size);">🌶 枸杞</span><span style="font-family:'JetBrains Mono',monospace;font-size:var(--small-size);"><b>41.8亿</b> <span class="up">+38.2%</span></span></div>
+          <div style="display:flex;justify-content:space-between;"><span style="font-size:var(--small-size);">🍯 阿胶</span><span style="font-family:'JetBrains Mono',monospace;font-size:var(--small-size);"><b>27.2亿</b> <span class="up">+21.3%</span></span></div>
+        </div>
+      </div>
+      <div style="background:white;border:1px solid rgba(27,79,216,0.15);padding:clamp(0.8rem,1.5vw,1.2rem);border-radius:2px;">
+        <div style="font-weight:600;font-size:var(--body-size);margin-bottom:0.6em;color:var(--ink);">🚀 增速 Top 3 赛道</div>
+        <div style="display:flex;flex-direction:column;gap:0.4em;">
+          <div style="display:flex;justify-content:space-between;"><span style="font-size:var(--small-size);">🌿 熟地黄</span><span style="font-family:'JetBrains Mono',monospace;font-size:var(--small-size);"><b class="up">+946%</b></span></div>
+          <div style="display:flex;justify-content:space-between;"><span style="font-size:var(--small-size);">🌿 葛根</span><span style="font-family:'JetBrains Mono',monospace;font-size:var(--small-size);"><b class="up">+403%</b></span></div>
+          <div style="display:flex;justify-content:space-between;"><span style="font-size:var(--small-size);">🌿 党参</span><span style="font-family:'JetBrains Mono',monospace;font-size:var(--small-size);"><b class="up">+235%</b></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer"><span class="fn">整体市场规模 &amp; 增速</span><span class="pg">03 / 13</span></div>
+</div>
+
+<!-- ===== SLIDE 3: 按产品 GMV TOP15 ===== -->
+<div class="slide">
+  <div class="slide-bar"></div>
+  <div class="slide-content">
+    <div class="sec-label">Part 02 · 按产品分 · GMV Top 15</div>
+    <h2>赛道规模排名</h2>
+    <div class="bar-list" style="margin-top:var(--content-gap);flex:1;justify-content:center;">
+      <div class="bar-row" style="font-size:var(--small-size);color:var(--ink-light);font-weight:600;"><span>赛道</span><span></span><span style="text-align:right">GMV（亿）YoY</span></div>
+      <!-- data -->
+      <div class="bar-row"><span class="name">🥚 燕窝</span><div class="bar-wrap"><div class="bar-fill" style="width:100%"></div></div><span class="bar-val">69.7 <span class="up">+11%</span></span></div>
+      <div class="bar-row"><span class="name">🌶 枸杞</span><div class="bar-wrap"><div class="bar-fill" style="width:60%"></div></div><span class="bar-val">41.8 <span class="up">+38%</span></span></div>
+      <div class="bar-row"><span class="name">🍯 阿胶</span><div class="bar-wrap"><div class="bar-fill" style="width:39%"></div></div><span class="bar-val">27.2 <span class="up">+21%</span></span></div>
+      <div class="bar-row"><span class="name">🌳 西洋参</span><div class="bar-wrap"><div class="bar-fill" style="width:29%"></div></div><span class="bar-val">20.0 <span class="up">+13%</span></span></div>
+      <div class="bar-row"><span class="name">🍯 蜂蜜/蜂产品</span><div class="bar-wrap"><div class="bar-fill" style="width:27%"></div></div><span class="bar-val">18.7 <span class="dn">-2%</span></span></div>
+      <div class="bar-row"><span class="name">🌿 冬虫夏草</span><div class="bar-wrap"><div class="bar-fill" style="width:23%"></div></div><span class="bar-val">16.0 <span class="up">+96%</span></span></div>
+      <div class="bar-row"><span class="name">🌳 灵芝/孢子粉</span><div class="bar-wrap"><div class="bar-fill" style="width:19%"></div></div><span class="bar-val">13.3 <span class="dn">-3%</span></span></div>
+      <div class="bar-row"><span class="name">🌾 五谷营养品</span><div class="bar-wrap"><div class="bar-fill" style="width:18%"></div></div><span class="bar-val">12.4 <span class="up">+16%</span></span></div>
+      <div class="bar-row"><span class="name">🐚 海参</span><div class="bar-wrap"><div class="bar-fill" style="width:15%"></div></div><span class="bar-val">10.4 <span class="up">+136%</span></span></div>
+      <div class="bar-row"><span class="name">🌳 人参</span><div class="bar-wrap"><div class="bar-fill" style="width:15%"></div></div><span class="bar-val">10.3 <span class="up">+21%</span></span></div>
+      <div class="bar-row"><span class="name">🍯 养生膏</span><div class="bar-wrap"><div class="bar-fill" style="width:13%"></div></div><span class="bar-val">9.0 <span class="up">+19%</span></span></div>
+      <div class="bar-row"><span class="name">🍵 养生茶·菊枸决明</span><div class="bar-wrap"><div class="bar-fill" style="width:13%"></div></div><span class="bar-val">8.8 <span class="dn">-16%</span></span></div>
+      <div class="bar-row"><span class="name">🌿 黄芪</span><div class="bar-wrap"><div class="bar-fill" style="width:10%"></div></div><span class="bar-val">7.0 <span class="up">+21%</span></span></div>
+      <div class="bar-row"><span class="name">🦌 鹿茸</span><div class="bar-wrap"><div class="bar-fill" style="width:9%"></div></div><span class="bar-val">6.2 <span class="up">+66%</span></span></div>
+      <div class="bar-row"><span class="name">🌿 黄精</span><div class="bar-wrap"><div class="bar-fill" style="width:8%"></div></div><span class="bar-val">5.6 <span class="up">+211%</span></span></div>
+    </div>
+  </div>
+  <div class="slide-footer"><span class="fn">细分市场 — 按产品分</span><span class="pg">04 / 13</span></div>
+</div>
+
+<!-- ===== SLIDE 4: 产品增速矩阵 ===== -->
+<div class="slide">
+  <div class="slide-bar"></div>
+  <div class="slide-content">
+    <div class="sec-label">Part 02 · 按产品分 · 增速分层</div>
+    <h2>赛道增速矩阵</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:clamp(0.5rem,1vw,1rem);margin-top:var(--content-gap);flex:1;align-content:start;">
+      <div style="background:white;border:1px solid rgba(27,79,216,0.15);border-top:3px solid var(--up);padding:clamp(0.6rem,1.2vw,1rem);border-radius:2px;">
+        <div style="font-weight:700;color:var(--up);font-size:var(--body-size);margin-bottom:0.5em;">🚀 高增速（>50%）</div>
+        <div style="display:flex;flex-direction:column;gap:0.3em;">
+          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🌿 熟地黄</span><span class="up">+946%</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🌿 葛根</span><span class="up">+403%</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🌿 党参</span><span class="up">+235%</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🌿 黄精</span><span class="up">+211%</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🌿 天麻</span><span class="up">+187%</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🌿 麦冬</span><span class="up">+98%</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🌿 冬虫夏草</span><span class="up">+96%</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🐚 海参</span><span class="up">+136%</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🦌 鹿茸</span><span class="up">+66%</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🍬 滋补营养糖</span><span class="up">+82%</span></div>
+        </div>
+      </div>
+      <div style="background:white;border:1px solid rgba(27,79,216,0.15);border-top:3px solid var(--cobalt);padding:clamp(0.6rem,1.2vw,1rem);border-radius:2px;">
+        <div style="font-weight:700;color:var(--cobalt);font-size:var(--body-size);margin-bottom:0.5em;">📈 稳健增长（+10~50%）</div>
+        <div style="display:flex;flex-direction:column;gap:0.3em;">
+          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🌶 枸杞</span><span class="up">+38%</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🌿 酸枣仁</span><span class="up">+44%</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🌿 橘皮/陈皮</span><span class="up">+150%*</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🍯 阿胶</span><span class="up">+21%</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🌳 人参</span><span class="up">+21%</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🌿 黄芪</span><span class="up">+21%</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🌳 西洋参</span><span class="up">+13%</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🍯 养生膏</span><span class="up">+19%</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🥚 燕窝</span><span class="up">+11%</span></div>
+        </div>
+      </div>
+      <div style="background:white;border:1px solid rgba(27,79,216,0.15);border-top:3px solid var(--dn);padding:clamp(0.6rem,1.2vw,1rem);border-radius:2px;">
+        <div style="font-weight:700;color:var(--dn);font-size:var(--body-size);margin-bottom:0.5em;">📉 承压赛道（&lt;0%）</div>
+        <div style="display:flex;flex-direction:column;gap:0.3em;">
+          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🌿 金银花</span><span class="dn">-58%</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🌿 鸡内金</span><span class="dn">-41%</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🌿 桃胶</span><span class="dn">-39%</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>⚠️ 散装中药材</span><span class="dn">-25%</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🌳 高丽参/红参</span><span class="dn">-16%</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🐟 花胶/鱼胶</span><span class="dn">-21%</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🍵 养生茶·菊枸决明</span><span class="dn">-16%</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🍯 蜂蜜/蜂产品</span><span class="dn">-2%</span></div>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:var(--small-size);color:var(--ink-light);margin-top:0.5em;">* 橘皮/陈皮为搜索量口径增速，GMV 口径 +84.9%</p>
+  </div>
+  <div class="slide-footer"><span class="fn">细分市场 — 按产品分</span><span class="pg">05 / 13</span></div>
+</div>
+
+<!-- ===== SLIDE 5: 按功效 GMV ===== -->
+<div class="slide">
+  <div class="slide-bar"></div>
+  <div class="slide-content">
+    <div class="sec-label">Part 03 · 按功效分 · GMV 446亿（含跨赛道分摊）</div>
+    <h2>功效心智 GMV 分布</h2>
+    <div class="bar-list" style="margin-top:var(--content-gap);flex:1;justify-content:center;">
+      <div class="bar-row" style="font-size:var(--small-size);color:var(--ink-light);font-weight:600;"><span>功效维度</span><span></span><span style="text-align:right">GMV（亿）</span></div>
+      <div class="bar-row"><span class="name">🎁 通用滋补/送礼</span><div class="bar-wrap"><div class="bar-fill" style="width:100%"></div></div><span class="bar-val">65.8</span></div>
+      <div class="bar-row"><span class="name">🛡 免疫/补气</span><div class="bar-wrap"><div class="bar-fill" style="width:95%"></div></div><span class="bar-val">62.8</span></div>
+      <div class="bar-row"><span class="name">🍃 护肝/熬夜</span><div class="bar-wrap"><div class="bar-fill" style="width:76%"></div></div><span class="bar-val">49.9</span></div>
+      <div class="bar-row"><span class="name">🌟 抗老/抗糖</span><div class="bar-wrap"><div class="bar-fill" style="width:64%"></div></div><span class="bar-val">42.1</span></div>
+      <div class="bar-row"><span class="name">❤️ 气血/补铁</span><div class="bar-wrap"><div class="bar-fill" style="width:64%"></div></div><span class="bar-val">42.1</span></div>
+      <div class="bar-row"><span class="name">💪 男性滋补</span><div class="bar-wrap"><div class="bar-fill" style="width:62%"></div></div><span class="bar-val">40.8</span></div>
+      <div class="bar-row"><span class="name">🌸 女性/卵巢调理</span><div class="bar-wrap"><div class="bar-fill" style="width:62%"></div></div><span class="bar-val">40.7</span></div>
+      <div class="bar-row"><span class="name">😴 助眠</span><div class="bar-wrap"><div class="bar-fill" style="width:36%"></div></div><span class="bar-val">23.6</span></div>
+      <div class="bar-row"><span class="name">✨ 胶原蛋白肽</span><div class="bar-wrap"><div class="bar-fill" style="width:32%"></div></div><span class="bar-val">20.8</span></div>
+      <div class="bar-row"><span class="name">🫁 润肺/护嗓</span><div class="bar-wrap"><div class="bar-fill" style="width:22%"></div></div><span class="bar-val">14.4</span></div>
+      <div class="bar-row"><span class="name">🌧 祛湿</span><div class="bar-wrap"><div class="bar-fill" style="width:22%"></div></div><span class="bar-val">14.2</span></div>
+      <div class="bar-row"><span class="name">👁 明目/护眼</span><div class="bar-wrap"><div class="bar-fill" style="width:17%"></div></div><span class="bar-val">11.5</span></div>
+      <div class="bar-row"><span class="name">⚖️ 减脂/体重管理</span><div class="bar-wrap"><div class="bar-fill" style="width:15%"></div></div><span class="bar-val">9.8</span></div>
+    </div>
+  </div>
+  <div class="slide-footer"><span class="fn">细分市场 — 按功效分</span><span class="pg">06 / 13</span></div>
+</div>
+
+<!-- ===== SLIDE 6: 投放概览 ===== -->
+<div class="slide">
+  <div class="slide-bar"></div>
+  <div class="slide-content">
+    <div class="sec-label">Part 04 · 小红书投放情况</div>
+    <h2>7大产品类型 — 投放汇总</h2>
+    <div style="margin-top:var(--content-gap);overflow-x:auto;flex:1;display:flex;flex-direction:column;justify-content:center;">
+      <table class="data-table">
+        <thead>
+          <tr><th>#</th><th>产品类型</th><th class="num">赛道数</th><th class="num">GMV（亿）</th><th class="num">GMV YoY</th><th class="num">投放净额</th><th class="num">投放YoY</th><th class="num">Takerate</th><th class="num">客户数</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td class="bold">🥇 滋补名品</td><td class="num">10</td><td class="num">172.69</td><td class="num up">↑15.9%</td><td class="num">6,118万</td><td class="num up">↑8.9%</td><td class="num">0.35%</td><td class="num">28</td></tr>
+          <tr><td>2</td><td class="bold">🌿 道地药材</td><td class="num">15</td><td class="num">61.52</td><td class="num dn">↓15.0%</td><td class="num">2,448万</td><td class="num up">↑78.6%</td><td class="num">0.40%</td><td class="num">17</td></tr>
+          <tr><td>3</td><td class="bold">📋 其他</td><td class="num">5</td><td class="num">61.11</td><td class="num dn">↓14.4%</td><td class="num">400万</td><td class="num dn">↓31.7%</td><td class="num">0.07%</td><td class="num">8</td></tr>
+          <tr><td>4</td><td class="bold">🌾 五谷代餐</td><td class="num">3</td><td class="num">51.46</td><td class="num up">↑26.0%</td><td class="num">91万</td><td class="num up">↑54.8%</td><td class="num">0.02%</td><td class="num">1</td></tr>
+          <tr><td>5</td><td class="bold">🍵 养生茶饮</td><td class="num">2</td><td class="num">34.56</td><td class="num dn">↓1.5%</td><td class="num">268万</td><td class="num dn">↓7.9%</td><td class="num">0.08%</td><td class="num">4</td></tr>
+          <tr><td>6</td><td class="bold">🍯 蜂蜜糖膏</td><td class="num">3</td><td class="num">34.00</td><td class="num up">↑1.6%</td><td class="num">601万</td><td class="num up">↑101.5%</td><td class="num">0.18%</td><td class="num">10</td></tr>
+          <tr><td>7</td><td class="bold">💊 养生丸药食</td><td class="num">1</td><td class="num">7.40</td><td class="num dn">↓16.0%</td><td class="num">4,962万</td><td class="num up">↑18.1%</td><td class="num cobalt" style="font-weight:700">6.71%</td><td class="num">11</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:0.8em;font-size:var(--small-size);color:var(--ink-light);">💊 养生丸（五黑丸/黑芝麻丸）Takerate 远高于大盘，是小红书深度渗透赛道。🌾 五谷代餐 GMV 高增但投放渗透极低，机会赛道。</p>
+    </div>
+  </div>
+  <div class="slide-footer"><span class="fn">小红书投放情况</span><span class="pg">07 / 13</span></div>
+</div>
+
+<!-- ===== SLIDE 7: 细分赛道投放 ===== -->
+<div class="slide">
+  <div class="slide-bar"></div>
+  <div class="slide-content">
+    <div class="sec-label">Part 04 · 小红书投放 · 细分赛道</div>
+    <h2>主要赛道投放明细</h2>
+    <div style="margin-top:var(--content-gap);overflow-x:auto;flex:1;display:flex;flex-direction:column;justify-content:center;">
+      <table class="data-table">
+        <thead>
+          <tr><th>赛道</th><th class="num">GMV（亿）</th><th class="num">GMV YoY</th><th class="num">投放净额</th><th class="num">投放YoY</th><th class="num">Takerate</th><th class="num">客户数</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="bold">🥚 燕窝</td><td class="num">67.49</td><td class="num up">↑9.3%</td><td class="num">2,920万</td><td class="num up">↑22.2%</td><td class="num">0.43%</td><td class="num">8</td></tr>
+          <tr><td class="bold">🍯 阿胶</td><td class="num">28.50</td><td class="num up">↑24.8%</td><td class="num">1,296万</td><td class="num dn">↓2.3%</td><td class="num">0.45%</td><td class="num">5</td></tr>
+          <tr><td class="bold">💊 五黑丸/黑芝麻丸</td><td class="num">7.40</td><td class="num dn">↓16.0%</td><td class="num cobalt" style="font-weight:600">4,962万</td><td class="num up">↑18.1%</td><td class="num cobalt" style="font-weight:700">6.71%</td><td class="num">11</td></tr>
+          <tr><td class="bold">🍟 花胶/鱼胶</td><td class="num">4.67</td><td class="num dn">↓23.8%</td><td class="num">1,149万</td><td class="num up">↑27.0%</td><td class="num">2.46%</td><td class="num">3</td></tr>
+          <tr><td class="bold">🌿 鸡内金</td><td class="num">2.03</td><td class="num dn">↓45.2%</td><td class="num">1,158万</td><td class="num up">↑84.2%</td><td class="num">5.71%</td><td class="num">5</td></tr>
+          <tr><td class="bold">🌿 黄精</td><td class="num">5.15</td><td class="num up">↑207%</td><td class="num">991万</td><td class="num up">↑96.9%</td><td class="num">1.92%</td><td class="num">3</td></tr>
+          <tr><td class="bold">🍯 养生膏</td><td class="num">10.63</td><td class="num up">↑8.8%</td><td class="num">489万</td><td class="num up">↑80.0%</td><td class="num">0.46%</td><td class="num">6</td></tr>
+          <tr><td class="bold">🌳 高丽参/红参</td><td class="num">4.78</td><td class="num dn">↓17.3%</td><td class="num">454万</td><td class="num dn">↓39.6%</td><td class="num">0.95%</td><td class="num">3</td></tr>
+          <tr><td class="bold">🌳 灵芝/孢子粉</td><td class="num">12.39</td><td class="num dn">↓6.4%</td><td class="num">82万</td><td class="num up">↑3089%</td><td class="num">0.07%</td><td class="num">2</td></tr>
+          <tr><td class="bold">🐚 海参</td><td class="num">6.11</td><td class="num up">↑116%</td><td class="num">65万</td><td class="num up">↑1092%</td><td class="num">0.11%</td><td class="num">2</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="slide-footer"><span class="fn">小红书投放情况</span><span class="pg">08 / 13</span></div>
+</div>
+
+<!-- ===== SLIDE 8: 现有广告主嵌入 ===== -->
+<div class="slide" style="display:flex;flex-direction:column;">
+  <div class="slide-bar"></div>
+  <div style="padding:clamp(0.6rem,1.5vw,1.2rem) var(--slide-padding) 0;flex-shrink:0;position:relative;z-index:2;">
+    <div class="sec-label">Part 04 · 小红书投放 · 现有广告主</div>
+    <h2 style="margin-bottom:0.2em;">各赛道广告主投放全览</h2>
+  </div>
+  <div class="iframe-wrap" style="flex:1;padding:0 clamp(1rem,3vw,2rem) clamp(0.5rem,1vw,1rem);position:relative;z-index:2;">
+    <iframe src="https://picasso-private-1251524319.cos.ap-shanghai.myqcloud.com/formula-static/dibp/ddny4jcn/zb-ad-reverse.html" style="width:100%;height:100%;border:1px solid rgba(27,79,216,0.15);border-radius:4px;"></iframe>
+  </div>
+  <div class="slide-footer"><span class="fn">小红书投放情况</span><span class="pg">09 / 13</span></div>
+</div>
+
+<!-- ===== SLIDE 9: MA×ATW 框架说明 ===== -->
+<div class="slide">
+  <div class="slide-bar"></div>
+  <div class="slide-content">
+    <div class="sec-label">Part 05 · Market Attractiveness × Ability to Win</div>
+    <h2>评分框架说明</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--content-gap);margin-top:var(--content-gap);flex:1;align-content:start;">
+      <div>
+        <h3 style="color:var(--cobalt);margin-bottom:0.6em;">横轴：Market Attractiveness（市场吸引力）</h3>
+        <div style="display:flex;flex-direction:column;gap:0.5em;">
+          <div style="background:white;border-left:3px solid var(--cobalt);padding:0.6em 0.8em;font-size:var(--small-size);">
+            <b>内容势能增速</b> — 曝光量YoY × 笔记数YoY<br>
+            <span style="color:var(--ink-light);">反映品类在小红书的内容热度成长性</span>
+          </div>
+          <div style="background:white;border-left:3px solid var(--cobalt);padding:0.6em 0.8em;font-size:var(--small-size);">
+            <b>决策链路重要性</b> — 搜索量绝对值 + YoY<br>
+            <span style="color:var(--ink-light);">搜索量高→用户已有决策意图，小红书是关键触点</span>
+          </div>
+          <div style="background:white;border-left:3px solid var(--cobalt);padding:0.6em 0.8em;font-size:var(--small-size);">
+            <b>市场规模</b> — GMV绝对值 + YoY<br>
+            <span style="color:var(--ink-light);">盘子越大增速越高，吸引力越强</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3 style="color:var(--ink);margin-bottom:0.6em;">纵轴：Ability to Win（赢单能力）</h3>
+        <div style="display:flex;flex-direction:column;gap:0.5em;">
+          <div style="background:white;border-left:3px solid var(--ink-mid);padding:0.6em 0.8em;font-size:var(--small-size);">
+            <b>解决方案成熟度</b> — 赛道是否有现有客户<br>
+            <span style="color:var(--ink-light);">有客户=有成功案例，赢单能力强</span>
+          </div>
+          <div style="background:white;border-left:3px solid var(--ink-mid);padding:0.6em 0.8em;font-size:var(--small-size);">
+            <b>投放净额</b> — 现有客户年投放总额<br>
+            <span style="color:var(--ink-light);">投放越多→客户ROI认可度高</span>
+          </div>
+          <div style="background:white;border-left:3px solid var(--ink-mid);padding:0.6em 0.8em;font-size:var(--small-size);">
+            <b>Takerate</b> — 投放/GMV<br>
+            <span style="color:var(--ink-light);">Takerate高→该赛道品牌已验证小红书效果</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="background:rgba(27,79,216,0.06);border:1px solid rgba(27,79,216,0.2);padding:0.7em 1em;font-size:var(--small-size);margin-top:0.8em;border-radius:2px;">
+      气泡大小 = GMV规模 &nbsp;｜&nbsp; 右上象限 = 高MA高ATW = 重点赛道 &nbsp;｜&nbsp; 左上象限 = 高ATW低MA = 防守巩固
+    </div>
+  </div>
+  <div class="slide-footer"><span class="fn">MA × ATW 评分框架</span><span class="pg">10 / 13</span></div>
+</div>
+
+<!-- ===== SLIDE 10: MA×ATW 产品气泡图 ===== -->
+<div class="slide">
+  <div class="slide-bar"></div>
+  <div class="slide-content">
+    <div class="sec-label">Part 06 · MA × ATW · 产品维度</div>
+    <h2>赛道机会图谱（按产品分）</h2>
+    <div style="flex:1;position:relative;margin-top:0.5em;">
+      <canvas id="bubbleChart" style="width:100%;height:100%;"></canvas>
+    </div>
+  </div>
+  <div class="slide-footer"><span class="fn">MA × ATW 气泡图 — 产品维度</span><span class="pg">11 / 13</span></div>
+</div>
+
+<!-- ===== SLIDE 11: MA×ATW 功效气泡图 ===== -->
+<div class="slide">
+  <div class="slide-bar"></div>
+  <div class="slide-content">
+    <div class="sec-label">Part 06 · MA × ATW · 功效维度</div>
+    <h2>赛道机会图谱（按功效分）</h2>
+    <div style="flex:1;position:relative;margin-top:0.5em;">
+      <canvas id="bubbleChart2" style="width:100%;height:100%;"></canvas>
+    </div>
+  </div>
+  <div class="slide-footer"><span class="fn">MA × ATW 气泡图 — 功效维度</span><span class="pg">12 / 13</span></div>
+</div>
+
+<!-- ===== SLIDE 12: Top20客户嵌入 ===== -->
+<div class="slide" style="display:flex;flex-direction:column;">
+  <div class="slide-bar"></div>
+  <div style="padding:clamp(0.6rem,1.5vw,1.2rem) var(--slide-padding) 0;flex-shrink:0;position:relative;z-index:2;">
+    <div class="sec-label">Part 07 · 各赛道 Top 20 客户</div>
+    <h2 style="margin-bottom:0.2em;">品牌 GMV &amp; 小红书投放详情</h2>
+  </div>
+  <div class="iframe-wrap" style="flex:1;padding:0 clamp(1rem,3vw,2rem) clamp(0.5rem,1vw,1rem);position:relative;z-index:2;">
+    <iframe src="https://picasso-private-1251524319.cos.ap-shanghai.myqcloud.com/formula-static/dibp/qxr00eip/zb-brand-ad.html" style="width:100%;height:100%;border:1px solid rgba(27,79,216,0.15);border-radius:4px;"></iframe>
+  </div>
+  <div class="slide-footer"><span class="fn">各赛道 Top 20 客户</span><span class="pg">13 / 13</span></div>
+</div>
+
+<script>
+// ===== NAV DOTS =====
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('#nav-dots span');
+function updateDots() {
+  const idx = Math.round(window.scrollY / window.innerHeight);
+  dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+}
+window.addEventListener('scroll', updateDots, { passive: true });
+dots.forEach(d => {
+  d.addEventListener('click', () => {
+    const idx = +d.dataset.idx;
+    window.scrollTo({ top: idx * window.innerHeight, behavior: 'smooth' });
+  });
+});
+updateDots();
+window.addEventListener('keydown', e => {
+  const cur = Math.round(window.scrollY / window.innerHeight);
+  if (e.key === 'ArrowDown' || e.key === 'PageDown') window.scrollTo({ top: (cur + 1) * window.innerHeight, behavior: 'smooth' });
+  if (e.key === 'ArrowUp' || e.key === 'PageUp') window.scrollTo({ top: Math.max(0, cur - 1) * window.innerHeight, behavior: 'smooth' });
+});
+
+// ===== BUBBLE CHART (产品维度) =====
+(function() {
+  const canvas = document.getElementById('bubbleChart');
+  if (!canvas) return;
+
+  // MA: 搜索量+搜索YoY+曝光YoY+笔记YoY+GMV YoY → normalized score 0-10
+  // ATW: 有客户(0/1) + takerate + 投放净额 → normalized 0-10
+  // 气泡大小 = GMV
+  const tracks = [
+    // name, MA, ATW, gmv_亿
+    ['燕窝', 7.2, 7.8, 69.7],
+    ['枸杞', 8.5, 3.0, 41.8],
+    ['阿胶', 6.8, 7.0, 27.2],
+    ['西洋参', 5.2, 3.5, 20.0],
+    ['蜂蜜/蜂产品', 4.5, 4.0, 18.7],
+    ['冬虫夏草', 7.0, 2.5, 16.0],
+    ['灵芝/孢子粉', 5.8, 3.5, 13.3],
+    ['五谷代餐', 7.5, 1.5, 12.4],
+    ['海参', 8.8, 2.0, 10.4],
+    ['人参', 6.5, 2.0, 10.3],
+    ['养生膏', 5.5, 5.5, 9.0],
+    ['养生茶·菊枸', 4.0, 3.0, 8.8],
+    ['黄芪', 6.2, 1.0, 7.0],
+    ['鹿茸', 7.8, 1.0, 6.2],
+    ['黄精', 9.0, 5.5, 5.6],
+    ['石斛/枫斗', 6.0, 4.0, 5.5],
+    ['高丽参/红参', 4.2, 6.5, 5.2],
+    ['五黑丸', 6.5, 9.5, 7.4],
+    ['花胶/鱼胶', 4.0, 7.0, 4.9],
+    ['养生丸·其他', 5.0, 5.0, 4.7],
+    ['天麻', 8.5, 1.0, 4.0],
+    ['茯苓', 8.2, 1.0, 3.8],
+    ['酸枣仁', 7.0, 1.0, 2.8],
+    ['橘皮/陈皮', 8.8, 1.0, 2.8],
+    ['鸡内金', 5.5, 7.5, 2.3],
+  ];
+
+  drawBubble(canvas, tracks, '产品维度');
+})();
+
+// ===== BUBBLE CHART (功效维度) =====
+(function() {
+  const canvas = document.getElementById('bubbleChart2');
+  if (!canvas) return;
+  const effs = [
+    // name, MA, ATW, gmv_亿
+    ['通用滋补/送礼', 6.5, 7.0, 65.8],
+    ['免疫/补气', 7.2, 6.5, 62.8],
+    ['护肝/熬夜', 8.5, 5.0, 49.9],
+    ['抗老/抗糖', 5.5, 6.0, 42.1],
+    ['气血/补铁', 8.0, 7.5, 42.1],
+    ['男性滋补', 6.8, 4.5, 40.8],
+    ['女性/卵巢调理', 7.5, 6.8, 40.7],
+    ['助眠', 8.8, 5.5, 23.6],
+    ['胶原蛋白肽', 3.5, 5.0, 20.8],
+    ['润肺/护嗓', 6.5, 3.5, 14.4],
+    ['祛湿', 7.8, 4.0, 14.2],
+    ['明目/护眼', 8.5, 3.0, 11.5],
+    ['减脂/体重管理', 7.5, 4.5, 9.8],
+  ];
+  drawBubble(canvas, effs, '功效维度');
+})();
+
+function drawBubble(canvas, data, title) {
+  const dpr = window.devicePixelRatio || 1;
+  function resize() {
+    const rect = canvas.parentElement.getBoundingClientRect();
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    canvas.style.width = rect.width + 'px';
+    canvas.style.height = rect.height + 'px';
+    draw();
+  }
+
+  function draw() {
+    const ctx = canvas.getContext('2d');
+    ctx.scale(dpr, dpr);
+    const W = canvas.width / dpr, H = canvas.height / dpr;
+    ctx.clearRect(0, 0, W, H);
+
+    const PAD = { l: 60, r: 30, t: 30, b: 50 };
+    const plotW = W - PAD.l - PAD.r, plotH = H - PAD.t - PAD.b;
+
+    // bg
+    ctx.fillStyle = '#F5F2EB';
+    ctx.fillRect(0, 0, W, H);
+
+    // grid
+    ctx.strokeStyle = 'rgba(27,79,216,0.08)';
+    ctx.lineWidth = 1;
+    for (let i = 0; i <= 10; i += 2) {
+      const x = PAD.l + (i / 10) * plotW;
+      const y = PAD.t + ((10 - i) / 10) * plotH;
+      ctx.beginPath(); ctx.moveTo(x, PAD.t); ctx.lineTo(x, PAD.t + plotH); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(PAD.l, y); ctx.lineTo(PAD.l + plotW, y); ctx.stroke();
+    }
+
+    // quadrant bg
+    const midX = PAD.l + 0.5 * plotW, midY = PAD.t + 0.5 * plotH;
+    ctx.fillStyle = 'rgba(27,79,216,0.04)'; ctx.fillRect(midX, PAD.t, plotW / 2, plotH / 2); // top-right
+    ctx.fillStyle = 'rgba(192,57,43,0.04)'; ctx.fillRect(PAD.l, PAD.t + plotH / 2, plotW / 2, plotH / 2); // bottom-left
+
+    // quadrant labels
+    ctx.font = `${Math.max(10, W * 0.012)}px Hanken Grotesk, sans-serif`;
+    ctx.fillStyle = 'rgba(27,79,216,0.35)';
+    ctx.textAlign = 'right'; ctx.textBaseline = 'top';
+    ctx.fillText('重点进攻 ★', PAD.l + plotW - 6, PAD.t + 6);
+    ctx.fillStyle = 'rgba(27,79,216,0.25)';
+    ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+    ctx.fillText('防守巩固', PAD.l + 6, PAD.t + 6);
+    ctx.fillStyle = 'rgba(150,150,150,0.4)';
+    ctx.textAlign = 'right'; ctx.textBaseline = 'bottom';
+    ctx.fillText('机会培育', PAD.l + plotW - 6, PAD.t + plotH - 6);
+    ctx.textAlign = 'left';
+    ctx.fillText('观望审视', PAD.l + 6, PAD.t + plotH - 6);
+
+    // quadrant divider
+    ctx.strokeStyle = 'rgba(27,79,216,0.2)'; ctx.lineWidth = 1.5; ctx.setLineDash([4, 4]);
+    ctx.beginPath(); ctx.moveTo(midX, PAD.t); ctx.lineTo(midX, PAD.t + plotH); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(PAD.l, midY); ctx.lineTo(PAD.l + plotW, midY); ctx.stroke();
+    ctx.setLineDash([]);
+
+    // axis labels
+    ctx.fillStyle = '#6B6B6B';
+    ctx.font = `600 ${Math.max(10, W * 0.013)}px Hanken Grotesk, sans-serif`;
+    ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+    ctx.fillText('Market Attractiveness →', PAD.l + plotW / 2, PAD.t + plotH + 8);
+    ctx.save(); ctx.translate(14, PAD.t + plotH / 2); ctx.rotate(-Math.PI / 2);
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText('Ability to Win →', 0, 0);
+    ctx.restore();
+
+    // bubbles
+    const maxGmv = Math.max(...data.map(d => d[3]));
+    const maxR = Math.min(plotW, plotH) * 0.12;
+    const minR = 6;
+
+    data.forEach(([name, ma, atw, gmv]) => {
+      const x = PAD.l + (ma / 10) * plotW;
+      const y = PAD.t + ((10 - atw) / 10) * plotH;
+      const r = minR + (gmv / maxGmv) * (maxR - minR);
+
+      const isTopRight = ma >= 5 && atw >= 5;
+      const color = isTopRight ? '27,79,216' : '100,100,120';
+
+      ctx.beginPath();
+      ctx.arc(x, y, r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${color},0.18)`;
+      ctx.fill();
+      ctx.strokeStyle = `rgba(${color},0.7)`;
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+
+      // label
+      const fs = Math.max(8, W * 0.009);
+      ctx.font = `500 ${fs}px Hanken Grotesk, sans-serif`;
+      ctx.fillStyle = `rgba(${color},0.9)`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      const maxW = r * 2.5;
+      let label = name;
+      if (ctx.measureText(label).width > maxW) {
+        while (label.length > 2 && ctx.measureText(label + '…').width > maxW) label = label.slice(0, -1);
+        label += '…';
+      }
+      ctx.fillText(label, x, y);
+    });
+
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+  }
+
+  resize();
+  window.addEventListener('resize', () => { ctx && ctx.setTransform && ctx.setTransform(1,0,0,1,0,0); resize(); });
+
+  const ro = new ResizeObserver(resize);
+  ro.observe(canvas.parentElement);
+}
+</script>
+</body>
+</html>
