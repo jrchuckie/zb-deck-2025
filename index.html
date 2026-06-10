@@ -668,7 +668,7 @@ function bldBubble(cid,items){
   var data=items.map(function(t){
     var ma=sMA(t),atw=sATW(t);
     var qc=ma>=maMed&&atw>=atwMed?"#16a34a":ma<maMed&&atw>=atwMed?"#1B4FD8":ma>=maMed&&atw<atwMed?"#d97706":"#9ca3af";
-    return {value:[ma,atw,t.gmv,t.n],symbolSize:Math.max(10,Math.sqrt(t.gmv/MX_GMV)*80),itemStyle:{color:qc,opacity:.78,borderColor:"rgba(255,255,255,.6)",borderWidth:1}};
+    return {value:[ma,atw,t.gmv,t.n],itemStyle:{color:qc,opacity:.78,borderColor:"rgba(255,255,255,.6)",borderWidth:1}};
   });
   c.setOption({backgroundColor:"transparent",animation:true,
     tooltip:{formatter:function(p){var d=p.data.value;return d[3]+"<br>MA: "+d[0]+" ATW: "+d[1]+"<br>GMV: "+d[2]+"亿";}},
@@ -682,7 +682,7 @@ function bldBubble(cid,items){
       axisLine:{show:true,lineStyle:{color:"rgba(0,0,0,.15)"}},
       axisTick:{show:false}},
     series:[{
-      type:"scatter",data:data,
+      type:"scatter",data:data,symbolSize:function(val){return Math.max(10,Math.sqrt(val[2]/MX_GMV)*80);},
       label:{show:true,formatter:function(p){return p.data.value[3].slice(0,5);},position:"right",fontSize:9,color:"#555",distance:3},
       markLine:{silent:true,symbol:"none",lineStyle:{color:"#000",type:"dashed",width:1.5},
         data:[{xAxis:maMed},{yAxis:atwMed}],
