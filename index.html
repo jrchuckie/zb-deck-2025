@@ -668,10 +668,10 @@ function bldBubble(cid,items){
   var data=items.map(function(t){
     var ma=sMA(t),atw=sATW(t);
     var qc=ma>=maMed&&atw>=atwMed?"#16a34a":ma<maMed&&atw>=atwMed?"#1B4FD8":ma>=maMed&&atw<atwMed?"#d97706":"#9ca3af";
-    return {value:[ma,atw,t.gmv,t.n],itemStyle:{color:qc,opacity:.78,borderColor:"rgba(255,255,255,.6)",borderWidth:1}};
+    return [ma,atw,t.gmv,t.n,qc];
   });
-  c.setOption({backgroundColor:"transparent",animation:true,
-    tooltip:{formatter:function(p){var d=p.data.value;return d[3]+"<br>MA: "+d[0]+" ATW: "+d[1]+"<br>GMV: "+d[2]+"亿";}},
+  c.setOption({backgroundColor:"transparent",animation:false,
+    tooltip:{formatter:function(p){var d=p.data;return d[3]+"<br>MA: "+d[0]+" ATW: "+d[1]+"<br>GMV: "+d[2]+"亿";}},
     grid:{left:"8%",right:"5%",top:"5%",bottom:"8%",containLabel:true},
     xAxis:{name:"市场吸引力 MA（中位="+maMed+"）",nameLocation:"middle",nameGap:20,nameTextStyle:{color:CL,fontSize:10},type:"value",min:0.5,max:5.5,
       splitLine:{lineStyle:{color:GL}},axisLabel:{color:CL,fontSize:9},
@@ -682,8 +682,10 @@ function bldBubble(cid,items){
       axisLine:{show:true,lineStyle:{color:"rgba(0,0,0,.15)"}},
       axisTick:{show:false}},
     series:[{
-      type:"scatter",data:data,symbolSize:function(val){var g=Array.isArray(val)?val[2]:(val.value?val.value[2]:10); return Math.max(10,Math.sqrt(g/MX_GMV)*80);},
-      label:{show:true,formatter:function(p){return p.data.value[3].slice(0,5);},position:"right",fontSize:9,color:"#555",distance:3},
+      type:"scatter",data:data,
+      symbolSize:function(d){return Math.max(10,Math.sqrt(d[2]/MX_GMV)*80);},
+      itemStyle:{color:function(p){return p.data[4]||"#9ca3af";},opacity:.82,borderColor:"rgba(255,255,255,.7)",borderWidth:1.5},
+      label:{show:true,formatter:function(p){return p.data[3].slice(0,5);},position:"right",fontSize:9,color:"#444",distance:3},
       markLine:{silent:true,symbol:"none",lineStyle:{color:"#000",type:"dashed",width:1.5},
         data:[{xAxis:maMed},{yAxis:atwMed}],
         label:{show:false}}
