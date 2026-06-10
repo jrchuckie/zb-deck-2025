@@ -653,13 +653,6 @@ function bldZero(){
     var ys=(t.yoy>0?"+":"")+t.yoy.toFixed(0)+"%";
     return "<div class=\"zero-card\"><div class=\"zn\">"+t.n+"</div><div class=\"zm\">GMV <b>"+t.gmv+"</b>亿 <span style=\"color:"+yc+";font-weight:600\">"+ys+"</span></div><div class=\"zb\">市场Top商家: "+t.top3+"</div></div>";
   }).join("");
-}).sort(function(a,b){return b.gmv-a.gmv;});
-  document.getElementById("zc").textContent=zeros.length;
-  document.getElementById("zg").innerHTML=zeros.map(function(t){
-    var yc=t.yoy>0?"var(--up)":"var(--dn)";
-    var ys=(t.yoy>0?"+":"")+t.yoy.toFixed(0)+"%";
-    return "<div class=\"zero-card\"><div class=\"zn\">"+t.n+"</div><div class=\"zm\">GMV <b>"+t.gmv+"</b>亿 <span style=\"color:"+yc+";font-weight:600\">"+ys+"</span></div><div class=\"zb\">"+t.top3+"</div></div>";
-  }).join("");
 }
 
 function bldBubble(cid,items){
