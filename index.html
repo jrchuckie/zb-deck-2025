@@ -187,42 +187,22 @@ h2{font-family:"Newsreader",serif;font-style:italic;font-weight:600;font-size:cl
   <div class="sf"><span class="fn">小红书投放总览</span><span class="pg">06/12</span></div>
 </div>
 
-<!-- S6 投放明细全表 -->
+<!-- S6 投放明细全表（全43条赛道，JS动态渲染） -->
 <div class="slide" id="s6">
   <div class="sbar"></div>
   <div class="sc" style="padding-bottom:.25rem">
-    <div class="sec">Part 04 · 投放明细 · 商家数 / 渗透率 / Top3品牌 &amp; YoY</div>
+    <div class="sec">Part 04 · 投放明细 · 全43条赛道 · 商家数 / 渗透率 / Top3品牌（有投放按金额降序，无投放附后）</div>
     <h2 style="margin-bottom:.2rem">各赛道投放明细全表</h2>
     <div style="flex:1;min-height:0;overflow-y:auto">
       <table class="dt"><thead><tr>
         <th>赛道</th><th class="nr">GMV亿</th><th class="nr">GMV YoY</th>
         <th class="nr" style="background:#1e3a8a">投放净额</th><th class="nr" style="background:#1e3a8a">投放YoY</th>
-        <th class="nr">商家数</th><th class="nr">Top20渗透</th><th>Top3品牌 &amp; YoY</th>
+        <th class="nr">客户数</th><th class="nr">Top20渗透</th><th>Top3品牌 &amp; YoY</th>
       </tr></thead>
-      <tbody>
-        <tr class="hl"><td class="bd">💊 五黑丸/黑芝麻丸</td><td class="nr">7.4</td><td class="nr dn">↓7.9%</td><td class="nr bd co">4,962万</td><td class="nr up">↑18.1%</td><td class="nr bd">11</td><td class="nr up bd">25%</td><td style="font-size:.67rem">VitaGreen↑137% · 五谷磨房↑137% · 小主↑101%</td></tr>
-        <tr><td class="bd">🥚 燕窝</td><td class="nr">69.7</td><td class="nr up">↑10.8%</td><td class="nr">2,920万</td><td class="nr up">↑22.2%</td><td class="nr">8</td><td class="nr">25%</td><td style="font-size:.67rem">小仙炖↑16% · 燕之屋↑32% · 肌活↓48%</td></tr>
-        <tr class="hl"><td class="bd">🌿 鸡内金</td><td class="nr">2.3</td><td class="nr dn">↓40.6%</td><td class="nr bd warn">1,158万</td><td class="nr up">↑84.2%</td><td class="nr">5</td><td class="nr">20%</td><td style="font-size:.67rem">哈药↑4% · 诺特兰德↓23% · 江中↓95%</td></tr>
-        <tr><td class="bd">🍯 阿胶</td><td class="nr">27.2</td><td class="nr up">↑21.3%</td><td class="nr">1,296万</td><td class="nr dn">↓2.3%</td><td class="nr">5</td><td class="nr">30%</td><td style="font-size:.67rem">东阿阿胶↑3% · 桃花姬↓8% · 创帝↑32%</td></tr>
-        <tr><td class="bd">🐟 花胶/鱼胶</td><td class="nr">4.9</td><td class="nr dn">↓20.8%</td><td class="nr">1,149万</td><td class="nr up">↑27%</td><td class="nr">3</td><td class="nr">20%</td><td style="font-size:.67rem">官栈↑47% · 极盏↓13% · 梦岭南↓83%</td></tr>
-        <tr class="hl"><td class="bd">🌿 黄精</td><td class="nr">5.6</td><td class="nr up bd">↑207%</td><td class="nr">991万</td><td class="nr up">↑96.9%</td><td class="nr">3</td><td class="nr">15%</td><td style="font-size:.67rem">每日乔安↑95% · 妈妈很忙↑117% · 喜纯↑2896%</td></tr>
-        <tr><td class="bd">🍯 养生膏</td><td class="nr">9.0</td><td class="nr up">↑18.8%</td><td class="nr">489万</td><td class="nr up">↑80%</td><td class="nr">6</td><td class="nr">30%</td><td style="font-size:.67rem">花姐食养↓8% · 李良济↑83% · 童涵春堂↑468%</td></tr>
-        <tr><td class="bd">🌳 高丽参/红参</td><td class="nr">5.2</td><td class="nr dn">↓16.3%</td><td class="nr">454万</td><td class="nr dn">↓39.6%</td><td class="nr">3</td><td class="nr">15%</td><td style="font-size:.67rem">正官庄↓30% · SKIGIN↓57% · 创帝↑32%</td></tr>
-        <tr><td class="bd">🍯 蜂蜜/蜂产品</td><td class="nr">18.7</td><td class="nr dn">↓2.4%</td><td class="nr">26万</td><td class="nr dn">↓3.9%</td><td class="nr">2</td><td class="nr dn">5%</td><td style="font-size:.67rem">森蜂园 · 冠生园</td></tr>
-        <tr><td class="bd">🌳 灵芝/孢子粉</td><td class="nr">13.3</td><td class="nr dn">↓2.8%</td><td class="nr">82万</td><td class="nr up">↑3089%</td><td class="nr">2</td><td class="nr dn">10%</td><td style="font-size:.67rem">VitaGreen · 仙芝楼↓59%</td></tr>
-        <tr><td class="bd">🌿 石斛/枫斗</td><td class="nr">5.5</td><td class="nr dn">↓7.3%</td><td class="nr">147万</td><td class="nr up">↑120%</td><td class="nr">3</td><td class="nr">20%</td><td style="font-size:.67rem">元斛↑107% · 斛妈妈↑265% · 铁枫堂↑45%</td></tr>
-        <tr class="hl"><td class="bd">🐚 海参</td><td class="nr">10.4</td><td class="nr up bd">↑135.7%</td><td class="nr">65万</td><td class="nr up">↑1092%</td><td class="nr">2</td><td class="nr dn">10%</td><td style="font-size:.67rem">官栈↑47% · 黑骑仕↑1092%</td></tr>
-        <tr><td class="bd">🌳 西洋参</td><td class="nr">20.0</td><td class="nr up">↑13.2%</td><td class="nr">80万</td><td class="nr up">↑32%</td><td class="nr">1</td><td class="nr dn">10%</td><td style="font-size:.67rem">创帝↑32%</td></tr>
-        <tr><td class="bd">🍬 滋补营养糖</td><td class="nr">5.5</td><td class="nr up">↑81.7%</td><td class="nr">87万</td><td class="nr" style="color:var(--ink3)">新入</td><td class="nr">2</td><td class="nr dn">5%</td><td style="font-size:.67rem">白云山(新) · 好想你(新)</td></tr>
-        <tr><td class="bd">🌿 冬虫夏草</td><td class="nr">16.0</td><td class="nr up">↑96.2%</td><td class="nr">72万</td><td class="nr dn">↓16.6%</td><td class="nr">3</td><td class="nr">15%</td><td style="font-size:.67rem">阿依舍↓31% · 东阳光↑261% · 九芝堂↑12%</td></tr>
-        <tr><td class="bd">🌶 枸杞</td><td class="nr">41.8</td><td class="nr up">↑38.2%</td><td class="nr">91万</td><td class="nr up">↑55%</td><td class="nr">1</td><td class="nr dn">10%</td><td style="font-size:.67rem">劲家庄↑611%</td></tr>
-        <tr><td class="bd">⚠️ 散装中药材</td><td class="nr">30.7</td><td class="nr dn">↓25.4%</td><td class="nr">143万</td><td class="nr up">↑104%</td><td class="nr">1</td><td class="nr dn">0%⚠️</td><td style="font-size:.67rem">浙江省中医院(新)</td></tr>
-        <tr><td class="bd">🌳 精制中药材</td><td class="nr">2.3</td><td class="nr dn">↓4.5%</td><td class="nr">10万</td><td class="nr up">↑594%</td><td class="nr">4</td><td class="nr">15%</td><td style="font-size:.67rem">云南白药 · 康美 · 草晶华</td></tr>
-        <tr><td class="bd">🍵 男性养肾茶</td><td class="nr">2.5</td><td class="nr dn">↓16%</td><td class="nr">268万</td><td class="nr dn">↓7.9%</td><td class="nr">4</td><td class="nr">15%</td><td style="font-size:.67rem">老谷头↑0.3% · 同仁堂↓95%</td></tr>
-      </tbody></table>
+      <tbody id="s6-tbody"></tbody></table>
     </div>
   </div>
-  <div class="sf"><span class="fn">小红书投放明细</span><span class="pg">07/12</span></div>
+  <div class="sf"><span class="fn">小红书投放明细（全43条）</span><span class="pg">07/12</span></div>
 </div>
 
 <!-- S7 未渗透赛道 -->
@@ -272,7 +252,7 @@ h2{font-family:"Newsreader",serif;font-style:italic;font-weight:600;font-size:cl
       </div>
       <div style="font-size:.65rem;font-weight:700;color:var(--up);letter-spacing:.05em;flex-shrink:0;margin-top:.1rem">纵轴 — Ability to Win（赢单能力）</div>
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.3rem;flex-shrink:0">
-        ;letter-spacing:.05em;flex-shrink:0;margin-top:.1rem">纵轴 — Ability to Win（赢单能力）</div>
+  
         <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.3rem;flex-shrink:0">
           <div class="dim-box"><h4>内容势能存量 <span style="font-size:.55rem;font-weight:400;color:var(--ink3)">20%</span></h4>
             <div style="font-size:.58rem;color:var(--ink3);line-height:1.5;margin-bottom:.2em">笔记曝光量绝对值——存量越厚，内容生态越成熟，广告种草环境越好</div>
@@ -560,7 +540,7 @@ var CO="#1B4FD8",UP="#16a34a",DN="#dc2626",WN="#d97706",CL="#6B6B6B",GL="rgba(27
 var inited={};
 function initC(i){if(inited[i])return;inited[i]=true;
   if(i===1)bldMkt();if(i===2)bldTbl();if(i===3)bldPQ();if(i===4)bldEQ();
-  if(i===5)bldAd();if(i===7)bldZero();if(i===9)bldB1();if(i===10)bldScoreTR();if(i===11)bldB2();if(i===12)bldScoreEFF();
+  if(i===5)bldAd();if(i===6)bldS6();if(i===7)bldZero();if(i===9)bldB1();if(i===10)bldScoreTR();if(i===11)bldB2();if(i===12)bldScoreEFF();
 }
 
 initC(0);
@@ -631,6 +611,35 @@ function bldQ(wid,items,gmvM,yoyM){
 }
 function bldPQ(){bldQ("pq-wrap",TR,5,10);}
 function bldEQ(){bldQ("eq-wrap",EFFS,35,10);}
+
+function bldS6(){
+  var tbody=document.getElementById("s6-tbody");
+  if(!tbody)return;
+  // 按投放金额降序，ad=0的附后
+  var withAd=TR.filter(function(t){return t.ad>0;}).sort(function(a,b){return b.ad-a.ad;});
+  var noAd=TR.filter(function(t){return t.ad===0;}).sort(function(a,b){return b.gmv-a.gmv;});
+  var sorted=withAd.concat(noAd);
+  var penMap={"燕窝":"25%","五黑丸/黑芝麻丸":"25%","阿胶":"30%","花胶/鱼胶":"20%","鸡内金":"20%","黄精":"15%","养生膏":"30%","高丽参/红参":"15%","蜂蜜/蜂产品":"5%","灵芝/孢子粉":"10%","石斛/枫斗":"20%","海参":"10%","西洋参":"10%","滋补营养糖":"5%","冬虫夏草":"15%","枸杞":"10%","散装中药材":"0%⚠️","精制中药材/经典方":"15%","男性养肾茶":"15%"};
+  tbody.innerHTML=sorted.map(function(t){
+    var gmvYc=t.yoy>0?"var(--up)":"var(--dn)";
+    var gmvY=(t.yoy>0?"↑":"↓")+Math.abs(t.yoy).toFixed(1)+"%";
+    var adCell=t.ad>0?t.ad.toLocaleString()+"万":"<span style='color:var(--ink3)'>—</span>";
+    var adYCell=t.ad>0&&t.ad_yoy!==0?(t.ad_yoy>0?"↑":"↓")+Math.abs(t.ad_yoy).toFixed(0)+"%":"<span style='color:var(--ink3)'>—</span>";
+    var pen=penMap[t.n]||"—";
+    var rowBg=t.ad>0?"":"background:rgba(0,0,0,.02)";
+    var adBold=t.ad>2000?"font-weight:700;color:var(--co)":t.ad>500?"color:var(--co)":"";
+    return "<tr style='"+rowBg+"'>"
+      +"<td class='bd'>"+t.n+"</td>"
+      +"<td class='nr'>"+t.gmv+"</td>"
+      +"<td class='nr' style='color:"+gmvYc+"'>"+gmvY+"</td>"
+      +"<td class='nr' style='"+adBold+"'>"+adCell+"</td>"
+      +"<td class='nr' style='color:"+(t.ad_yoy>0?"var(--up)":t.ad_yoy<0?"var(--dn)":"var(--ink3)")+"'>"+adYCell+"</td>"
+      +"<td class='nr'>"+t.cl+"</td>"
+      +"<td class='nr'>"+pen+"</td>"
+      +"<td style='font-size:.67rem'>"+t.top3+"</td>"
+      +"</tr>";
+  }).join("");
+}
 
 function bldAd(){
   var c=mkC("c-ad");if(!c)return;
