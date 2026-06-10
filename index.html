@@ -67,6 +67,19 @@ h2{font-family:"Newsreader",serif;font-style:italic;font-weight:600;font-size:cl
 .dark{background:var(--ink)!important}
 .dark::before{background-image:linear-gradient(rgba(27,79,216,.18) 1px,transparent 1px),linear-gradient(90deg,rgba(27,79,216,.18) 1px,transparent 1px)!important}
 .dark h2{color:var(--cr)}.dark .sec{color:rgba(91,137,255,.9)}.dark .sf{border-color:rgba(255,255,255,.1)}.dark .fn,.dark .pg{color:rgba(255,255,255,.3)}
+
+.stbl{width:100%;border-collapse:collapse;font-size:.62rem}
+.stbl thead th{background:var(--co);color:white;padding:.3em .5em;text-align:center;font-weight:500;white-space:nowrap;font-size:.6rem}
+.stbl thead th:first-child{text-align:left}
+.stbl tbody tr{border-bottom:1px solid rgba(27,79,216,.07)}
+.stbl tbody tr:nth-child(even){background:rgba(27,79,216,.025)}
+.stbl tbody td{padding:.28em .45em;text-align:center;font-family:"JetBrains Mono",monospace;color:var(--ink2)}
+.stbl tbody td:first-child{text-align:left;font-weight:600;color:var(--ink);font-family:inherit;font-size:.64rem}
+.sc5{color:#15803d;font-weight:700}.sc4{color:#16a34a;font-weight:600}.sc3{color:#ca8a04;font-weight:600}.sc2{color:#dc2626}.sc1{color:#9ca3af}
+.tag-dd{background:#16a34a;color:white;padding:.1em .35em;border-radius:2px;font-size:.58rem;font-weight:700}
+.tag-dh{background:#1B4FD8;color:white;padding:.1em .35em;border-radius:2px;font-size:.58rem;font-weight:700}
+.tag-iw{background:#d97706;color:white;padding:.1em .35em;border-radius:2px;font-size:.58rem;font-weight:700}
+.tag-dp{background:#9ca3af;color:white;padding:.1em .35em;border-radius:2px;font-size:.58rem;font-weight:700}
 </style>
 </head>
 <body>
@@ -233,22 +246,52 @@ h2{font-family:"Newsreader",serif;font-style:italic;font-weight:600;font-size:cl
   <div class="sc" style="padding-bottom:.25rem">
     <div class="sec">Part 05 · MA × ATW 框架（参照快消赛道框架 P4/P5 逻辑）</div>
     <h2 style="margin-bottom:.3rem">Market Attractiveness × Ability to Win · 评分维度</h2>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem;flex:1;align-content:start">
-      <div class="dim-box">
-        <h4>横轴：Market Attractiveness（市场吸引力）</h4>
-        <div class="dr"><span class="wt">35%</span><div><b>GMV规模</b> — 行业市场体量。≥30亿→5，10-30亿→4，5-10亿→3，2-5亿→2，&lt;2亿→1</div></div>
-        <div class="dr"><span class="wt">35%</span><div><b>GMV增速</b> — YoY%。≥50%→5，20-49%→4，8-19%→3，0-7%→2，负增长→1</div></div>
-        <div class="dr"><span class="wt">15%</span><div><b>CR20集中度</b> — Top20销售额/赛道GMV。≥80%→5，60-80%→4，40-60%→3，20-40%→2，&lt;20%→1<br><span style="color:var(--ink3);font-size:.58rem">CR高→客户集中BD效率高；CR低→长尾碎片服务成本高</span></div></div>
-        <div class="dr" style="border:0"><span class="wt">15%</span><div><b>VC新兴活跃度</b> — 近2年VC/PE融资频次×金额。🔥高热(养生茶/养生丸)→5，🌡️中热(燕窝)→3，❄️冷(大多单味药材)→1<br><span style="color:var(--ink3);font-size:.58rem">融资热→新品牌预算充足、投放意愿强</span></div></div>
+    <div style="flex:1;min-height:0;overflow-y:auto;display:flex;flex-direction:column;gap:.4rem">
+      <div style="font-size:.65rem;font-weight:700;color:var(--co);letter-spacing:.05em;flex-shrink:0">横轴 — Market Attractiveness（市场吸引力）</div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.35rem;flex-shrink:0">
+        <div class="dim-box"><h4>GMV 规模 <span style="font-size:.6rem;font-weight:400;color:var(--ink3)">35%</span></h4>
+          <div class="dr"><span style="font-size:.6rem;color:var(--up);font-weight:600">≥30亿→5</span></div>
+          <div class="dr">10-30亿→4</div><div class="dr">5-10亿→3</div><div class="dr">2-5亿→2</div>
+          <div class="dr" style="border:0">&lt;2亿→1</div></div>
+        <div class="dim-box"><h4>GMV 增速 <span style="font-size:.6rem;font-weight:400;color:var(--ink3)">35%</span></h4>
+          <div class="dr"><span style="font-size:.6rem;color:var(--up);font-weight:600">≥50%→5</span></div>
+          <div class="dr">20-49%→4</div><div class="dr">8-19%→3</div><div class="dr">0-7%→2</div>
+          <div class="dr" style="border:0">负增长→1</div></div>
+        <div class="dim-box"><h4>CR20 集中度 <span style="font-size:.6rem;font-weight:400;color:var(--ink3)">15%</span></h4>
+          <div class="dr"><span style="font-size:.6rem;color:var(--up);font-weight:600">≥80%→5</span></div>
+          <div class="dr">60-80%→4</div><div class="dr">40-60%→3</div><div class="dr">20-40%→2</div>
+          <div class="dr" style="border:0">&lt;20%→1</div>
+          <div style="font-size:.58rem;color:var(--ink3);margin-top:.2em">CR高→客户集中 BD效率高</div></div>
+        <div class="dim-box"><h4>VC 新兴活跃 <span style="font-size:.6rem;font-weight:400;color:var(--ink3)">15%</span></h4>
+          <div class="dr"><span style="font-size:.6rem;color:var(--up);font-weight:600">🔥高热→5</span></div>
+          <div class="dr">——→4（暂无）</div>
+          <div class="dr"><span style="font-size:.6rem;color:var(--warn);font-weight:600">🌡️中热→3</span></div>
+          <div class="dr">——→2（暂无）</div>
+          <div class="dr" style="border:0"><span style="font-size:.6rem;color:var(--ink3);font-weight:600">❄️冷静→1</span></div>
+          <div style="font-size:.58rem;color:var(--ink3);margin-top:.2em">🔥养生茶/养生丸<br>🌡️燕窝/五谷代餐</div></div>
       </div>
-      <div class="dim-box">
-        <h4>纵轴：Ability to Win（赢单能力）</h4>
-        <div class="dr"><span class="wt g">20%</span><div><b>内容势能存量</b> — 笔记曝光量（亿）。≥50亿→5，20-50亿→4，5-20亿→3，1-5亿→2，&lt;1亿→1</div></div>
-        <div class="dr"><span class="wt g">15%</span><div><b>内容势能增速</b> — 曝光量YoY%。≥+50%→5，+20-49%→4，+8-19%→3，+1-7%→2，负→1</div></div>
-        <div class="dr"><span class="wt g">25%</span><div><b>决策链路重要性</b> — 搜索量规模+搜索YoY综合评估<br><span style="color:var(--ink3);font-size:.58rem">链路越重要→品牌越愿意归因XHS种草→续投意愿越强</span></div></div>
-        <div class="dr" style="border:0"><span class="wt g">40%</span><div><b>解决方案成熟度</b> — 现有在投客户数。客户≥5→5，3-4→4，1-2→3，0→1（无客户不给0分，给基础分）</div></div>
-        <div style="margin-top:.35rem;border-left:3px solid var(--warn);padding:.3em .6em;border-radius:0 2px 2px 0;font-size:.67rem;color:var(--ink2);background:rgba(217,119,6,.05)"><b>气泡大小=GMV | 右上=Double Down | 左下=Deprioritize | 中位线为黑色虚线</b></div>
+      <div style="font-size:.65rem;font-weight:700;color:var(--up);letter-spacing:.05em;flex-shrink:0;margin-top:.1rem">纵轴 — Ability to Win（赢单能力）</div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.35rem;flex-shrink:0">
+        <div class="dim-box"><h4>内容势能存量 <span style="font-size:.6rem;font-weight:400;color:var(--ink3)">20%</span></h4>
+          <div class="dr"><span style="font-size:.6rem;color:var(--up);font-weight:600">≥50亿曝光→5</span></div>
+          <div class="dr">20-50亿→4</div><div class="dr">5-20亿→3</div><div class="dr">1-5亿→2</div>
+          <div class="dr" style="border:0">&lt;1亿→1</div>
+          <div style="font-size:.58rem;color:var(--ink3);margin-top:.2em">存量厚→种草环境好</div></div>
+        <div class="dim-box"><h4>内容势能增速 <span style="font-size:.6rem;font-weight:400;color:var(--ink3)">15%</span></h4>
+          <div class="dr"><span style="font-size:.6rem;color:var(--up);font-weight:600">≥+50%→5</span></div>
+          <div class="dr">+20-49%→4</div><div class="dr">+8-19%→3</div><div class="dr">+1-7%→2</div>
+          <div class="dr" style="border:0">负增长→1</div></div>
+        <div class="dim-box"><h4>决策链路重要性 <span style="font-size:.6rem;font-weight:400;color:var(--ink3)">25%</span></h4>
+          <div class="dr"><span style="font-size:.6rem;color:var(--up);font-weight:600">搜索≥200亿→5</span></div>
+          <div class="dr">50-200亿→4</div><div class="dr">20-50亿→3</div><div class="dr">5-20亿→2</div>
+          <div class="dr" style="border:0">&lt;5亿→1</div>
+          <div style="font-size:.58rem;color:var(--ink3);margin-top:.2em">与搜索YoY平均</div></div>
+        <div class="dim-box"><h4>解决方案成熟度 <span style="font-size:.6rem;font-weight:400;color:var(--ink3)">40%</span></h4>
+          <div class="dr"><span style="font-size:.6rem;color:var(--up);font-weight:600">≥5个客户→5</span></div>
+          <div class="dr">3-4个→4</div><div class="dr">1-2个→3</div>
+          <div class="dr" style="border:0;color:var(--ink3)">无客户→1<br><span style="font-size:.58rem">无客户不给0，给基础分</span></div></div>
       </div>
+      <div style="border-left:3px solid var(--warn);padding:.3em .6em;border-radius:0 2px 2px 0;font-size:.67rem;color:var(--ink2);background:rgba(217,119,6,.05);flex-shrink:0"><b>气泡大小=GMV ｜ 右上=Double Down ｜ 左下=Deprioritize ｜ 中位线=黑色虚线</b></div>
     </div>
   </div>
   <div class="sf"><span class="fn">MA × ATW 框架说明</span><span class="pg">09/12</span></div>
@@ -265,6 +308,26 @@ h2{font-family:"Newsreader",serif;font-style:italic;font-weight:600;font-size:cl
   <div class="sf"><span class="fn">MA × ATW — 产品维度</span><span class="pg">10/12</span></div>
 </div>
 
+<!-- S9b 产品打分明细表 -->
+<div class="slide" id="s9b">
+  <div class="sbar"></div>
+  <div class="sc" style="padding-bottom:.25rem">
+    <div class="sec">Part 05 · MA x ATW · 产品打分明细（每赛道各维度得分）</div>
+    <h2 style="margin-bottom:.2rem">赛道打分明细表 — 按产品分（43条赛道）</h2>
+    <div style="flex:1;min-height:0;overflow-y:auto">
+      <table class="stbl"><thead><tr>
+        <th>赛道</th>
+        <th>GMV规模<br>35%</th><th>GMV增速<br>35%</th><th>CR20<br>15%</th><th>VC活跃<br>15%</th>
+        <th style="background:#065f46">MA分</th>
+        <th>曝光存量<br>20%</th><th>曝光增速<br>15%</th><th>决策链路<br>25%</th><th>解法成熟<br>40%</th>
+        <th style="background:#1e3a8a">ATW分</th>
+        <th>象限</th>
+      </tr></thead><tbody id="score-tbody-tr"></tbody></table>
+    </div>
+  </div>
+  <div class="sf"><span class="fn">产品打分明细</span><span class="pg" id="pg-s9b">11/15</span></div>
+</div>
+
 <!-- S10 功效气泡图 -->
 <div class="slide" id="s10">
   <div class="sbar"></div>
@@ -275,6 +338,96 @@ h2{font-family:"Newsreader",serif;font-style:italic;font-weight:600;font-size:cl
   </div>
   <div class="sf"><span class="fn">MA × ATW — 功效维度</span><span class="pg">11/12</span></div>
 </div>
+
+<!-- S10b 功效打分明细表 -->
+<div class="slide" id="s10b">
+  <div class="sbar"></div>
+  <div class="sc" style="padding-bottom:.25rem">
+    <div class="sec">Part 06 · MA x ATW · 功效打分明细（每功效各维度得分）</div>
+    <h2 style="margin-bottom:.2rem">功效打分明细表（12个功效维度）</h2>
+    <div style="flex:1;min-height:0;overflow-y:auto">
+      <table class="stbl"><thead><tr>
+        <th>功效维度</th>
+        <th>GMV规模<br>35%</th><th>GMV增速<br>35%</th><th>CR20<br>15%</th><th>VC活跃<br>15%</th>
+        <th style="background:#065f46">MA分</th>
+        <th>曝光存量<br>20%</th><th>曝光增速<br>15%</th><th>决策链路<br>25%</th><th>解法成熟<br>40%</th>
+        <th style="background:#1e3a8a">ATW分</th>
+        <th>象限</th>
+      </tr></thead><tbody id="score-tbody-eff"></tbody></table>
+    </div>
+  </div>
+  <div class="sf"><span class="fn">功效打分明细</span><span class="pg" id="pg-s10b">13/15</span></div>
+</div>
+
+<!-- S-appendix 附录：各赛道Top3商家投放详情 -->
+<div class="slide" id="s-app">
+  <div class="sbar"></div>
+  <div class="sc" style="padding-bottom:.25rem">
+    <div class="sec">Appendix · 各赛道客户 &amp; Top商家投放数据全览</div>
+    <h2 style="margin-bottom:.2rem">商家数据附录</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:.45rem;flex:1;min-height:0;overflow:hidden">
+      <div style="background:white;border:1px solid rgba(27,79,216,.12);border-radius:2px;padding:.45rem .55rem;display:flex;flex-direction:column;min-height:0;overflow-y:auto">
+        <div style="font-size:.58rem;color:var(--ink3);margin-bottom:.25em;font-weight:500;flex-shrink:0">各赛道在投客户数 &amp; 头部品牌（投放金额降序）</div>
+        <table class="dt"><thead><tr>
+          <th>赛道</th><th class="nr">客户数</th><th class="nr">投放净额</th><th>Top3品牌 &amp; 投放YoY</th>
+        </tr></thead>
+        <tbody>
+          <tr class="hl"><td class="bd">五黑丸/黑芝麻丸</td><td class="nr bd">11</td><td class="nr co bd">4,962万</td><td style="font-size:.65rem">VitaGreen↑137% · 五谷磨房↑137% · 小主↑101% · 诺特兰德 · 汉方世家 · 碧生源 · 初元 · Swisse · 自然之宝 · 诺昂 · 欧贝拉</td></tr>
+          <tr><td class="bd">燕窝</td><td class="nr">8</td><td class="nr">2,920万</td><td style="font-size:.65rem">小仙炖↑16% · 燕之屋↑32% · 肌活↓48% · 官栈 · 正宗燕之屋 · 金燕 · 阿妈燕窝 · 唐轩</td></tr>
+          <tr class="hl"><td class="bd">阿胶</td><td class="nr">5</td><td class="nr">1,296万</td><td style="font-size:.65rem">东阿阿胶↑3% · 桃花姬↓8% · 创帝↑32% · 宏济堂 · 福牌阿胶</td></tr>
+          <tr><td class="bd">鸡内金</td><td class="nr">5</td><td class="nr warn">1,158万</td><td style="font-size:.65rem">哈药↑4% · 诺特兰德↓23% · 江中↓95% · 大健康生物 · 仁和药业</td></tr>
+          <tr class="hl"><td class="bd">花胶/鱼胶</td><td class="nr">3</td><td class="nr">1,149万</td><td style="font-size:.65rem">官栈↑47% · 极盏↓13% · 梦岭南↓83%</td></tr>
+          <tr><td class="bd">黄精</td><td class="nr">3</td><td class="nr">991万</td><td style="font-size:.65rem">每日乔安↑95% · 妈妈很忙↑117% · 喜纯↑2896%</td></tr>
+          <tr class="hl"><td class="bd">养生膏</td><td class="nr">6</td><td class="nr">489万</td><td style="font-size:.65rem">花姐食养↓8% · 李良济↑83% · 童涵春堂↑468% · 同仁堂 · 汇通医药 · 和成天下</td></tr>
+          <tr><td class="bd">高丽参/红参</td><td class="nr">3</td><td class="nr">454万</td><td style="font-size:.65rem">正官庄↓30% · SKIGIN↓57% · 创帝↑32%</td></tr>
+          <tr class="hl"><td class="bd">男性养肾茶</td><td class="nr">4</td><td class="nr">268万</td><td style="font-size:.65rem">老谷头↑0.3% · 益真堂 · 同仁堂↓95% · 汇仁</td></tr>
+          <tr><td class="bd">石斛/枫斗</td><td class="nr">3</td><td class="nr">147万</td><td style="font-size:.65rem">元斛↑107% · 斛妈妈↑265% · 铁枫堂↑45%</td></tr>
+          <tr class="hl"><td class="bd">散装中药材</td><td class="nr">1</td><td class="nr">143万</td><td style="font-size:.65rem">浙江省中医院（新入）</td></tr>
+          <tr><td class="bd">灵芝/孢子粉</td><td class="nr">2</td><td class="nr">82万</td><td style="font-size:.65rem">VitaGreen · 仙芝楼↓59%</td></tr>
+          <tr class="hl"><td class="bd">西洋参</td><td class="nr">1</td><td class="nr">80万</td><td style="font-size:.65rem">创帝↑32%</td></tr>
+          <tr><td class="bd">冬虫夏草</td><td class="nr">3</td><td class="nr">72万</td><td style="font-size:.65rem">阿依舍↓31% · 东阳光↑261% · 九芝堂↑12%</td></tr>
+          <tr class="hl"><td class="bd">海参</td><td class="nr">2</td><td class="nr">65万</td><td style="font-size:.65rem">官栈↑47% · 黑骑仕↑1092%</td></tr>
+          <tr><td class="bd">滋补营养糖</td><td class="nr">2</td><td class="nr">87万</td><td style="font-size:.65rem">白云山（新） · 好想你（新）</td></tr>
+          <tr class="hl"><td class="bd">枸杞</td><td class="nr">1</td><td class="nr">91万</td><td style="font-size:.65rem">劲家庄↑611%</td></tr>
+          <tr><td class="bd">精制中药材</td><td class="nr">4</td><td class="nr">10万</td><td style="font-size:.65rem">云南白药 · 康美 · 草晶华 · 天士力</td></tr>
+          <tr class="hl"><td class="bd">蜂蜜/蜂产品</td><td class="nr">2</td><td class="nr">26万</td><td style="font-size:.65rem">森蜂园 · 冠生园</td></tr>
+        </tbody></table>
+      </div>
+      <div style="background:white;border:1px solid rgba(27,79,216,.12);border-radius:2px;padding:.45rem .55rem;display:flex;flex-direction:column;min-height:0;overflow-y:auto">
+        <div style="font-size:.58rem;color:var(--ink3);margin-bottom:.25em;font-weight:500;flex-shrink:0">完全未渗透赛道（无任何客户，0投放）</div>
+        <table class="dt"><thead><tr><th>赛道</th><th class="nr">GMV亿</th><th class="nr">YoY</th><th>Top商家（非客户，市场格局）</th></tr></thead>
+        <tbody>
+          <tr><td class="bd up">天麻</td><td class="nr">4.0</td><td class="nr up">+187%</td><td style="font-size:.65rem">云南白药 · 天麻世家 · 贵州天麻</td></tr>
+          <tr><td class="bd up">鹿茸</td><td class="nr">6.2</td><td class="nr up">+65.9%</td><td style="font-size:.65rem">鹿博士 · 同仁堂 · 参茸世家</td></tr>
+          <tr><td class="bd up">茯苓</td><td class="nr">3.8</td><td class="nr up">+37.6%</td><td style="font-size:.65rem">妈妈很忙 · 花姐食养 · 药材之家</td></tr>
+          <tr><td class="bd up">酸枣仁</td><td class="nr">2.8</td><td class="nr up">+44.3%</td><td style="font-size:.65rem">花姐食养 · 助眠专研 · 纽曼思</td></tr>
+          <tr><td class="bd up">橘皮/陈皮</td><td class="nr">2.8</td><td class="nr up">+150%</td><td style="font-size:.65rem">新会陈皮 · 陈皮世家 · 宝城陈皮</td></tr>
+          <tr><td class="bd up">葛根</td><td class="nr">2.1</td><td class="nr up">+403%</td><td style="font-size:.65rem">葛根粉专研 · 道地堂 · 华葛</td></tr>
+          <tr><td class="bd up">党参</td><td class="nr">2.6</td><td class="nr up">+235%</td><td style="font-size:.65rem">康美 · 德全堂 · 甘肃陇西参</td></tr>
+          <tr><td class="bd up">当归</td><td class="nr">2.3</td><td class="nr up">+113%</td><td style="font-size:.65rem">同仁堂 · 德全堂 · 甘肃当归</td></tr>
+          <tr><td class="bd">菊花/决明子茶</td><td class="nr">8.8</td><td class="nr dn">-16%</td><td style="font-size:.65rem">老谷头 · 福东海 · 百草味</td></tr>
+          <tr><td class="bd">女性向花茶</td><td class="nr">6.0</td><td class="nr dn">-16%</td><td style="font-size:.65rem">老谷头 · 玫瑰花茶专研 · 百草味</td></tr>
+          <tr><td class="bd">祛湿茶</td><td class="nr">5.1</td><td class="nr dn">-16%</td><td style="font-size:.65rem">老谷头 · 薏米红豆专研 · 百草味</td></tr>
+          <tr><td class="bd">人参（原参/制品）</td><td class="nr">10.3</td><td class="nr up">+20.5%</td><td style="font-size:.65rem">正官庄 · 官栈 · 九芝堂</td></tr>
+          <tr><td class="bd">黄芪</td><td class="nr">7.0</td><td class="nr up">+20.9%</td><td style="font-size:.65rem">草晶华 · 同仁堂 · 九芝堂</td></tr>
+          <tr><td class="bd up">麦冬</td><td class="nr">2.2</td><td class="nr up">+98.3%</td><td style="font-size:.65rem">道地药材专研 · 同仁堂</td></tr>
+          <tr><td class="bd up">熟地黄</td><td class="nr">2.7</td><td class="nr up">+947%</td><td style="font-size:.65rem">道地药材专研 · 大地精选</td></tr>
+          <tr><td class="bd">其他养生茶</td><td class="nr">3.4</td><td class="nr up">+36.6%</td><td style="font-size:.65rem">老谷头 · 福东海 · 百草味</td></tr>
+          <tr><td class="bd">红枣枸杞补血茶</td><td class="nr">2.0</td><td class="nr up">+36.6%</td><td style="font-size:.65rem">老谷头 · 福东海 · 九芝堂</td></tr>
+          <tr><td class="bd dn">桃胶</td><td class="nr">2.0</td><td class="nr dn">-39.2%</td><td style="font-size:.65rem">老谷头 · 桃胶专研</td></tr>
+          <tr><td class="bd dn">金银花</td><td class="nr">2.7</td><td class="nr dn">-57.6%</td><td style="font-size:.65rem">同仁堂 · 修正 · 康美</td></tr>
+          <tr><td class="bd">滋补养生原料-其他</td><td class="nr">3.7</td><td class="nr up">+11.9%</td><td style="font-size:.65rem">道地药材专营 · 各平台专营</td></tr>
+          <tr><td class="bd">沙棘/沙棘原浆</td><td class="nr">3.5</td><td class="nr up">+3%</td><td style="font-size:.65rem">沙棘原浆 · 健海堂</td></tr>
+          <tr><td class="bd">养生丸（其他）</td><td class="nr">4.7</td><td class="nr dn">-7.9%</td><td style="font-size:.65rem">同仁堂 · 九芝堂 · 正官庄</td></tr>
+          <tr><td class="bd up">高蛋白能量代餐</td><td class="nr">2.6</td><td class="nr up">+59.9%</td><td style="font-size:.65rem">喜纯 · 汤达人 · 元气森林</td></tr>
+          <tr><td class="bd">五谷养生营养品</td><td class="nr">12.4</td><td class="nr up">+16.2%</td><td style="font-size:.65rem">喜纯 · 五谷磨房 · 汤达人</td></tr>
+        </tbody></table>
+      </div>
+    </div>
+  </div>
+  <div class="sf"><span class="fn">附录：商家数据全览</span><span class="pg">14/15</span></div>
+</div>
+
 
 <!-- S11 结论 -->
 <div class="slide" id="s11">
@@ -305,7 +458,7 @@ h2{font-family:"Newsreader",serif;font-style:italic;font-weight:600;font-size:cl
       </div>
     </div>
   </div>
-  <div class="sf"><span class="fn">综合结论 &amp; 优先级</span><span class="pg">12/12</span></div>
+  <div class="sf"><span class="fn">综合结论 &amp; 优先级</span><span class="pg">15/15</span></div>
 </div>
 
 </div>
@@ -314,7 +467,7 @@ h2{font-family:"Newsreader",serif;font-style:italic;font-weight:600;font-size:cl
 <button class="arr" id="arr-prev" onclick="go(-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
 <button class="arr" id="arr-next" onclick="go(1)"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></button>
 <script>
-const TOTAL=12;let cur=0,anim=false;
+const TOTAL=15;let cur=0,anim=false;
 const navEl=document.getElementById("nav"),prog=document.getElementById("progress");
 for(let i=0;i<TOTAL;i++){const s=document.createElement("span");s.onclick=(function(ii){return function(){goTo(ii);};})(i);navEl.appendChild(s);}
 function updateNav(){document.querySelectorAll("#nav span").forEach(function(s,i){s.classList.toggle("on",i===cur);});prog.style.width=((cur+1)/TOTAL*100)+"%";}
@@ -408,8 +561,9 @@ var CO="#1B4FD8",UP="#16a34a",DN="#dc2626",WN="#d97706",CL="#6B6B6B",GL="rgba(27
 var inited={};
 function initC(i){if(inited[i])return;inited[i]=true;
   if(i===1)bldMkt();if(i===2)bldTbl();if(i===3)bldPQ();if(i===4)bldEQ();
-  if(i===5)bldAd();if(i===7)bldZero();if(i===9)bldB1();if(i===10)bldB2();
+  if(i===5)bldAd();if(i===7)bldZero();if(i===9)bldB1();if(i===10)bldScoreTR();if(i===11)bldB2();if(i===12)bldScoreEFF();
 }
+
 initC(0);
 window.addEventListener("resize",function(){Object.keys(inited).forEach(function(k){delete inited[k];});initC(cur);});
 
@@ -445,15 +599,19 @@ function bldTbl(){
 }
 
 function bldQ(wid,items,gmvM,yoyM){
-  var qs={tl:[],tr:[],bl:[],br:[]};
+  // hi=高GMV, fa=高增速
+  // 布局：左上=低GMV高增速, 右上=高GMV高增速(DD), 左下=低GMV低增速, 右下=高GMV低增速
+  var qs={lu:[],ru:[],ld:[],rd:[]};
   var mx=0;items.forEach(function(t){if(t.gmv>mx)mx=t.gmv;});
-  items.forEach(function(t){var hi=t.gmv>=gmvM,fa=t.yoy>yoyM;qs[hi&&fa?"tl":!hi&&fa?"tr":hi&&!fa?"bl":"br"].push(t);});
+  items.forEach(function(t){var hi=t.gmv>=gmvM,fa=t.yoy>yoyM;
+    qs[hi&&fa?"ru":!hi&&fa?"lu":hi&&!fa?"rd":"ld"].push(t);
+  });
   Object.values(qs).forEach(function(a){a.sort(function(a,b){return b.gmv-a.gmv;});});
   var cfgs=[
-    {k:"tl",bg:"rgba(22,163,74,.06)",bd:"rgba(22,163,74,.32)",lc:"#166534",lt:"⭐ 高GMV × 高增速",bc:UP},
-    {k:"tr",bg:"rgba(22,163,74,.03)",bd:"rgba(22,163,74,.18)",lc:UP,lt:"🚀 低GMV × 高增速",bc:"#4ade80"},
-    {k:"bl",bg:"rgba(217,119,6,.04)",bd:"rgba(217,119,6,.25)",lc:WN,lt:"⚠️ 高GMV × 低/负增速",bc:WN},
-    {k:"br",bg:"rgba(156,163,175,.08)",bd:"rgba(156,163,175,.3)",lc:"#6b7280",lt:"📉 低GMV × 低/负增速",bc:"#9ca3af"}
+    {k:"lu",bg:"rgba(59,130,246,.04)",bd:"rgba(59,130,246,.22)",lc:"#1e40af",lt:"🚀 低规模 × 高增速",bc:"#60a5fa"},
+    {k:"ru",bg:"rgba(22,163,74,.08)",bd:"rgba(22,163,74,.4)",lc:"#166534",lt:"⭐ 高规模 × 高增速 · Double Down",bc:UP},
+    {k:"ld",bg:"rgba(156,163,175,.06)",bd:"rgba(156,163,175,.28)",lc:"#6b7280",lt:"📉 低规模 × 低/负增速",bc:"#9ca3af"},
+    {k:"rd",bg:"rgba(217,119,6,.05)",bd:"rgba(217,119,6,.28)",lc:WN,lt:"⚠️ 高规模 × 低/负增速",bc:WN}
   ];
   var w=document.getElementById(wid);w.innerHTML="";
   cfgs.forEach(function(cfg){
@@ -533,6 +691,52 @@ function bldBubble(cid,items){
 }
 function bldB1(){bldBubble("c-b1",TR);}
 function bldB2(){bldBubble("c-b2",EFFS);}
+function scClass(v){return v>=4.5?"sc5":v>=3.5?"sc4":v>=2.5?"sc3":v>=1.5?"sc2":"sc1";}
+function qTag(ma,atw){
+  if(ma>=2.5&&atw>=2.5)return '<span class="tag-dd">DD</span>';
+  if(ma<2.5&&atw>=2.5)return '<span class="tag-dh">DH</span>';
+  if(ma>=2.5&&atw<2.5)return '<span class="tag-iw">IW</span>';
+  return '<span class="tag-dp">DP</span>';
+}
+function mkScoreRow(t){
+  var s1=t.gmv>=30?5:t.gmv>=10?4:t.gmv>=5?3:t.gmv>=2?2:1;
+  var s2=t.yoy>=50?5:t.yoy>=20?4:t.yoy>=8?3:t.yoy>=0?2:1;
+  var s3=t.cr20>=0.8?5:t.cr20>=0.6?4:t.cr20>=0.4?3:t.cr20>=0.2?2:1;
+  var s4=t.vc||1;
+  var ma=parseFloat((s1*0.35+s2*0.35+s3*0.15+s4*0.15).toFixed(2));
+  var a1=t.imp>=50?5:t.imp>=20?4:t.imp>=5?3:t.imp>=1?2:1;
+  var a2=t.imp_yoy>=50?5:t.imp_yoy>=20?4:t.imp_yoy>=8?3:t.imp_yoy>=0?2:1;
+  var sv_s=t.sv>=200?5:t.sv>=50?4:t.sv>=20?3:t.sv>=5?2:1;
+  var sv_y=t.sv_yoy>=50?5:t.sv_yoy>=20?4:t.sv_yoy>=8?3:t.sv_yoy>=0?2:1;
+  var a3=(sv_s+sv_y)/2;
+  var a4=t.cl>=5?5:t.cl>=3?4:t.cl>=1?3:1;
+  var atw=parseFloat((a1*0.2+a2*0.15+a3*0.25+a4*0.4).toFixed(2));
+  return "<tr><td>"+t.n+"</td>"
+    +"<td class='"+scClass(s1)+"'>"+s1+"</td>"
+    +"<td class='"+scClass(s2)+"'>"+s2+"</td>"
+    +"<td class='"+scClass(s3)+"'>"+s3+"</td>"
+    +"<td class='"+scClass(s4)+"'>"+s4+"</td>"
+    +"<td style='background:rgba(6,95,70,.08);font-weight:700;font-size:.72rem;color:#065f46'>"+ma+"</td>"
+    +"<td class='"+scClass(a1)+"'>"+a1+"</td>"
+    +"<td class='"+scClass(a2)+"'>"+a2+"</td>"
+    +"<td class='"+scClass(a3)+"'>"+a3.toFixed(1)+"</td>"
+    +"<td class='"+scClass(a4)+"'>"+a4+"</td>"
+    +"<td style='background:rgba(30,58,138,.08);font-weight:700;font-size:.72rem;color:#1e3a8a'>"+atw+"</td>"
+    +"<td>"+qTag(ma,atw)+"</td>"
+    +"</tr>";
+}
+function bldScoreTR(){
+  var tbody=document.getElementById("score-tbody-tr");
+  if(!tbody)return;
+  var sorted=TR.slice().sort(function(a,b){return sMA(b)-sMA(a)||sATW(b)-sATW(a);});
+  tbody.innerHTML=sorted.map(mkScoreRow).join("");
+}
+function bldScoreEFF(){
+  var tbody=document.getElementById("score-tbody-eff");
+  if(!tbody)return;
+  var sorted=EFFS.slice().sort(function(a,b){return sMA(b)-sMA(a)||sATW(b)-sATW(a);});
+  tbody.innerHTML=sorted.map(mkScoreRow).join("");
+}
 </script>
 </body>
 </html>
