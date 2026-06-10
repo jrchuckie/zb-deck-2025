@@ -682,7 +682,7 @@ function bldBubble(cid,items){
       axisLine:{show:true,lineStyle:{color:"rgba(0,0,0,.15)"}},
       axisTick:{show:false}},
     series:[{
-      type:"scatter",data:data,symbolSize:function(val){return Math.max(10,Math.sqrt(val[2]/MX_GMV)*80);},
+      type:"scatter",data:data,symbolSize:function(val){var g=Array.isArray(val)?val[2]:(val.value?val.value[2]:10); return Math.max(10,Math.sqrt(g/MX_GMV)*80);},
       label:{show:true,formatter:function(p){return p.data.value[3].slice(0,5);},position:"right",fontSize:9,color:"#555",distance:3},
       markLine:{silent:true,symbol:"none",lineStyle:{color:"#000",type:"dashed",width:1.5},
         data:[{xAxis:maMed},{yAxis:atwMed}],
