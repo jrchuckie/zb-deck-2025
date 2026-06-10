@@ -4,758 +4,690 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>传统中式滋补行业分析 2025</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,600;1,400;1,600;1,700&family=Hanken+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,600;1,600;1,700&family=Hanken+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
 <style>
-/* ===== VIEWPORT BASE ===== */
-html, body { height: 100%; overflow-x: hidden; margin: 0; padding: 0; }
-html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
-:root {
-  --cobalt: #1B4FD8;
-  --cobalt-light: #3B6EF8;
-  --cobalt-dim: #4A6FBF;
-  --cream: #F5F2EB;
-  --cream-dark: #EAE6DC;
-  --ink: #1A1A1A;
-  --ink-mid: #3D3D3D;
-  --ink-light: #6B6B6B;
-  --grid-line: rgba(27,79,216,0.10);
-  --up: #1B7A4D;
-  --dn: #C0392B;
-  --title-size: clamp(2rem, 5vw, 4.5rem);
-  --h2-size: clamp(1.3rem, 3vw, 2.4rem);
-  --h3-size: clamp(1rem, 2vw, 1.5rem);
-  --body-size: clamp(0.72rem, 1.2vw, 1rem);
-  --small-size: clamp(0.6rem, 0.9vw, 0.8rem);
-  --slide-padding: clamp(1.5rem, 5vw, 5rem);
-  --content-gap: clamp(0.6rem, 1.5vw, 1.5rem);
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --co:#1B4FD8;--co2:#3B6EF8;--cr:#F5F2EB;--cr2:#EAE6DC;
+  --ink:#1A1A1A;--ink2:#3D3D3D;--ink3:#6B6B6B;
+  --up:#16a34a;--dn:#dc2626;
+  --gl:rgba(27,79,216,.09);
 }
-.slide {
-  width: 100vw; height: 100vh; height: 100dvh;
-  overflow: hidden; scroll-snap-align: start;
-  display: flex; flex-direction: column; position: relative;
-  background: var(--cream);
-  font-family: 'Hanken Grotesk', sans-serif;
-}
-/* grid paper bg */
-.slide::before {
-  content: ''; position: absolute; inset: 0; pointer-events: none;
-  background-image:
-    linear-gradient(var(--grid-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-  background-size: 40px 40px;
-  z-index: 0;
-}
-/* cobalt top bar */
-.slide-bar { height: 4px; background: var(--cobalt); position: relative; z-index: 10; flex-shrink: 0; }
-.slide-content { flex: 1; padding: var(--slide-padding); display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 2; overflow: hidden; }
-.slide-footer {
-  padding: clamp(0.5rem,1.2vw,1rem) var(--slide-padding);
-  display: flex; align-items: center; justify-content: space-between;
-  flex-shrink: 0; position: relative; z-index: 2;
-  border-top: 1px solid rgba(27,79,216,0.15);
-}
-.slide-footer .fn { font-size: var(--small-size); color: var(--ink-light); font-family: 'JetBrains Mono', monospace; }
-.slide-footer .pg { font-size: var(--small-size); color: var(--cobalt); font-family: 'JetBrains Mono', monospace; font-weight: 500; }
+html,body{height:100%;background:var(--cr);font-family:'Hanken Grotesk',sans-serif;overflow:hidden}
 
-/* pixel-glitch deco */
-.deco-pixel { position: absolute; z-index: 1; pointer-events: none; }
-.deco-pixel svg rect { fill: var(--cobalt); opacity: 0.12; }
-
-/* nav dots */
-#nav-dots {
-  position: fixed; right: clamp(0.8rem,2vw,2rem); top: 50%; transform: translateY(-50%);
-  display: flex; flex-direction: column; gap: 8px; z-index: 100;
+/* ── slide container ── */
+#deck{width:100vw;height:100vh;position:relative;overflow:hidden}
+.slide{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;
+  background:var(--cr);
+  opacity:0;pointer-events:none;
+  transition:opacity .35s ease,transform .35s ease;
+  transform:translateY(30px);
 }
-#nav-dots span {
-  width: 6px; height: 6px; border-radius: 50%; background: rgba(27,79,216,0.25);
-  cursor: pointer; transition: all 0.2s; display: block;
-}
-#nav-dots span.active { background: var(--cobalt); transform: scale(1.4); }
+.slide.active{opacity:1;pointer-events:all;transform:translateY(0)}
+.slide.exit-up{opacity:0;transform:translateY(-30px)}
 
-/* section label */
-.sec-label {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: var(--small-size); color: var(--cobalt);
-  letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.5em;
+/* grid bg */
+.slide::before{
+  content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
+  background-image:linear-gradient(var(--gl) 1px,transparent 1px),linear-gradient(90deg,var(--gl) 1px,transparent 1px);
+  background-size:44px 44px;
 }
-/* headings */
-h1 { font-family: 'Newsreader', Georgia, serif; font-style: italic; font-weight: 600; font-size: var(--title-size); color: var(--ink); line-height: 1.05; margin: 0 0 0.4em; }
-h2 { font-family: 'Newsreader', Georgia, serif; font-style: italic; font-weight: 600; font-size: var(--h2-size); color: var(--ink); line-height: 1.1; margin: 0 0 0.5em; }
-h3 { font-family: 'Hanken Grotesk', sans-serif; font-weight: 600; font-size: var(--h3-size); color: var(--ink); margin: 0 0 0.4em; }
-p, li { font-size: var(--body-size); color: var(--ink-mid); line-height: 1.55; }
-.up { color: var(--up); } .dn { color: var(--dn); }
-.cobalt { color: var(--cobalt); }
-
-/* KPI cards */
-.kpi-grid { display: grid; gap: clamp(0.5rem,1.2vw,1rem); }
-.kpi-grid.col3 { grid-template-columns: repeat(3,1fr); }
-.kpi-grid.col4 { grid-template-columns: repeat(4,1fr); }
-.kpi-card {
-  background: white; border: 1px solid rgba(27,79,216,0.2);
-  border-top: 3px solid var(--cobalt);
-  padding: clamp(0.8rem,1.5vw,1.4rem);
-  border-radius: 2px;
+.sbar{height:4px;background:var(--co);flex-shrink:0;position:relative;z-index:2}
+.sc{flex:1;padding:clamp(1.2rem,4vw,4rem);display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2;overflow:hidden}
+.sf{
+  padding:clamp(.4rem,.8vw,.8rem) clamp(1.2rem,4vw,4rem);
+  display:flex;justify-content:space-between;align-items:center;
+  border-top:1px solid rgba(27,79,216,.12);flex-shrink:0;position:relative;z-index:2
 }
-.kpi-card .label { font-size: var(--small-size); color: var(--ink-light); margin-bottom: 0.3em; }
-.kpi-card .val { font-family: 'Newsreader', serif; font-style: italic; font-size: clamp(1.4rem,3vw,2.4rem); font-weight: 600; color: var(--ink); }
-.kpi-card .yoy { font-family: 'JetBrains Mono', monospace; font-size: var(--small-size); margin-top: 0.2em; }
+.sf .fn{font-size:clamp(.6rem,.85vw,.75rem);color:var(--ink3);font-family:'JetBrains Mono',monospace}
+.sf .pg{font-size:clamp(.6rem,.85vw,.75rem);color:var(--co);font-family:'JetBrains Mono',monospace;font-weight:500}
 
-/* bar chart */
-.bar-list { display: flex; flex-direction: column; gap: clamp(0.3rem,0.6vh,0.6rem); }
-.bar-row { display: grid; grid-template-columns: 11em 1fr 5em; align-items: center; gap: 0.6rem; }
-.bar-row .name { font-size: var(--small-size); color: var(--ink-mid); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.bar-row .bar-wrap { background: rgba(27,79,216,0.07); border-radius: 1px; height: 10px; overflow: hidden; }
-.bar-row .bar-fill { height: 100%; background: var(--cobalt); border-radius: 1px; transition: width 0.6s; }
-.bar-row .bar-val { font-family: 'JetBrains Mono', monospace; font-size: var(--small-size); color: var(--ink); text-align: right; }
+/* typography */
+.sec{font-family:'JetBrains Mono',monospace;font-size:clamp(.55rem,.8vw,.7rem);color:var(--co);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.5em}
+h1{font-family:'Newsreader',serif;font-style:italic;font-weight:700;font-size:clamp(2rem,5vw,4.5rem);color:var(--ink);line-height:1.05;margin-bottom:.3em}
+h2{font-family:'Newsreader',serif;font-style:italic;font-weight:600;font-size:clamp(1.3rem,3vw,2.4rem);color:var(--ink);line-height:1.1;margin-bottom:.5em}
+h3{font-weight:600;font-size:clamp(.9rem,1.6vw,1.25rem);color:var(--ink);margin-bottom:.4em}
+p,li{font-size:clamp(.7rem,1.1vw,.95rem);color:var(--ink2);line-height:1.55}
+.up{color:var(--up)}.dn{color:var(--dn)}.co{color:var(--co)}
+b{color:var(--ink)}
+
+/* nav */
+#nav{position:fixed;right:clamp(.8rem,1.8vw,1.8rem);top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:7px;z-index:200}
+#nav span{width:6px;height:6px;border-radius:50%;background:rgba(27,79,216,.2);cursor:pointer;transition:all .2s;display:block}
+#nav span.on{background:var(--co);transform:scale(1.5)}
+#progress{position:fixed;bottom:0;left:0;height:2px;background:var(--co);transition:width .3s;z-index:200;opacity:.5}
+
+/* arrow nav */
+.arr{position:fixed;bottom:clamp(.8rem,2vh,1.5rem);z-index:200;background:white;border:1px solid rgba(27,79,216,.2);border-radius:50%;width:clamp(32px,3.5vw,44px);height:clamp(32px,3.5vw,44px);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.arr:hover{background:var(--co);color:white;border-color:var(--co)}
+#arr-prev{left:clamp(1rem,4vw,3rem)}
+#arr-next{left:calc(clamp(1rem,4vw,3rem) + clamp(40px,5vw,60px))}
+.arr svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* kpi grid */
+.kpi-row{display:grid;gap:clamp(.5rem,1vw,.9rem)}
+.kpi-row.c4{grid-template-columns:repeat(4,1fr)}
+.kpi-row.c3{grid-template-columns:repeat(3,1fr)}
+.kpi{background:white;border:1px solid rgba(27,79,216,.18);border-top:3px solid var(--co);padding:clamp(.7rem,1.4vw,1.2rem);border-radius:2px}
+.kpi .lb{font-size:clamp(.6rem,.85vw,.72rem);color:var(--ink3);margin-bottom:.3em}
+.kpi .vl{font-family:'Newsreader',serif;font-style:italic;font-size:clamp(1.4rem,2.8vw,2.2rem);font-weight:600;color:var(--ink)}
+.kpi .yy{font-family:'JetBrains Mono',monospace;font-size:clamp(.58rem,.8vw,.68rem);margin-top:.2em}
+
+/* chart box */
+.cbox{background:white;border:1px solid rgba(27,79,216,.15);border-radius:3px;padding:clamp(.6rem,1.2vw,1rem)}
+.cbox .ct{font-size:clamp(.6rem,.85vw,.72rem);color:var(--ink3);margin-bottom:.5em;font-weight:500}
+.ec{width:100%}
 
 /* table */
-.data-table { width: 100%; border-collapse: collapse; font-size: var(--small-size); }
-.data-table thead th { background: var(--cobalt); color: white; padding: 0.5em 0.7em; text-align: left; font-weight: 500; font-family: 'Hanken Grotesk', sans-serif; white-space: nowrap; }
-.data-table tbody tr { border-bottom: 1px solid rgba(27,79,216,0.1); }
-.data-table tbody tr:nth-child(even) { background: rgba(27,79,216,0.04); }
-.data-table tbody td { padding: 0.45em 0.7em; color: var(--ink-mid); }
-.data-table .num { text-align: right; font-family: 'JetBrains Mono', monospace; }
-.data-table .bold { font-weight: 600; color: var(--ink); }
+.dt{width:100%;border-collapse:collapse;font-size:clamp(.6rem,.9vw,.78rem)}
+.dt thead th{background:var(--co);color:white;padding:.5em .7em;text-align:left;font-weight:500;white-space:nowrap}
+.dt tbody tr{border-bottom:1px solid rgba(27,79,216,.08)}
+.dt tbody tr:nth-child(even){background:rgba(27,79,216,.03)}
+.dt tbody td{padding:.4em .7em;color:var(--ink2)}
+.dt .nr{text-align:right;font-family:'JetBrains Mono',monospace}
+.dt .bd{font-weight:600;color:var(--ink)}
 
-/* 2×2 bubble chart area */
-#bubble-canvas { width: 100%; height: 100%; }
+/* insight callout */
+.ins{background:rgba(27,79,216,.05);border-left:3px solid var(--co);padding:.6em .9em;border-radius:0 3px 3px 0;margin:.4em 0;font-size:clamp(.65rem,.9vw,.78rem);color:var(--ink2);line-height:1.5}
+.ins.warn{background:rgba(220,38,38,.05);border-color:var(--dn)}
+.ins.ok{background:rgba(22,163,74,.05);border-color:var(--up)}
+.ins b{color:var(--ink)}
 
-/* scrollable slides */
-.slide.scrollable { overflow-y: auto; height: auto; min-height: 100vh; scroll-snap-align: none; }
-.slide.scrollable .slide-content { overflow-y: auto; }
+/* score table */
+.score-wrap{overflow-x:auto}
+.score-tag{display:inline-block;padding:.15em .5em;border-radius:3px;font-size:clamp(.55rem,.75vw,.65rem);font-weight:600;color:white}
 
-/* iframe embed */
-.iframe-wrap { flex: 1; position: relative; }
-.iframe-wrap iframe { width: 100%; height: 100%; border: none; }
+/* title slide dark */
+.dark{background:var(--ink)}
+.dark::before{background-image:linear-gradient(rgba(27,79,216,.18) 1px,transparent 1px),linear-gradient(90deg,rgba(27,79,216,.18) 1px,transparent 1px);background-size:44px 44px}
+.dark h1{color:var(--cr)}
+.dark .sec{color:var(--co2)}
+.dark .sf{border-color:rgba(255,255,255,.1)}
+.dark .fn,.dark .pg{color:rgba(255,255,255,.35)}
 
-/* title slide special */
-.slide-title { background: var(--ink); }
-.slide-title::before { background-image: linear-gradient(rgba(27,79,216,0.18) 1px, transparent 1px), linear-gradient(90deg, rgba(27,79,216,0.18) 1px, transparent 1px); }
-.slide-title h1 { color: var(--cream); }
-.slide-title .sec-label { color: var(--cobalt-light); }
-.slide-title .slide-footer { border-top: 1px solid rgba(255,255,255,0.1); }
-.slide-title .slide-footer .fn, .slide-title .slide-footer .pg { color: rgba(255,255,255,0.45); }
+/* divider slide */
+.divslide{background:var(--co)}
+.divslide::before{background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);background-size:44px 44px}
+.divslide h2{color:white;font-size:clamp(2rem,6vw,5rem)}
+.divslide .sec{color:rgba(255,255,255,.6)}
+.divslide .sf{border-color:rgba(255,255,255,.15)}
+.divslide .fn,.divslide .pg{color:rgba(255,255,255,.35)}
 
-/* section divider */
-.slide-divider { background: var(--cobalt); }
-.slide-divider::before { background-image: linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px); }
-.slide-divider h2 { color: white; font-size: clamp(2rem,6vw,5rem); }
-.slide-divider .sec-label { color: rgba(255,255,255,0.65); }
-.slide-divider .slide-footer { border-top: 1px solid rgba(255,255,255,0.15); }
-.slide-divider .slide-footer .fn, .slide-divider .slide-footer .pg { color: rgba(255,255,255,0.4); }
-
-/* MA×ATW scoring */
-.score-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(0.5rem,1vw,1rem); }
-.score-item { background: white; border: 1px solid rgba(27,79,216,0.15); border-radius: 2px; padding: clamp(0.6rem,1.2vw,1rem); }
-.score-item .dim { font-size: var(--small-size); color: var(--ink-light); margin-bottom: 0.3em; }
-.score-item .track-name { font-weight: 600; color: var(--ink); font-size: var(--body-size); margin-bottom: 0.5em; }
-.score-dots { display: flex; gap: 3px; }
-.score-dots .dot { width: 10px; height: 10px; border-radius: 50%; border: 1px solid rgba(27,79,216,0.3); }
-.score-dots .dot.filled { background: var(--cobalt); border-color: var(--cobalt); }
-
-@media (max-height: 700px) { :root { --slide-padding: clamp(1rem,3vw,2.5rem); --content-gap: clamp(0.4rem,1vw,1rem); --title-size: clamp(1.5rem,4vw,3rem); --h2-size: clamp(1.1rem,2.5vw,1.8rem); } }
-@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.2s !important; } html { scroll-behavior: auto; } }
+@media(max-height:700px){.sc{padding:clamp(.8rem,2.5vw,2rem)}}
+@media(prefers-reduced-motion:reduce){.slide{transition:none}}
 </style>
 </head>
 <body>
 
-<!-- NAV DOTS -->
-<div id="nav-dots">
-  <span data-idx="0" title="封面"></span>
-  <span data-idx="1" title="目录"></span>
-  <span data-idx="2" title="整体市场"></span>
-  <span data-idx="3" title="按产品GMV"></span>
-  <span data-idx="4" title="产品增速矩阵"></span>
-  <span data-idx="5" title="按功效GMV"></span>
-  <span data-idx="6" title="投放概览"></span>
-  <span data-idx="7" title="赛道投放明细"></span>
-  <span data-idx="8" title="广告主投放"></span>
-  <span data-idx="9" title="MA×ATW评分维度"></span>
-  <span data-idx="10" title="MA×ATW产品气泡图"></span>
-  <span data-idx="11" title="MA×ATW功效气泡图"></span>
-  <span data-idx="12" title="各赛道Top客户"></span>
-</div>
+<div id="deck">
 
-<!-- ===== SLIDE 0: 封面 ===== -->
-<div class="slide slide-title">
-  <div class="slide-bar"></div>
-  <div class="slide-content" style="justify-content:flex-end;padding-bottom:clamp(2rem,6vh,6rem);">
-    <!-- deco -->
-    <svg class="deco-pixel" style="top:6%;right:8%;width:clamp(80px,12vw,180px);height:auto;opacity:0.3" viewBox="0 0 120 120">
-      <rect x="0" y="0" width="12" height="12" fill="#3B6EF8"/><rect x="16" y="0" width="12" height="12" fill="#3B6EF8"/><rect x="32" y="0" width="12" height="12" fill="#3B6EF8"/>
-      <rect x="0" y="16" width="12" height="12" fill="#3B6EF8"/><rect x="0" y="32" width="12" height="12" fill="#3B6EF8"/>
-      <rect x="16" y="16" width="12" height="12" fill="#3B6EF8" opacity="0.5"/>
-      <rect x="48" y="0" width="12" height="12" fill="#3B6EF8" opacity="0.3"/><rect x="64" y="0" width="12" height="12" fill="#3B6EF8" opacity="0.2"/>
-      <rect x="0" y="48" width="12" height="12" fill="#3B6EF8" opacity="0.4"/><rect x="0" y="64" width="12" height="12" fill="#3B6EF8" opacity="0.2"/>
+<!-- ══ S0 封面 ══ -->
+<div class="slide dark active" id="s0">
+  <div class="sbar"></div>
+  <div class="sc" style="justify-content:flex-end;padding-bottom:clamp(2rem,8vh,7rem)">
+    <svg style="position:absolute;top:8%;right:8%;width:clamp(80px,12vw,160px);opacity:.25" viewBox="0 0 120 96">
+      <rect x="0" y="0" width="14" height="14" fill="#3B6EF8"/><rect x="18" y="0" width="14" height="14" fill="#3B6EF8"/><rect x="36" y="0" width="14" height="14" fill="#3B6EF8"/>
+      <rect x="0" y="18" width="14" height="14" fill="#3B6EF8"/><rect x="0" y="36" width="14" height="14" fill="#3B6EF8"/><rect x="18" y="18" width="14" height="14" fill="#3B6EF8" opacity=".5"/>
+      <rect x="54" y="0" width="14" height="14" fill="#3B6EF8" opacity=".35"/><rect x="72" y="0" width="14" height="14" fill="#3B6EF8" opacity=".2"/>
+      <rect x="0" y="54" width="14" height="14" fill="#3B6EF8" opacity=".4"/><rect x="0" y="72" width="14" height="14" fill="#3B6EF8" opacity=".2"/>
     </svg>
-    <div class="sec-label">传统中式滋补行业 · 2025全年</div>
+    <div class="sec">传统中式滋补行业 · 2025全年</div>
     <h1>赛道全景<br>与机会诊断</h1>
-    <div style="width:clamp(40px,8vw,100px);height:3px;background:var(--cobalt);margin:1.2em 0;"></div>
-    <p style="color:rgba(245,242,235,0.6);max-width:480px;font-size:var(--body-size);">数据来源：淘天/抖音/京东 GMV · 小红书搜索量 · 笔记数 · 曝光量 · 品牌投放金额<br>分析维度：42个产品赛道 · 13个功效维度</p>
+    <div style="width:clamp(36px,7vw,90px);height:3px;background:var(--co);margin:1em 0"></div>
+    <p style="color:rgba(245,242,235,.55);max-width:460px">数据来源：淘天/抖音/京东 GMV · 小红书搜索量 · 笔记数 · 曝光量 · 品牌投放净额<br>分析维度：42个产品赛道 · 13个功效维度</p>
   </div>
-  <div class="slide-footer"><span class="fn">传统中式滋补行业分析</span><span class="pg">01 / 13</span></div>
+  <div class="sf"><span class="fn">传统中式滋补行业分析</span><span class="pg">01 / 11</span></div>
 </div>
 
-<!-- ===== SLIDE 1: 目录 ===== -->
-<div class="slide">
-  <div class="slide-bar"></div>
-  <div class="slide-content">
-    <div class="sec-label">Agenda</div>
-    <h2>本报告结构</h2>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(0.5rem,1.5vw,1.5rem);margin-top:var(--content-gap);">
-      <div style="display:flex;flex-direction:column;gap:clamp(0.4rem,1vh,0.8rem);">
-        <div style="display:flex;align-items:flex-start;gap:0.8em;">
-          <span style="font-family:'JetBrains Mono',monospace;color:var(--cobalt);font-size:var(--small-size);padding-top:0.15em;min-width:1.6em;font-weight:500;">01</span>
-          <div><div style="font-weight:600;font-size:var(--body-size);color:var(--ink);">整体市场规模 &amp; 增速</div><div style="font-size:var(--small-size);color:var(--ink-light);">GMV总量、增速、市场结构</div></div>
-        </div>
-        <div style="display:flex;align-items:flex-start;gap:0.8em;">
-          <span style="font-family:'JetBrains Mono',monospace;color:var(--cobalt);font-size:var(--small-size);padding-top:0.15em;min-width:1.6em;font-weight:500;">02</span>
-          <div><div style="font-weight:600;font-size:var(--body-size);color:var(--ink);">细分市场 — 按产品分</div><div style="font-size:var(--small-size);color:var(--ink-light);">42个赛道GMV排名与增速</div></div>
-        </div>
-        <div style="display:flex;align-items:flex-start;gap:0.8em;">
-          <span style="font-family:'JetBrains Mono',monospace;color:var(--cobalt);font-size:var(--small-size);padding-top:0.15em;min-width:1.6em;font-weight:500;">03</span>
-          <div><div style="font-weight:600;font-size:var(--body-size);color:var(--ink);">细分市场 — 按功效分</div><div style="font-size:var(--small-size);color:var(--ink-light);">13个功效心智GMV分布</div></div>
-        </div>
-        <div style="display:flex;align-items:flex-start;gap:0.8em;">
-          <span style="font-family:'JetBrains Mono',monospace;color:var(--cobalt);font-size:var(--small-size);padding-top:0.15em;min-width:1.6em;font-weight:500;">04</span>
-          <div><div style="font-weight:600;font-size:var(--body-size);color:var(--ink);">小红书投放情况</div><div style="font-size:var(--small-size);color:var(--ink-light);">品牌渗透 · 客户分布 · 各赛道投放YoY</div></div>
+<!-- ══ S1 整体市场 ══ -->
+<div class="slide" id="s1">
+  <div class="sbar"></div>
+  <div class="sc">
+    <div class="sec">Part 01 · 整体市场规模</div>
+    <h2>中式滋补大盘：<span class="co">398.7亿</span>，同比 <span class="up">+13.1%</span></h2>
+    <div class="kpi-row c4" style="margin:clamp(.5rem,1.5vh,1.2rem) 0">
+      <div class="kpi"><div class="lb">2025年 大盘GMV</div><div class="vl">398.7<span style="font-size:.5em">亿</span></div><div class="yy up">↑ 13.1% YoY</div></div>
+      <div class="kpi"><div class="lb">有效赛道数（≥2亿）</div><div class="vl">42<span style="font-size:.5em">条</span></div><div class="yy" style="color:var(--ink3)">按产品细分口径</div></div>
+      <div class="kpi"><div class="lb">小红书匹配客户数</div><div class="vl">79<span style="font-size:.5em">家</span></div><div class="yy" style="color:var(--ink3)">Y25 投放净额 1.49亿</div></div>
+      <div class="kpi"><div class="lb">整体广告 Takerate</div><div class="vl">0.37<span style="font-size:.5em">%</span></div><div class="yy up">养生丸 6.71% / 大盘最高</div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:clamp(.5rem,1vw,.8rem)">
+      <div class="ins ok"><b>🚀 爆发赛道：</b>熟地黄+946%、葛根+403%、党参+235%、海参+136%——道地单味药材集体觉醒</div>
+      <div class="ins"><b>✅ 稳健增长：</b>枸杞+38%、阿胶+21%、冬虫夏草+96%，传统核心赛道量价齐升</div>
+      <div class="ins warn"><b>⚠️ 承压赛道：</b>金银花-58%、鸡内金-45%、桃胶-39%、散装中药材-25%</div>
+    </div>
+  </div>
+  <div class="sf"><span class="fn">整体市场规模 &amp; 增速</span><span class="pg">02 / 11</span></div>
+</div>
+
+<!-- ══ S2 产品四象限 ══ -->
+<div class="slide" id="s2">
+  <div class="sbar"></div>
+  <div class="sc" style="padding-bottom:.5rem">
+    <div class="sec">Part 02 · 按产品分 · 全42条赛道</div>
+    <h2 style="margin-bottom:.3em">GMV × YoY 四象限矩阵</h2>
+    <div style="flex:1;min-height:0" id="c-quad"></div>
+  </div>
+  <div class="sf"><span class="fn">细分市场 — 按产品分</span><span class="pg">03 / 11</span></div>
+</div>
+
+<!-- ══ S3 功效GMV ══ -->
+<div class="slide" id="s3">
+  <div class="sbar"></div>
+  <div class="sc" style="padding-bottom:.5rem">
+    <div class="sec">Part 03 · 按功效分 · 446亿（含跨赛道分摊）</div>
+    <h2 style="margin-bottom:.3em">功效心智 GMV × 搜索量增速</h2>
+    <div style="flex:1;min-height:0" id="c-eff"></div>
+  </div>
+  <div class="sf"><span class="fn">细分市场 — 按功效分</span><span class="pg">04 / 11</span></div>
+</div>
+
+<!-- ══ S4 投放概览 ══ -->
+<div class="slide" id="s4">
+  <div class="sbar"></div>
+  <div class="sc" style="padding-bottom:.5rem">
+    <div class="sec">Part 04 · 小红书投放情况</div>
+    <h2 style="margin-bottom:.3em">7大产品类型 — GMV vs 投放净额</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(.5rem,1vw,.8rem);flex:1;min-height:0">
+      <div style="display:flex;flex-direction:column;gap:.5rem;min-height:0">
+        <div class="cbox" style="flex:1;min-height:0">
+          <div class="ct">各类型投放净额（万元）</div>
+          <div class="ec" id="c-ad-bar" style="height:100%"></div>
         </div>
       </div>
-      <div style="display:flex;flex-direction:column;gap:clamp(0.4rem,1vh,0.8rem);">
-        <div style="display:flex;align-items:flex-start;gap:0.8em;">
-          <span style="font-family:'JetBrains Mono',monospace;color:var(--cobalt);font-size:var(--small-size);padding-top:0.15em;min-width:1.6em;font-weight:500;">05</span>
-          <div><div style="font-weight:600;font-size:var(--body-size);color:var(--ink);">MA × ATW 评分框架</div><div style="font-size:var(--small-size);color:var(--ink-light);">内容势能 · 决策链路 · 解决方案成熟度</div></div>
+      <div style="display:flex;flex-direction:column;gap:.5rem;min-height:0">
+        <div class="cbox" style="flex:1;min-height:0">
+          <div class="ct">Takerate（投放/GMV）</div>
+          <div class="ec" id="c-takerate" style="height:100%"></div>
         </div>
-        <div style="display:flex;align-items:flex-start;gap:0.8em;">
-          <span style="font-family:'JetBrains Mono',monospace;color:var(--cobalt);font-size:var(--small-size);padding-top:0.15em;min-width:1.6em;font-weight:500;">06</span>
-          <div><div style="font-weight:600;font-size:var(--body-size);color:var(--ink);">MA × ATW 气泡图</div><div style="font-size:var(--small-size);color:var(--ink-light);">产品维度 + 功效维度各一张</div></div>
-        </div>
-        <div style="display:flex;align-items:flex-start;gap:0.8em;">
-          <span style="font-family:'JetBrains Mono',monospace;color:var(--cobalt);font-size:var(--small-size);padding-top:0.15em;min-width:1.6em;font-weight:500;">07</span>
-          <div><div style="font-weight:600;font-size:var(--body-size);color:var(--ink);">各赛道 Top 20 客户</div><div style="font-size:var(--small-size);color:var(--ink-light);">GMV · 投放金额 · 渗透率</div></div>
+        <div style="display:flex;flex-direction:column;gap:.35rem">
+          <div class="ins warn"><b>💊 养生丸 Takerate 6.71%</b>，是大盘均值 18 倍，小红书深度验证赛道</div>
+          <div class="ins ok"><b>🌾 五谷代餐 51亿GMV +26%，Takerate 仅 0.02%</b> — 最大新客缺口</div>
+          <div class="ins"><b>🌿 道地药材 GMV-15% 但投放逆势 +78.6%</b> — 品牌防守转攻势</div>
         </div>
       </div>
     </div>
   </div>
-  <div class="slide-footer"><span class="fn">目录</span><span class="pg">02 / 13</span></div>
+  <div class="sf"><span class="fn">小红书投放情况</span><span class="pg">05 / 11</span></div>
 </div>
 
-<!-- ===== SLIDE 2: 整体市场 ===== -->
-<div class="slide">
-  <div class="slide-bar"></div>
-  <div class="slide-content">
-    <div class="sec-label">Part 01 · 整体市场规模</div>
-    <h2>中式滋补大盘：398.7亿，同比 <span class="up">+13.1%</span></h2>
-    <div class="kpi-grid col4" style="margin:var(--content-gap) 0;">
-      <div class="kpi-card">
-        <div class="label">2025年 大盘GMV</div>
-        <div class="val">398.7<span style="font-size:0.55em">亿</span></div>
-        <div class="yoy up">↑ 13.1% YoY</div>
-      </div>
-      <div class="kpi-card">
-        <div class="label">赛道数（≥2亿）</div>
-        <div class="val">42<span style="font-size:0.55em">条</span></div>
-        <div class="yoy" style="color:var(--ink-light);">按产品细分口径</div>
-      </div>
-      <div class="kpi-card">
-        <div class="label">已匹配小红书客户</div>
-        <div class="val">79<span style="font-size:0.55em">家</span></div>
-        <div class="yoy" style="color:var(--ink-light);">Y25 投放净额 1.49亿</div>
-      </div>
-      <div class="kpi-card">
-        <div class="label">整体广告 Takerate</div>
-        <div class="val">0.37<span style="font-size:0.55em">%</span></div>
-        <div class="yoy up">↑ 较24年 提升</div>
-      </div>
-    </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--content-gap);">
-      <div style="background:white;border:1px solid rgba(27,79,216,0.15);padding:clamp(0.8rem,1.5vw,1.2rem);border-radius:2px;">
-        <div style="font-weight:600;font-size:var(--body-size);margin-bottom:0.6em;color:var(--ink);">🏆 规模 Top 3 赛道</div>
-        <div style="display:flex;flex-direction:column;gap:0.4em;">
-          <div style="display:flex;justify-content:space-between;"><span style="font-size:var(--small-size);">🥚 燕窝</span><span style="font-family:'JetBrains Mono',monospace;font-size:var(--small-size);"><b>69.7亿</b> <span class="up">+10.8%</span></span></div>
-          <div style="display:flex;justify-content:space-between;"><span style="font-size:var(--small-size);">🌶 枸杞</span><span style="font-family:'JetBrains Mono',monospace;font-size:var(--small-size);"><b>41.8亿</b> <span class="up">+38.2%</span></span></div>
-          <div style="display:flex;justify-content:space-between;"><span style="font-size:var(--small-size);">🍯 阿胶</span><span style="font-family:'JetBrains Mono',monospace;font-size:var(--small-size);"><b>27.2亿</b> <span class="up">+21.3%</span></span></div>
-        </div>
-      </div>
-      <div style="background:white;border:1px solid rgba(27,79,216,0.15);padding:clamp(0.8rem,1.5vw,1.2rem);border-radius:2px;">
-        <div style="font-weight:600;font-size:var(--body-size);margin-bottom:0.6em;color:var(--ink);">🚀 增速 Top 3 赛道</div>
-        <div style="display:flex;flex-direction:column;gap:0.4em;">
-          <div style="display:flex;justify-content:space-between;"><span style="font-size:var(--small-size);">🌿 熟地黄</span><span style="font-family:'JetBrains Mono',monospace;font-size:var(--small-size);"><b class="up">+946%</b></span></div>
-          <div style="display:flex;justify-content:space-between;"><span style="font-size:var(--small-size);">🌿 葛根</span><span style="font-family:'JetBrains Mono',monospace;font-size:var(--small-size);"><b class="up">+403%</b></span></div>
-          <div style="display:flex;justify-content:space-between;"><span style="font-size:var(--small-size);">🌿 党参</span><span style="font-family:'JetBrains Mono',monospace;font-size:var(--small-size);"><b class="up">+235%</b></span></div>
-        </div>
-      </div>
-    </div>
+<!-- ══ S5 赛道投放细节 ══ -->
+<div class="slide" id="s5">
+  <div class="sbar"></div>
+  <div class="sc" style="padding-bottom:.5rem">
+    <div class="sec">Part 04 · 小红书投放情况 · 赛道明细</div>
+    <h2 style="margin-bottom:.3em">各赛道投放净额 vs GMV 散点图</h2>
+    <div style="flex:1;min-height:0" id="c-ad-scatter"></div>
   </div>
-  <div class="slide-footer"><span class="fn">整体市场规模 &amp; 增速</span><span class="pg">03 / 13</span></div>
+  <div class="sf"><span class="fn">小红书投放情况 — 赛道明细</span><span class="pg">06 / 11</span></div>
 </div>
 
-<!-- ===== SLIDE 3: 按产品 GMV TOP15 ===== -->
-<div class="slide">
-  <div class="slide-bar"></div>
-  <div class="slide-content">
-    <div class="sec-label">Part 02 · 按产品分 · GMV Top 15</div>
-    <h2>赛道规模排名</h2>
-    <div class="bar-list" style="margin-top:var(--content-gap);flex:1;justify-content:center;">
-      <div class="bar-row" style="font-size:var(--small-size);color:var(--ink-light);font-weight:600;"><span>赛道</span><span></span><span style="text-align:right">GMV（亿）YoY</span></div>
-      <!-- data -->
-      <div class="bar-row"><span class="name">🥚 燕窝</span><div class="bar-wrap"><div class="bar-fill" style="width:100%"></div></div><span class="bar-val">69.7 <span class="up">+11%</span></span></div>
-      <div class="bar-row"><span class="name">🌶 枸杞</span><div class="bar-wrap"><div class="bar-fill" style="width:60%"></div></div><span class="bar-val">41.8 <span class="up">+38%</span></span></div>
-      <div class="bar-row"><span class="name">🍯 阿胶</span><div class="bar-wrap"><div class="bar-fill" style="width:39%"></div></div><span class="bar-val">27.2 <span class="up">+21%</span></span></div>
-      <div class="bar-row"><span class="name">🌳 西洋参</span><div class="bar-wrap"><div class="bar-fill" style="width:29%"></div></div><span class="bar-val">20.0 <span class="up">+13%</span></span></div>
-      <div class="bar-row"><span class="name">🍯 蜂蜜/蜂产品</span><div class="bar-wrap"><div class="bar-fill" style="width:27%"></div></div><span class="bar-val">18.7 <span class="dn">-2%</span></span></div>
-      <div class="bar-row"><span class="name">🌿 冬虫夏草</span><div class="bar-wrap"><div class="bar-fill" style="width:23%"></div></div><span class="bar-val">16.0 <span class="up">+96%</span></span></div>
-      <div class="bar-row"><span class="name">🌳 灵芝/孢子粉</span><div class="bar-wrap"><div class="bar-fill" style="width:19%"></div></div><span class="bar-val">13.3 <span class="dn">-3%</span></span></div>
-      <div class="bar-row"><span class="name">🌾 五谷营养品</span><div class="bar-wrap"><div class="bar-fill" style="width:18%"></div></div><span class="bar-val">12.4 <span class="up">+16%</span></span></div>
-      <div class="bar-row"><span class="name">🐚 海参</span><div class="bar-wrap"><div class="bar-fill" style="width:15%"></div></div><span class="bar-val">10.4 <span class="up">+136%</span></span></div>
-      <div class="bar-row"><span class="name">🌳 人参</span><div class="bar-wrap"><div class="bar-fill" style="width:15%"></div></div><span class="bar-val">10.3 <span class="up">+21%</span></span></div>
-      <div class="bar-row"><span class="name">🍯 养生膏</span><div class="bar-wrap"><div class="bar-fill" style="width:13%"></div></div><span class="bar-val">9.0 <span class="up">+19%</span></span></div>
-      <div class="bar-row"><span class="name">🍵 养生茶·菊枸决明</span><div class="bar-wrap"><div class="bar-fill" style="width:13%"></div></div><span class="bar-val">8.8 <span class="dn">-16%</span></span></div>
-      <div class="bar-row"><span class="name">🌿 黄芪</span><div class="bar-wrap"><div class="bar-fill" style="width:10%"></div></div><span class="bar-val">7.0 <span class="up">+21%</span></span></div>
-      <div class="bar-row"><span class="name">🦌 鹿茸</span><div class="bar-wrap"><div class="bar-fill" style="width:9%"></div></div><span class="bar-val">6.2 <span class="up">+66%</span></span></div>
-      <div class="bar-row"><span class="name">🌿 黄精</span><div class="bar-wrap"><div class="bar-fill" style="width:8%"></div></div><span class="bar-val">5.6 <span class="up">+211%</span></span></div>
-    </div>
-  </div>
-  <div class="slide-footer"><span class="fn">细分市场 — 按产品分</span><span class="pg">04 / 13</span></div>
-</div>
-
-<!-- ===== SLIDE 4: 产品增速矩阵 ===== -->
-<div class="slide">
-  <div class="slide-bar"></div>
-  <div class="slide-content">
-    <div class="sec-label">Part 02 · 按产品分 · 增速分层</div>
-    <h2>赛道增速矩阵</h2>
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:clamp(0.5rem,1vw,1rem);margin-top:var(--content-gap);flex:1;align-content:start;">
-      <div style="background:white;border:1px solid rgba(27,79,216,0.15);border-top:3px solid var(--up);padding:clamp(0.6rem,1.2vw,1rem);border-radius:2px;">
-        <div style="font-weight:700;color:var(--up);font-size:var(--body-size);margin-bottom:0.5em;">🚀 高增速（>50%）</div>
-        <div style="display:flex;flex-direction:column;gap:0.3em;">
-          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🌿 熟地黄</span><span class="up">+946%</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🌿 葛根</span><span class="up">+403%</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🌿 党参</span><span class="up">+235%</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🌿 黄精</span><span class="up">+211%</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🌿 天麻</span><span class="up">+187%</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🌿 麦冬</span><span class="up">+98%</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🌿 冬虫夏草</span><span class="up">+96%</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🐚 海参</span><span class="up">+136%</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🦌 鹿茸</span><span class="up">+66%</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🍬 滋补营养糖</span><span class="up">+82%</span></div>
-        </div>
+<!-- ══ S6 MA×ATW 打分表 ══ -->
+<div class="slide" id="s6">
+  <div class="sbar"></div>
+  <div class="sc" style="padding-bottom:.5rem">
+    <div class="sec">Part 05 · MA × ATW · 打分明细（产品维度）</div>
+    <h2 style="margin-bottom:.4em">评分维度 &amp; 各赛道得分</h2>
+    <div style="flex:1;min-height:0;overflow-y:auto">
+      <div style="margin-bottom:.5rem;display:grid;grid-template-columns:1fr 1fr;gap:.5rem">
+        <div class="ins"><b>MA（市场吸引力）</b> = 搜索量规模（0-4分）+ 搜索量YoY（0-3分）+ 内容曝光YoY（0-3分），满分 10</div>
+        <div class="ins"><b>ATW（赢单能力）</b> = 是否有客户（0/2分）+ 投放净额（0-4分）+ Takerate（0-4分），满分 10</div>
       </div>
-      <div style="background:white;border:1px solid rgba(27,79,216,0.15);border-top:3px solid var(--cobalt);padding:clamp(0.6rem,1.2vw,1rem);border-radius:2px;">
-        <div style="font-weight:700;color:var(--cobalt);font-size:var(--body-size);margin-bottom:0.5em;">📈 稳健增长（+10~50%）</div>
-        <div style="display:flex;flex-direction:column;gap:0.3em;">
-          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🌶 枸杞</span><span class="up">+38%</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🌿 酸枣仁</span><span class="up">+44%</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🌿 橘皮/陈皮</span><span class="up">+150%*</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🍯 阿胶</span><span class="up">+21%</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🌳 人参</span><span class="up">+21%</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🌿 黄芪</span><span class="up">+21%</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🌳 西洋参</span><span class="up">+13%</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🍯 养生膏</span><span class="up">+19%</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🥚 燕窝</span><span class="up">+11%</span></div>
-        </div>
-      </div>
-      <div style="background:white;border:1px solid rgba(27,79,216,0.15);border-top:3px solid var(--dn);padding:clamp(0.6rem,1.2vw,1rem);border-radius:2px;">
-        <div style="font-weight:700;color:var(--dn);font-size:var(--body-size);margin-bottom:0.5em;">📉 承压赛道（&lt;0%）</div>
-        <div style="display:flex;flex-direction:column;gap:0.3em;">
-          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🌿 金银花</span><span class="dn">-58%</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🌿 鸡内金</span><span class="dn">-41%</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🌿 桃胶</span><span class="dn">-39%</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>⚠️ 散装中药材</span><span class="dn">-25%</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🌳 高丽参/红参</span><span class="dn">-16%</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🐟 花胶/鱼胶</span><span class="dn">-21%</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🍵 养生茶·菊枸决明</span><span class="dn">-16%</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:var(--small-size);"><span>🍯 蜂蜜/蜂产品</span><span class="dn">-2%</span></div>
-        </div>
-      </div>
-    </div>
-    <p style="font-size:var(--small-size);color:var(--ink-light);margin-top:0.5em;">* 橘皮/陈皮为搜索量口径增速，GMV 口径 +84.9%</p>
-  </div>
-  <div class="slide-footer"><span class="fn">细分市场 — 按产品分</span><span class="pg">05 / 13</span></div>
-</div>
-
-<!-- ===== SLIDE 5: 按功效 GMV ===== -->
-<div class="slide">
-  <div class="slide-bar"></div>
-  <div class="slide-content">
-    <div class="sec-label">Part 03 · 按功效分 · GMV 446亿（含跨赛道分摊）</div>
-    <h2>功效心智 GMV 分布</h2>
-    <div class="bar-list" style="margin-top:var(--content-gap);flex:1;justify-content:center;">
-      <div class="bar-row" style="font-size:var(--small-size);color:var(--ink-light);font-weight:600;"><span>功效维度</span><span></span><span style="text-align:right">GMV（亿）</span></div>
-      <div class="bar-row"><span class="name">🎁 通用滋补/送礼</span><div class="bar-wrap"><div class="bar-fill" style="width:100%"></div></div><span class="bar-val">65.8</span></div>
-      <div class="bar-row"><span class="name">🛡 免疫/补气</span><div class="bar-wrap"><div class="bar-fill" style="width:95%"></div></div><span class="bar-val">62.8</span></div>
-      <div class="bar-row"><span class="name">🍃 护肝/熬夜</span><div class="bar-wrap"><div class="bar-fill" style="width:76%"></div></div><span class="bar-val">49.9</span></div>
-      <div class="bar-row"><span class="name">🌟 抗老/抗糖</span><div class="bar-wrap"><div class="bar-fill" style="width:64%"></div></div><span class="bar-val">42.1</span></div>
-      <div class="bar-row"><span class="name">❤️ 气血/补铁</span><div class="bar-wrap"><div class="bar-fill" style="width:64%"></div></div><span class="bar-val">42.1</span></div>
-      <div class="bar-row"><span class="name">💪 男性滋补</span><div class="bar-wrap"><div class="bar-fill" style="width:62%"></div></div><span class="bar-val">40.8</span></div>
-      <div class="bar-row"><span class="name">🌸 女性/卵巢调理</span><div class="bar-wrap"><div class="bar-fill" style="width:62%"></div></div><span class="bar-val">40.7</span></div>
-      <div class="bar-row"><span class="name">😴 助眠</span><div class="bar-wrap"><div class="bar-fill" style="width:36%"></div></div><span class="bar-val">23.6</span></div>
-      <div class="bar-row"><span class="name">✨ 胶原蛋白肽</span><div class="bar-wrap"><div class="bar-fill" style="width:32%"></div></div><span class="bar-val">20.8</span></div>
-      <div class="bar-row"><span class="name">🫁 润肺/护嗓</span><div class="bar-wrap"><div class="bar-fill" style="width:22%"></div></div><span class="bar-val">14.4</span></div>
-      <div class="bar-row"><span class="name">🌧 祛湿</span><div class="bar-wrap"><div class="bar-fill" style="width:22%"></div></div><span class="bar-val">14.2</span></div>
-      <div class="bar-row"><span class="name">👁 明目/护眼</span><div class="bar-wrap"><div class="bar-fill" style="width:17%"></div></div><span class="bar-val">11.5</span></div>
-      <div class="bar-row"><span class="name">⚖️ 减脂/体重管理</span><div class="bar-wrap"><div class="bar-fill" style="width:15%"></div></div><span class="bar-val">9.8</span></div>
-    </div>
-  </div>
-  <div class="slide-footer"><span class="fn">细分市场 — 按功效分</span><span class="pg">06 / 13</span></div>
-</div>
-
-<!-- ===== SLIDE 6: 投放概览 ===== -->
-<div class="slide">
-  <div class="slide-bar"></div>
-  <div class="slide-content">
-    <div class="sec-label">Part 04 · 小红书投放情况</div>
-    <h2>7大产品类型 — 投放汇总</h2>
-    <div style="margin-top:var(--content-gap);overflow-x:auto;flex:1;display:flex;flex-direction:column;justify-content:center;">
-      <table class="data-table">
-        <thead>
-          <tr><th>#</th><th>产品类型</th><th class="num">赛道数</th><th class="num">GMV（亿）</th><th class="num">GMV YoY</th><th class="num">投放净额</th><th class="num">投放YoY</th><th class="num">Takerate</th><th class="num">客户数</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>1</td><td class="bold">🥇 滋补名品</td><td class="num">10</td><td class="num">172.69</td><td class="num up">↑15.9%</td><td class="num">6,118万</td><td class="num up">↑8.9%</td><td class="num">0.35%</td><td class="num">28</td></tr>
-          <tr><td>2</td><td class="bold">🌿 道地药材</td><td class="num">15</td><td class="num">61.52</td><td class="num dn">↓15.0%</td><td class="num">2,448万</td><td class="num up">↑78.6%</td><td class="num">0.40%</td><td class="num">17</td></tr>
-          <tr><td>3</td><td class="bold">📋 其他</td><td class="num">5</td><td class="num">61.11</td><td class="num dn">↓14.4%</td><td class="num">400万</td><td class="num dn">↓31.7%</td><td class="num">0.07%</td><td class="num">8</td></tr>
-          <tr><td>4</td><td class="bold">🌾 五谷代餐</td><td class="num">3</td><td class="num">51.46</td><td class="num up">↑26.0%</td><td class="num">91万</td><td class="num up">↑54.8%</td><td class="num">0.02%</td><td class="num">1</td></tr>
-          <tr><td>5</td><td class="bold">🍵 养生茶饮</td><td class="num">2</td><td class="num">34.56</td><td class="num dn">↓1.5%</td><td class="num">268万</td><td class="num dn">↓7.9%</td><td class="num">0.08%</td><td class="num">4</td></tr>
-          <tr><td>6</td><td class="bold">🍯 蜂蜜糖膏</td><td class="num">3</td><td class="num">34.00</td><td class="num up">↑1.6%</td><td class="num">601万</td><td class="num up">↑101.5%</td><td class="num">0.18%</td><td class="num">10</td></tr>
-          <tr><td>7</td><td class="bold">💊 养生丸药食</td><td class="num">1</td><td class="num">7.40</td><td class="num dn">↓16.0%</td><td class="num">4,962万</td><td class="num up">↑18.1%</td><td class="num cobalt" style="font-weight:700">6.71%</td><td class="num">11</td></tr>
-        </tbody>
-      </table>
-      <p style="margin-top:0.8em;font-size:var(--small-size);color:var(--ink-light);">💊 养生丸（五黑丸/黑芝麻丸）Takerate 远高于大盘，是小红书深度渗透赛道。🌾 五谷代餐 GMV 高增但投放渗透极低，机会赛道。</p>
-    </div>
-  </div>
-  <div class="slide-footer"><span class="fn">小红书投放情况</span><span class="pg">07 / 13</span></div>
-</div>
-
-<!-- ===== SLIDE 7: 细分赛道投放 ===== -->
-<div class="slide">
-  <div class="slide-bar"></div>
-  <div class="slide-content">
-    <div class="sec-label">Part 04 · 小红书投放 · 细分赛道</div>
-    <h2>主要赛道投放明细</h2>
-    <div style="margin-top:var(--content-gap);overflow-x:auto;flex:1;display:flex;flex-direction:column;justify-content:center;">
-      <table class="data-table">
-        <thead>
-          <tr><th>赛道</th><th class="num">GMV（亿）</th><th class="num">GMV YoY</th><th class="num">投放净额</th><th class="num">投放YoY</th><th class="num">Takerate</th><th class="num">客户数</th></tr>
-        </thead>
-        <tbody>
-          <tr><td class="bold">🥚 燕窝</td><td class="num">67.49</td><td class="num up">↑9.3%</td><td class="num">2,920万</td><td class="num up">↑22.2%</td><td class="num">0.43%</td><td class="num">8</td></tr>
-          <tr><td class="bold">🍯 阿胶</td><td class="num">28.50</td><td class="num up">↑24.8%</td><td class="num">1,296万</td><td class="num dn">↓2.3%</td><td class="num">0.45%</td><td class="num">5</td></tr>
-          <tr><td class="bold">💊 五黑丸/黑芝麻丸</td><td class="num">7.40</td><td class="num dn">↓16.0%</td><td class="num cobalt" style="font-weight:600">4,962万</td><td class="num up">↑18.1%</td><td class="num cobalt" style="font-weight:700">6.71%</td><td class="num">11</td></tr>
-          <tr><td class="bold">🍟 花胶/鱼胶</td><td class="num">4.67</td><td class="num dn">↓23.8%</td><td class="num">1,149万</td><td class="num up">↑27.0%</td><td class="num">2.46%</td><td class="num">3</td></tr>
-          <tr><td class="bold">🌿 鸡内金</td><td class="num">2.03</td><td class="num dn">↓45.2%</td><td class="num">1,158万</td><td class="num up">↑84.2%</td><td class="num">5.71%</td><td class="num">5</td></tr>
-          <tr><td class="bold">🌿 黄精</td><td class="num">5.15</td><td class="num up">↑207%</td><td class="num">991万</td><td class="num up">↑96.9%</td><td class="num">1.92%</td><td class="num">3</td></tr>
-          <tr><td class="bold">🍯 养生膏</td><td class="num">10.63</td><td class="num up">↑8.8%</td><td class="num">489万</td><td class="num up">↑80.0%</td><td class="num">0.46%</td><td class="num">6</td></tr>
-          <tr><td class="bold">🌳 高丽参/红参</td><td class="num">4.78</td><td class="num dn">↓17.3%</td><td class="num">454万</td><td class="num dn">↓39.6%</td><td class="num">0.95%</td><td class="num">3</td></tr>
-          <tr><td class="bold">🌳 灵芝/孢子粉</td><td class="num">12.39</td><td class="num dn">↓6.4%</td><td class="num">82万</td><td class="num up">↑3089%</td><td class="num">0.07%</td><td class="num">2</td></tr>
-          <tr><td class="bold">🐚 海参</td><td class="num">6.11</td><td class="num up">↑116%</td><td class="num">65万</td><td class="num up">↑1092%</td><td class="num">0.11%</td><td class="num">2</td></tr>
-        </tbody>
+      <table class="dt" id="score-table">
+        <thead><tr><th>#</th><th>赛道</th><th class="nr">MA</th><th class="nr">ATW</th><th class="nr">总分</th><th class="nr">GMV亿</th><th>象限</th></tr></thead>
+        <tbody id="score-tbody"></tbody>
       </table>
     </div>
   </div>
-  <div class="slide-footer"><span class="fn">小红书投放情况</span><span class="pg">08 / 13</span></div>
+  <div class="sf"><span class="fn">MA × ATW 打分明细</span><span class="pg">07 / 11</span></div>
 </div>
 
-<!-- ===== SLIDE 8: 现有广告主嵌入 ===== -->
-<div class="slide" style="display:flex;flex-direction:column;">
-  <div class="slide-bar"></div>
-  <div style="padding:clamp(0.6rem,1.5vw,1.2rem) var(--slide-padding) 0;flex-shrink:0;position:relative;z-index:2;">
-    <div class="sec-label">Part 04 · 小红书投放 · 现有广告主</div>
-    <h2 style="margin-bottom:0.2em;">各赛道广告主投放全览</h2>
+<!-- ══ S7 MA×ATW 产品气泡图 ══ -->
+<div class="slide" id="s7">
+  <div class="sbar"></div>
+  <div class="sc" style="padding-bottom:.5rem">
+    <div class="sec">Part 06 · MA × ATW · 产品维度气泡图</div>
+    <h2 style="margin-bottom:.3em">机会图谱 — 按产品分（气泡大小 = GMV）</h2>
+    <div style="flex:1;min-height:0" id="c-bubble1"></div>
   </div>
-  <div class="iframe-wrap" style="flex:1;padding:0 clamp(1rem,3vw,2rem) clamp(0.5rem,1vw,1rem);position:relative;z-index:2;">
-    <iframe src="https://picasso-private-1251524319.cos.ap-shanghai.myqcloud.com/formula-static/dibp/ddny4jcn/zb-ad-reverse.html" style="width:100%;height:100%;border:1px solid rgba(27,79,216,0.15);border-radius:4px;"></iframe>
-  </div>
-  <div class="slide-footer"><span class="fn">小红书投放情况</span><span class="pg">09 / 13</span></div>
+  <div class="sf"><span class="fn">MA × ATW 气泡图 — 产品维度</span><span class="pg">08 / 11</span></div>
 </div>
 
-<!-- ===== SLIDE 9: MA×ATW 框架说明 ===== -->
-<div class="slide">
-  <div class="slide-bar"></div>
-  <div class="slide-content">
-    <div class="sec-label">Part 05 · Market Attractiveness × Ability to Win</div>
-    <h2>评分框架说明</h2>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--content-gap);margin-top:var(--content-gap);flex:1;align-content:start;">
-      <div>
-        <h3 style="color:var(--cobalt);margin-bottom:0.6em;">横轴：Market Attractiveness（市场吸引力）</h3>
-        <div style="display:flex;flex-direction:column;gap:0.5em;">
-          <div style="background:white;border-left:3px solid var(--cobalt);padding:0.6em 0.8em;font-size:var(--small-size);">
-            <b>内容势能增速</b> — 曝光量YoY × 笔记数YoY<br>
-            <span style="color:var(--ink-light);">反映品类在小红书的内容热度成长性</span>
-          </div>
-          <div style="background:white;border-left:3px solid var(--cobalt);padding:0.6em 0.8em;font-size:var(--small-size);">
-            <b>决策链路重要性</b> — 搜索量绝对值 + YoY<br>
-            <span style="color:var(--ink-light);">搜索量高→用户已有决策意图，小红书是关键触点</span>
-          </div>
-          <div style="background:white;border-left:3px solid var(--cobalt);padding:0.6em 0.8em;font-size:var(--small-size);">
-            <b>市场规模</b> — GMV绝对值 + YoY<br>
-            <span style="color:var(--ink-light);">盘子越大增速越高，吸引力越强</span>
-          </div>
-        </div>
+<!-- ══ S8 MA×ATW 功效气泡图 ══ -->
+<div class="slide" id="s8">
+  <div class="sbar"></div>
+  <div class="sc" style="padding-bottom:.5rem">
+    <div class="sec">Part 06 · MA × ATW · 功效维度气泡图</div>
+    <h2 style="margin-bottom:.3em">机会图谱 — 按功效分（气泡大小 = GMV）</h2>
+    <div style="flex:1;min-height:0" id="c-bubble2"></div>
+  </div>
+  <div class="sf"><span class="fn">MA × ATW 气泡图 — 功效维度</span><span class="pg">09 / 11</span></div>
+</div>
+
+<!-- ══ S9 结论 ══ -->
+<div class="slide" id="s9">
+  <div class="sbar"></div>
+  <div class="sc">
+    <div class="sec">Part 07 · 综合结论 &amp; 优先级</div>
+    <h2 style="margin-bottom:.5em">优先开拓建议</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(.5rem,1vw,.8rem)">
+      <div style="display:flex;flex-direction:column;gap:.4rem">
+        <h3 style="color:var(--up)">P0 立即行动</h3>
+        <div class="ins ok"><b>🌾 五谷代餐</b> — 51亿GMV +26%，近零投放，最大新客白地。目标：枸杞/能量代餐头部品牌</div>
+        <div class="ins ok"><b>😴 助眠功效</b> — 搜索+31%，曝光+36.5%，赛道爆发。目标：酸枣仁/茯苓品牌</div>
+        <h3 style="color:var(--co);margin-top:.4rem">P1 重点推进</h3>
+        <div class="ins"><b>🌿 黄精</b> — GMV+207%，投放已启动+97%，加速现有客户扩量</div>
+        <div class="ins"><b>🍃 护肝/熬夜</b> — 搜索+44%，年轻群体最强功效心智，内容先行</div>
+        <div class="ins"><b>🐚 海参</b> — GMV+136%，曝光+1092%，打新兴赛道样板</div>
       </div>
-      <div>
-        <h3 style="color:var(--ink);margin-bottom:0.6em;">纵轴：Ability to Win（赢单能力）</h3>
-        <div style="display:flex;flex-direction:column;gap:0.5em;">
-          <div style="background:white;border-left:3px solid var(--ink-mid);padding:0.6em 0.8em;font-size:var(--small-size);">
-            <b>解决方案成熟度</b> — 赛道是否有现有客户<br>
-            <span style="color:var(--ink-light);">有客户=有成功案例，赢单能力强</span>
-          </div>
-          <div style="background:white;border-left:3px solid var(--ink-mid);padding:0.6em 0.8em;font-size:var(--small-size);">
-            <b>投放净额</b> — 现有客户年投放总额<br>
-            <span style="color:var(--ink-light);">投放越多→客户ROI认可度高</span>
-          </div>
-          <div style="background:white;border-left:3px solid var(--ink-mid);padding:0.6em 0.8em;font-size:var(--small-size);">
-            <b>Takerate</b> — 投放/GMV<br>
-            <span style="color:var(--ink-light);">Takerate高→该赛道品牌已验证小红书效果</span>
-          </div>
-        </div>
+      <div style="display:flex;flex-direction:column;gap:.4rem">
+        <h3 style="color:var(--co)">P2 培育跟进</h3>
+        <div class="ins"><b>🌿 茯苓/天麻</b> — 搜索+48%/+49%，道地药材新趋势，中小品牌开拓</div>
+        <div class="ins"><b>👁 明目/护眼</b> — 搜索+40%，内容曝光+23%，枸杞/决明子品牌种草</div>
+        <h3 style="color:var(--ink3);margin-top:.4rem">已有客户深耕</h3>
+        <div class="ins"><b>🥚 燕窝</b> — 67亿 GMV，8家客户，投放+22%，继续扩量</div>
+        <div class="ins"><b>💊 五黑丸</b> — Takerate 6.71%，ROI已验证，11家客户维稳扩量</div>
+        <div class="ins warn"><b>🌿 鸡内金/花胶</b> — GMV承压但高投放依赖，防守现有份额</div>
       </div>
     </div>
-    <div style="background:rgba(27,79,216,0.06);border:1px solid rgba(27,79,216,0.2);padding:0.7em 1em;font-size:var(--small-size);margin-top:0.8em;border-radius:2px;">
-      气泡大小 = GMV规模 &nbsp;｜&nbsp; 右上象限 = 高MA高ATW = 重点赛道 &nbsp;｜&nbsp; 左上象限 = 高ATW低MA = 防守巩固
-    </div>
   </div>
-  <div class="slide-footer"><span class="fn">MA × ATW 评分框架</span><span class="pg">10 / 13</span></div>
+  <div class="sf"><span class="fn">综合结论 &amp; 优先级建议</span><span class="pg">10 / 11</span></div>
 </div>
 
-<!-- ===== SLIDE 10: MA×ATW 产品气泡图 ===== -->
-<div class="slide">
-  <div class="slide-bar"></div>
-  <div class="slide-content">
-    <div class="sec-label">Part 06 · MA × ATW · 产品维度</div>
-    <h2>赛道机会图谱（按产品分）</h2>
-    <div style="flex:1;position:relative;margin-top:0.5em;">
-      <canvas id="bubbleChart" style="width:100%;height:100%;"></canvas>
+<!-- ══ S10 数据附录 ══ -->
+<div class="slide" id="s10">
+  <div class="sbar"></div>
+  <div class="sc" style="padding-bottom:.5rem">
+    <div class="sec">附录 · 数据来源</div>
+    <h2 style="margin-bottom:.5em">完整数据看板</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(.5rem,1vw,.8rem)">
+      <div style="display:flex;flex-direction:column;gap:.5rem">
+        <a href="https://jrchuckie.github.io/zb-insight-2025/" target="_blank" style="display:block;background:white;border:1px solid rgba(27,79,216,.2);padding:.8em 1em;border-radius:3px;text-decoration:none">
+          <div style="font-weight:600;font-size:clamp(.7rem,1vw,.85rem);color:var(--co)">📊 搜索量+内容数据看板</div>
+          <div style="font-size:clamp(.58rem,.8vw,.68rem);color:var(--ink3);margin-top:.2em">jrchuckie.github.io/zb-insight-2025/</div>
+        </a>
+        <a href="https://picasso-private-1251524319.cos.ap-shanghai.myqcloud.com/formula-static/dibp/pm46ebtn/zb_merged_v4.html" target="_blank" style="display:block;background:white;border:1px solid rgba(27,79,216,.2);padding:.8em 1em;border-radius:3px;text-decoration:none">
+          <div style="font-weight:600;font-size:clamp(.7rem,1vw,.85rem);color:var(--co)">📦 赛道GMV（按产品分）</div>
+          <div style="font-size:clamp(.58rem,.8vw,.68rem);color:var(--ink3);margin-top:.2em">42赛道 · 淘天/抖音/京东合并口径</div>
+        </a>
+        <a href="https://picasso-private-1251524319.cos.ap-shanghai.myqcloud.com/formula-static/dibp/13qqlm78/zb-efficacy.html" target="_blank" style="display:block;background:white;border:1px solid rgba(27,79,216,.2);padding:.8em 1em;border-radius:3px;text-decoration:none">
+          <div style="font-weight:600;font-size:clamp(.7rem,1vw,.85rem);color:var(--co)">💊 功效GMV（按功效分）</div>
+          <div style="font-size:clamp(.58rem,.8vw,.68rem);color:var(--ink3);margin-top:.2em">13功效心智 · 含分摊口径</div>
+        </a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:.5rem">
+        <a href="https://picasso-private-1251524319.cos.ap-shanghai.myqcloud.com/formula-static/dibp/ddny4jcn/zb-ad-reverse.html" target="_blank" style="display:block;background:white;border:1px solid rgba(27,79,216,.2);padding:.8em 1em;border-radius:3px;text-decoration:none">
+          <div style="font-weight:600;font-size:clamp(.7rem,1vw,.85rem);color:var(--co)">💰 广告主投放全览</div>
+          <div style="font-size:clamp(.58rem,.8vw,.68rem);color:var(--ink3);margin-top:.2em">79家广告主 · Y25投放净额 1.49亿</div>
+        </a>
+        <a href="https://picasso-private-1251524319.cos.ap-shanghai.myqcloud.com/formula-static/dibp/qxr00eip/zb-brand-ad.html" target="_blank" style="display:block;background:white;border:1px solid rgba(27,79,216,.2);padding:.8em 1em;border-radius:3px;text-decoration:none">
+          <div style="font-weight:600;font-size:clamp(.7rem,1vw,.85rem);color:var(--co)">🏆 各赛道 Top20 品牌</div>
+          <div style="font-size:clamp(.58rem,.8vw,.68rem);color:var(--ink3);margin-top:.2em">GMV + 小红书投放 · 品牌渗透率</div>
+        </a>
+        <a href="https://picasso-private-1251524319.cos.ap-shanghai.myqcloud.com/formula-static/dibp/b7a4vgpq/zb-cr20.html" target="_blank" style="display:block;background:white;border:1px solid rgba(27,79,216,.2);padding:.8em 1em;border-radius:3px;text-decoration:none">
+          <div style="font-weight:600;font-size:clamp(.7rem,1vw,.85rem);color:var(--co)">📈 各赛道 CR20 集中度</div>
+          <div style="font-size:clamp(.58rem,.8vw,.68rem);color:var(--ink3);margin-top:.2em">头部品牌市场份额集中度分析</div>
+        </a>
+      </div>
     </div>
+    <p style="margin-top:.8rem;font-size:clamp(.58rem,.8vw,.68rem);color:var(--ink3)">数据口径：2025全年 | 生成：2026-06-10</p>
   </div>
-  <div class="slide-footer"><span class="fn">MA × ATW 气泡图 — 产品维度</span><span class="pg">11 / 13</span></div>
+  <div class="sf"><span class="fn">数据附录</span><span class="pg">11 / 11</span></div>
 </div>
 
-<!-- ===== SLIDE 11: MA×ATW 功效气泡图 ===== -->
-<div class="slide">
-  <div class="slide-bar"></div>
-  <div class="slide-content">
-    <div class="sec-label">Part 06 · MA × ATW · 功效维度</div>
-    <h2>赛道机会图谱（按功效分）</h2>
-    <div style="flex:1;position:relative;margin-top:0.5em;">
-      <canvas id="bubbleChart2" style="width:100%;height:100%;"></canvas>
-    </div>
-  </div>
-  <div class="slide-footer"><span class="fn">MA × ATW 气泡图 — 功效维度</span><span class="pg">12 / 13</span></div>
-</div>
+</div><!-- #deck -->
 
-<!-- ===== SLIDE 12: Top20客户嵌入 ===== -->
-<div class="slide" style="display:flex;flex-direction:column;">
-  <div class="slide-bar"></div>
-  <div style="padding:clamp(0.6rem,1.5vw,1.2rem) var(--slide-padding) 0;flex-shrink:0;position:relative;z-index:2;">
-    <div class="sec-label">Part 07 · 各赛道 Top 20 客户</div>
-    <h2 style="margin-bottom:0.2em;">品牌 GMV &amp; 小红书投放详情</h2>
-  </div>
-  <div class="iframe-wrap" style="flex:1;padding:0 clamp(1rem,3vw,2rem) clamp(0.5rem,1vw,1rem);position:relative;z-index:2;">
-    <iframe src="https://picasso-private-1251524319.cos.ap-shanghai.myqcloud.com/formula-static/dibp/qxr00eip/zb-brand-ad.html" style="width:100%;height:100%;border:1px solid rgba(27,79,216,0.15);border-radius:4px;"></iframe>
-  </div>
-  <div class="slide-footer"><span class="fn">各赛道 Top 20 客户</span><span class="pg">13 / 13</span></div>
-</div>
+<!-- nav -->
+<div id="nav"></div>
+<div id="progress"></div>
+<button class="arr" id="arr-prev" onclick="go(-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+<button class="arr" id="arr-next" onclick="go(1)"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></button>
 
 <script>
-// ===== NAV DOTS =====
-const slides = document.querySelectorAll('.slide');
-const dots = document.querySelectorAll('#nav-dots span');
-function updateDots() {
-  const idx = Math.round(window.scrollY / window.innerHeight);
-  dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+// ══ NAV ══
+const TOTAL = 11;
+let cur = 0, animating = false;
+const navEl = document.getElementById('nav');
+const prog = document.getElementById('progress');
+for(let i=0;i<TOTAL;i++){const s=document.createElement('span');s.onclick=()=>go(i-cur);navEl.appendChild(s)}
+function updateNav(){
+  document.querySelectorAll('#nav span').forEach((s,i)=>s.classList.toggle('on',i===cur));
+  prog.style.width=((cur+1)/TOTAL*100)+'%';
+  document.getElementById('arr-prev').style.opacity=cur===0?'0.3':'1';
+  document.getElementById('arr-next').style.opacity=cur===TOTAL-1?'0.3':'1';
 }
-window.addEventListener('scroll', updateDots, { passive: true });
-dots.forEach(d => {
-  d.addEventListener('click', () => {
-    const idx = +d.dataset.idx;
-    window.scrollTo({ top: idx * window.innerHeight, behavior: 'smooth' });
+function go(delta){
+  if(animating)return;
+  const next=cur+delta;
+  if(next<0||next>=TOTAL)return;
+  animating=true;
+  const slides=document.querySelectorAll('.slide');
+  slides[cur].classList.add('exit-up');
+  slides[cur].classList.remove('active');
+  cur=next;
+  slides[cur].classList.add('active');
+  setTimeout(()=>{slides.forEach(s=>s.classList.remove('exit-up'));animating=false;initChart(cur)},380);
+  updateNav();
+}
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowDown'||e.key==='PageDown')go(1);
+  if(e.key==='ArrowUp'||e.key==='PageUp')go(-1);
+});
+let ty=0;
+document.addEventListener('wheel',e=>{ty+=e.deltaY;if(Math.abs(ty)>60){go(ty>0?1:-1);ty=0;}});
+let t0=null;
+document.addEventListener('touchstart',e=>{t0=e.touches[0].clientY},{passive:true});
+document.addEventListener('touchend',e=>{if(t0===null)return;const d=t0-e.changedTouches[0].clientY;if(Math.abs(d)>40)go(d>0?1:-1);t0=null;});
+updateNav();
+
+// ══ DATA ══
+const TRACKS=[
+  {n:'🥚 燕窝',gmv:69.7,yoy:10.8,sv:295.6,sv_yoy:13.1,imp_yoy:0.4,note_yoy:16.0,ad:2920,tr:0.43,clients:8},
+  {n:'🌶 枸杞',gmv:41.8,yoy:38.2,sv:209.3,sv_yoy:7.2,imp_yoy:-7.2,note_yoy:94.7,ad:91,tr:0.03,clients:1},
+  {n:'🍯 阿胶',gmv:27.2,yoy:21.3,sv:222.4,sv_yoy:11.5,imp_yoy:-7.3,note_yoy:25.9,ad:1296,tr:0.45,clients:5},
+  {n:'🌳 西洋参',gmv:20.0,yoy:13.2,sv:69.0,sv_yoy:11.8,imp_yoy:-13.6,note_yoy:45.9,ad:80,tr:0.05,clients:1},
+  {n:'🍯 蜂蜜/蜂产品',gmv:18.7,yoy:-2.4,sv:327.7,sv_yoy:15.6,imp_yoy:7.4,note_yoy:78.3,ad:26,tr:0.01,clients:2},
+  {n:'🌿 冬虫夏草',gmv:16.0,yoy:96.2,sv:15.3,sv_yoy:6.4,imp_yoy:-22.1,note_yoy:9.8,ad:72,tr:0.05,clients:3},
+  {n:'🌳 灵芝/孢子粉',gmv:13.3,yoy:-2.8,sv:70.3,sv_yoy:18.0,imp_yoy:13.9,note_yoy:105.9,ad:82,tr:0.07,clients:2},
+  {n:'🌾 五谷代餐',gmv:12.4,yoy:16.2,sv:59.1,sv_yoy:-4.5,imp_yoy:-10.0,note_yoy:40.0,ad:91,tr:0.02,clients:1},
+  {n:'🐚 海参',gmv:10.4,yoy:135.7,sv:334.8,sv_yoy:27.3,imp_yoy:3.3,note_yoy:35.3,ad:65,tr:0.11,clients:2},
+  {n:'🌳 人参',gmv:10.3,yoy:20.5,sv:156.8,sv_yoy:28.8,imp_yoy:1.1,note_yoy:50.5,ad:0,tr:0,clients:1},
+  {n:'🍯 养生膏',gmv:9.0,yoy:18.8,sv:43.9,sv_yoy:8.8,imp_yoy:-17.8,note_yoy:58.6,ad:489,tr:0.46,clients:6},
+  {n:'🍵 养生茶·菊枸',gmv:8.8,yoy:-16.0,sv:53.1,sv_yoy:1.7,imp_yoy:26.0,note_yoy:296.3,ad:0,tr:0,clients:0},
+  {n:'🌿 黄芪',gmv:7.0,yoy:20.9,sv:61.3,sv_yoy:0,imp_yoy:0,note_yoy:0,ad:0,tr:0,clients:1},
+  {n:'💊 五黑丸',gmv:7.4,yoy:-16.0,sv:9.0,sv_yoy:-1.4,imp_yoy:62.1,note_yoy:89.7,ad:4962,tr:6.71,clients:11},
+  {n:'🦌 鹿茸',gmv:6.2,yoy:65.9,sv:89.8,sv_yoy:69.6,imp_yoy:18.5,note_yoy:79.6,ad:0,tr:0,clients:0},
+  {n:'🌿 黄精',gmv:5.6,yoy:210.6,sv:38.1,sv_yoy:82.0,imp_yoy:16.3,note_yoy:127.5,ad:991,tr:1.92,clients:3},
+  {n:'🌿 石斛/枫斗',gmv:5.5,yoy:-7.3,sv:91.3,sv_yoy:26.8,imp_yoy:12.0,note_yoy:45.6,ad:147,tr:0.28,clients:3},
+  {n:'🌳 高丽参/红参',gmv:5.2,yoy:-16.3,sv:91.4,sv_yoy:3.1,imp_yoy:-10.6,note_yoy:20.0,ad:454,tr:0.95,clients:3},
+  {n:'🐟 花胶/鱼胶',gmv:4.9,yoy:-20.8,sv:0,sv_yoy:0,imp_yoy:0,note_yoy:0,ad:1149,tr:2.46,clients:3},
+  {n:'💊 养生丸·其他',gmv:4.7,yoy:-7.9,sv:143.6,sv_yoy:25.0,imp_yoy:15.8,note_yoy:76.8,ad:0,tr:0,clients:0},
+  {n:'🌿 天麻',gmv:4.0,yoy:187.1,sv:46.4,sv_yoy:48.5,imp_yoy:0.6,note_yoy:72.5,ad:0,tr:0,clients:0},
+  {n:'🌿 茯苓',gmv:3.8,yoy:37.6,sv:118.1,sv_yoy:47.9,imp_yoy:44.0,note_yoy:163.5,ad:0,tr:0,clients:0},
+  {n:'🌿 沙棘',gmv:3.5,yoy:3.0,sv:56.3,sv_yoy:12.0,imp_yoy:13.2,note_yoy:51.9,ad:0,tr:0,clients:0},
+  {n:'🍵 养生茶·其他',gmv:3.4,yoy:36.6,sv:146.2,sv_yoy:13.9,imp_yoy:53.4,note_yoy:125.0,ad:0,tr:0,clients:0},
+  {n:'🌿 酸枣仁',gmv:2.8,yoy:44.3,sv:25.9,sv_yoy:24.6,imp_yoy:24.9,note_yoy:154.0,ad:0,tr:0,clients:0},
+  {n:'🌿 橘皮/陈皮',gmv:2.8,yoy:150.1,sv:295.0,sv_yoy:28.4,imp_yoy:14.7,note_yoy:82.1,ad:0,tr:0,clients:0},
+  {n:'🌿 熟地黄',gmv:2.7,yoy:946.5,sv:5.4,sv_yoy:70.6,imp_yoy:-7.6,note_yoy:170.0,ad:0,tr:0,clients:0},
+  {n:'🌿 金银花',gmv:2.7,yoy:-57.6,sv:66.9,sv_yoy:18.7,imp_yoy:12.2,note_yoy:161.4,ad:0,tr:0,clients:0},
+  {n:'🌾 高蛋白代餐',gmv:2.6,yoy:59.9,sv:0,sv_yoy:0,imp_yoy:0,note_yoy:0,ad:0,tr:0,clients:0},
+  {n:'🌿 党参',gmv:2.6,yoy:235.1,sv:33.5,sv_yoy:2.5,imp_yoy:-15.8,note_yoy:89.3,ad:0,tr:0,clients:0},
+  {n:'💊 五黑丸/黑芝麻',gmv:2.6,yoy:-7.9,sv:0,sv_yoy:0,imp_yoy:0,note_yoy:0,ad:0,tr:0,clients:0},
+  {n:'🍵 红枣枸杞',gmv:2.0,yoy:36.6,sv:27.0,sv_yoy:13.0,imp_yoy:13.9,note_yoy:106.7,ad:0,tr:0,clients:0},
+  {n:'🌿 桃胶',gmv:2.0,yoy:-39.2,sv:86.5,sv_yoy:33.0,imp_yoy:28.1,note_yoy:62.5,ad:0,tr:0,clients:0},
+  {n:'🌿 鸡内金',gmv:2.3,yoy:-45.2,sv:17.5,sv_yoy:13.3,imp_yoy:-3.7,note_yoy:89.2,ad:1158,tr:5.71,clients:5},
+  {n:'🌿 麦冬',gmv:2.2,yoy:98.3,sv:44.9,sv_yoy:43.3,imp_yoy:-17.0,note_yoy:117.4,ad:0,tr:0,clients:0},
+  {n:'🌿 葛根',gmv:2.1,yoy:403.1,sv:59.2,sv_yoy:36.8,imp_yoy:17.9,note_yoy:89.3,ad:0,tr:0,clients:0},
+  {n:'🌿 当归',gmv:0.97,yoy:53.9,sv:61.3,sv_yoy:24.1,imp_yoy:-10.8,note_yoy:108.5,ad:0,tr:0,clients:0},
+  {n:'🌿 黄芪(单味)',gmv:5.3,yoy:-5.5,sv:0,sv_yoy:0,imp_yoy:0,note_yoy:0,ad:0,tr:0,clients:1},
+  {n:'🌿 精制中药材',gmv:3.1,yoy:-2.4,sv:101.2,sv_yoy:40.8,imp_yoy:11.3,note_yoy:115.8,ad:10,tr:0.03,clients:4},
+];
+
+const EFFS=[
+  {n:'🎁 通用滋补/送礼',gmv:65.8,sv_yoy:10.4,imp_yoy:7.9,note_yoy:83.7,ma:6.5,atw:7.0},
+  {n:'🛡 免疫/补气',gmv:62.8,sv_yoy:21.2,imp_yoy:-0.9,note_yoy:61.0,ma:7.2,atw:6.5},
+  {n:'🍃 护肝/熬夜',gmv:49.9,sv_yoy:44.0,imp_yoy:14.3,note_yoy:128.6,ma:8.5,atw:5.0},
+  {n:'🌟 抗老/抗糖',gmv:42.1,sv_yoy:-2.1,imp_yoy:4.3,note_yoy:67.2,ma:5.5,atw:6.0},
+  {n:'❤️ 气血/补铁',gmv:42.1,sv_yoy:18.3,imp_yoy:43.3,note_yoy:197.0,ma:8.0,atw:7.5},
+  {n:'💪 男性滋补',gmv:40.8,sv_yoy:25.3,imp_yoy:-4.9,note_yoy:87.2,ma:6.8,atw:4.5},
+  {n:'🌸 女性/卵巢调理',gmv:40.7,sv_yoy:18.6,imp_yoy:2.3,note_yoy:88.6,ma:7.5,atw:6.8},
+  {n:'😴 助眠',gmv:23.6,sv_yoy:30.8,imp_yoy:36.5,note_yoy:125.6,ma:8.8,atw:5.5},
+  {n:'✨ 胶原蛋白肽',gmv:20.8,sv_yoy:-9.6,imp_yoy:-14.2,note_yoy:41.5,ma:3.5,atw:5.0},
+  {n:'🫁 润肺/护嗓',gmv:14.4,sv_yoy:12.7,imp_yoy:-5.7,note_yoy:80.1,ma:6.5,atw:3.5},
+  {n:'🌧 祛湿',gmv:14.2,sv_yoy:15.0,imp_yoy:11.7,note_yoy:119.2,ma:7.8,atw:4.0},
+  {n:'👁 明目/护眼',gmv:11.5,sv_yoy:39.9,imp_yoy:23.0,note_yoy:129.3,ma:8.5,atw:3.0},
+  {n:'⚖️ 减脂/体重',gmv:9.8,sv_yoy:14.5,imp_yoy:35.4,note_yoy:125.1,ma:7.5,atw:4.5},
+];
+
+// MA/ATW scores for tracks
+function scoreTrack(t){
+  // MA: sv规模(0-4) + sv_yoy(0-3) + imp/note_yoy均值(0-3)
+  const svScl = Math.min(4, t.sv/90);
+  const svYScl = Math.min(3, Math.max(0,(t.sv_yoy+10)/40));
+  const contentAvg = (t.imp_yoy + t.note_yoy)/2;
+  const contScl = Math.min(3, Math.max(0,(contentAvg+10)/80));
+  const ma = Math.round((svScl+svYScl+contScl)*10)/10;
+  // ATW: clients(0/2) + ad(0-4) + tr(0-4)
+  const clientScl = t.clients>0?2:0;
+  const adScl = Math.min(4, t.ad/1500);
+  const trScl = Math.min(4, t.tr/2);
+  const atw = Math.round((clientScl+adScl+trScl)*10)/10;
+  return {ma:Math.min(10,ma), atw:Math.min(10,atw)};
+}
+
+const AD_CATS=[
+  {n:'🥇 滋补名品',gmv:172.69,gmv_yoy:15.9,ad:6118,ad_yoy:8.9,tr:0.35,clients:28},
+  {n:'🌿 道地药材',gmv:61.52,gmv_yoy:-15.0,ad:2448,ad_yoy:78.6,tr:0.40,clients:17},
+  {n:'🌾 五谷代餐',gmv:51.46,gmv_yoy:26.0,ad:91,ad_yoy:54.8,tr:0.02,clients:1},
+  {n:'🍵 养生茶饮',gmv:34.56,gmv_yoy:-1.5,ad:268,ad_yoy:-7.9,tr:0.08,clients:4},
+  {n:'🍯 蜂蜜糖膏',gmv:34.00,gmv_yoy:1.6,ad:601,ad_yoy:101.5,tr:0.18,clients:10},
+  {n:'📋 其他',gmv:61.11,gmv_yoy:-14.4,ad:400,ad_yoy:-31.7,tr:0.07,clients:8},
+  {n:'💊 养生丸药食',gmv:7.40,gmv_yoy:-16.0,ad:4962,ad_yoy:18.1,tr:6.71,clients:11},
+];
+
+// ══ CHART INIT ══
+const chartInited={};
+function initChart(idx){
+  if(chartInited[idx])return;
+  chartInited[idx]=true;
+  if(idx===2)renderQuad();
+  if(idx===3)renderEff();
+  if(idx===4)renderAdBar();
+  if(idx===5)renderAdScatter();
+  if(idx===6)renderScoreTable();
+  if(idx===7)renderBubble1();
+  if(idx===8)renderBubble2();
+}
+initChart(0);
+window.addEventListener('resize',()=>{Object.keys(chartInited).forEach(i=>chartInited[i]=false);initChart(cur);});
+
+const CO='#1B4FD8',UP='#16a34a',DN='#dc2626',CL='#6B6B6B',GRID='rgba(27,79,216,.07)';
+const baseOpt={backgroundColor:'transparent',animation:true,animationDuration:600};
+
+function mkChart(id){
+  const el=document.getElementById(id);
+  if(!el)return null;
+  const existing=echarts.getInstanceByDom(el);
+  if(existing)existing.dispose();
+  return echarts.init(el,null,{renderer:'canvas'});
+}
+
+// S2: 四象限气泡
+function renderQuad(){
+  const c=mkChart('c-quad');if(!c)return;
+  const maxGmv=Math.max(...TRACKS.map(t=>t.gmv));
+  const data=TRACKS.map(t=>{
+    const x=t.yoy; // GMV YoY
+    const y=(t.imp_yoy+t.note_yoy)/2; // content avg yoy
+    const r=Math.max(8,Math.sqrt(t.gmv/maxGmv)*48);
+    const hl=t.gmv>10||Math.abs(t.yoy)>80;
+    return {value:[x,y,t.gmv],name:t.n,symbolSize:r,
+      label:{show:hl,formatter:t.n.replace(/[🥚🌶🍯🌳🌿🐚🌾🦌🍵🍬💊🐟⚠️🌱🍃❤️]/gu,'').trim(),fontSize:9,color:'#1a1a1a'},
+      itemStyle:{color:x>0&&y>0?'rgba(27,79,216,.7)':x>0&&y<0?'rgba(22,163,74,.6)':x<0&&y>0?'rgba(245,158,11,.6)':'rgba(220,38,38,.5)',
+        borderColor:'rgba(255,255,255,.8)',borderWidth:1.5}};
   });
-});
-updateDots();
-window.addEventListener('keydown', e => {
-  const cur = Math.round(window.scrollY / window.innerHeight);
-  if (e.key === 'ArrowDown' || e.key === 'PageDown') window.scrollTo({ top: (cur + 1) * window.innerHeight, behavior: 'smooth' });
-  if (e.key === 'ArrowUp' || e.key === 'PageUp') window.scrollTo({ top: Math.max(0, cur - 1) * window.innerHeight, behavior: 'smooth' });
-});
+  c.setOption({...baseOpt,
+    tooltip:{formatter:p=>`${p.name}<br/>GMV: ${p.value[2]}亿<br/>GMV YoY: ${p.value[0].toFixed(1)}%<br/>内容均值YoY: ${p.value[1].toFixed(1)}%`},
+    grid:{left:'10%',right:'5%',top:'5%',bottom:'8%'},
+    xAxis:{name:'GMV YoY %',nameTextStyle:{color:CL,fontSize:10},type:'value',splitLine:{lineStyle:{color:GRID}},
+      axisLine:{lineStyle:{color:'rgba(27,79,216,.2)'}},axisLabel:{color:CL,fontSize:10,formatter:v=>v+'%'},
+      markLine:{data:[{xAxis:0}],symbol:'none',lineStyle:{color:'rgba(27,79,216,.25)',type:'dashed'}}},
+    yAxis:{name:'内容均值YoY %',nameTextStyle:{color:CL,fontSize:10},type:'value',splitLine:{lineStyle:{color:GRID}},
+      axisLine:{lineStyle:{color:'rgba(27,79,216,.2)'}},axisLabel:{color:CL,fontSize:10,formatter:v=>v+'%'},
+      markLine:{data:[{yAxis:0}],symbol:'none',lineStyle:{color:'rgba(27,79,216,.25)',type:'dashed'}}},
+    series:[{type:'scatter',data,label:{position:'top'},emphasis:{focus:'self'}}],
+    graphic:[
+      {type:'text',left:'62%',top:'8%',style:{text:'高增长·高内容热度',fill:'rgba(27,79,216,.4)',fontSize:10,fontWeight:600}},
+      {type:'text',left:'62%',bottom:'12%',style:{text:'高增长·内容待起',fill:'rgba(22,163,74,.4)',fontSize:10,fontWeight:600}},
+      {type:'text',left:'5%',top:'8%',style:{text:'承压·内容热',fill:'rgba(245,158,11,.4)',fontSize:10,fontWeight:600}},
+      {type:'text',left:'5%',bottom:'12%',style:{text:'双重承压',fill:'rgba(220,38,38,.35)',fontSize:10,fontWeight:600}},
+    ]
+  });
+}
 
-// ===== BUBBLE CHART (产品维度) =====
-(function() {
-  const canvas = document.getElementById('bubbleChart');
-  if (!canvas) return;
+// S3: 功效双轴
+function renderEff(){
+  const c=mkChart('c-eff');if(!c)return;
+  const sorted=[...EFFS].sort((a,b)=>b.gmv-a.gmv);
+  c.setOption({...baseOpt,
+    tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
+    legend:{data:['GMV（亿）','搜索量YoY%'],bottom:0,textStyle:{color:CL,fontSize:10}},
+    grid:{left:'2%',right:'6%',top:'5%',bottom:'10%',containLabel:true},
+    xAxis:{type:'category',data:sorted.map(d=>d.n.replace(/[^\u4e00-\u9fa5\/]/g,'').slice(0,5)),
+      axisLabel:{color:CL,fontSize:9,rotate:30},axisLine:{show:false},axisTick:{show:false}},
+    yAxis:[
+      {type:'value',name:'GMV（亿）',nameTextStyle:{color:CL,fontSize:10},axisLabel:{color:CL,fontSize:9},splitLine:{lineStyle:{color:GRID}},axisLine:{show:false}},
+      {type:'value',name:'搜索YoY%',nameTextStyle:{color:CL,fontSize:10},axisLabel:{color:CL,fontSize:9,formatter:v=>v+'%'},splitLine:{show:false},axisLine:{show:false}},
+    ],
+    series:[
+      {name:'GMV（亿）',type:'bar',data:sorted.map(d=>d.gmv),itemStyle:{color:CO,borderRadius:[2,2,0,0]},barMaxWidth:32},
+      {name:'搜索量YoY%',type:'line',yAxisIndex:1,data:sorted.map(d=>d.sv_yoy),
+        itemStyle:{color:UP},lineStyle:{color:UP,width:2},symbol:'circle',symbolSize:5,
+        markLine:{data:[{yAxis:0}],symbol:'none',lineStyle:{color:'rgba(0,0,0,.2)',type:'dashed'}}},
+    ]
+  });
+}
 
-  // MA: 搜索量+搜索YoY+曝光YoY+笔记YoY+GMV YoY → normalized score 0-10
-  // ATW: 有客户(0/1) + takerate + 投放净额 → normalized 0-10
-  // 气泡大小 = GMV
-  const tracks = [
-    // name, MA, ATW, gmv_亿
-    ['燕窝', 7.2, 7.8, 69.7],
-    ['枸杞', 8.5, 3.0, 41.8],
-    ['阿胶', 6.8, 7.0, 27.2],
-    ['西洋参', 5.2, 3.5, 20.0],
-    ['蜂蜜/蜂产品', 4.5, 4.0, 18.7],
-    ['冬虫夏草', 7.0, 2.5, 16.0],
-    ['灵芝/孢子粉', 5.8, 3.5, 13.3],
-    ['五谷代餐', 7.5, 1.5, 12.4],
-    ['海参', 8.8, 2.0, 10.4],
-    ['人参', 6.5, 2.0, 10.3],
-    ['养生膏', 5.5, 5.5, 9.0],
-    ['养生茶·菊枸', 4.0, 3.0, 8.8],
-    ['黄芪', 6.2, 1.0, 7.0],
-    ['鹿茸', 7.8, 1.0, 6.2],
-    ['黄精', 9.0, 5.5, 5.6],
-    ['石斛/枫斗', 6.0, 4.0, 5.5],
-    ['高丽参/红参', 4.2, 6.5, 5.2],
-    ['五黑丸', 6.5, 9.5, 7.4],
-    ['花胶/鱼胶', 4.0, 7.0, 4.9],
-    ['养生丸·其他', 5.0, 5.0, 4.7],
-    ['天麻', 8.5, 1.0, 4.0],
-    ['茯苓', 8.2, 1.0, 3.8],
-    ['酸枣仁', 7.0, 1.0, 2.8],
-    ['橘皮/陈皮', 8.8, 1.0, 2.8],
-    ['鸡内金', 5.5, 7.5, 2.3],
-  ];
-
-  drawBubble(canvas, tracks, '产品维度');
-})();
-
-// ===== BUBBLE CHART (功效维度) =====
-(function() {
-  const canvas = document.getElementById('bubbleChart2');
-  if (!canvas) return;
-  const effs = [
-    // name, MA, ATW, gmv_亿
-    ['通用滋补/送礼', 6.5, 7.0, 65.8],
-    ['免疫/补气', 7.2, 6.5, 62.8],
-    ['护肝/熬夜', 8.5, 5.0, 49.9],
-    ['抗老/抗糖', 5.5, 6.0, 42.1],
-    ['气血/补铁', 8.0, 7.5, 42.1],
-    ['男性滋补', 6.8, 4.5, 40.8],
-    ['女性/卵巢调理', 7.5, 6.8, 40.7],
-    ['助眠', 8.8, 5.5, 23.6],
-    ['胶原蛋白肽', 3.5, 5.0, 20.8],
-    ['润肺/护嗓', 6.5, 3.5, 14.4],
-    ['祛湿', 7.8, 4.0, 14.2],
-    ['明目/护眼', 8.5, 3.0, 11.5],
-    ['减脂/体重管理', 7.5, 4.5, 9.8],
-  ];
-  drawBubble(canvas, effs, '功效维度');
-})();
-
-function drawBubble(canvas, data, title) {
-  const dpr = window.devicePixelRatio || 1;
-  function resize() {
-    const rect = canvas.parentElement.getBoundingClientRect();
-    canvas.width = rect.width * dpr;
-    canvas.height = rect.height * dpr;
-    canvas.style.width = rect.width + 'px';
-    canvas.style.height = rect.height + 'px';
-    draw();
-  }
-
-  function draw() {
-    const ctx = canvas.getContext('2d');
-    ctx.scale(dpr, dpr);
-    const W = canvas.width / dpr, H = canvas.height / dpr;
-    ctx.clearRect(0, 0, W, H);
-
-    const PAD = { l: 60, r: 30, t: 30, b: 50 };
-    const plotW = W - PAD.l - PAD.r, plotH = H - PAD.t - PAD.b;
-
-    // bg
-    ctx.fillStyle = '#F5F2EB';
-    ctx.fillRect(0, 0, W, H);
-
-    // grid
-    ctx.strokeStyle = 'rgba(27,79,216,0.08)';
-    ctx.lineWidth = 1;
-    for (let i = 0; i <= 10; i += 2) {
-      const x = PAD.l + (i / 10) * plotW;
-      const y = PAD.t + ((10 - i) / 10) * plotH;
-      ctx.beginPath(); ctx.moveTo(x, PAD.t); ctx.lineTo(x, PAD.t + plotH); ctx.stroke();
-      ctx.beginPath(); ctx.moveTo(PAD.l, y); ctx.lineTo(PAD.l + plotW, y); ctx.stroke();
-    }
-
-    // quadrant bg
-    const midX = PAD.l + 0.5 * plotW, midY = PAD.t + 0.5 * plotH;
-    ctx.fillStyle = 'rgba(27,79,216,0.04)'; ctx.fillRect(midX, PAD.t, plotW / 2, plotH / 2); // top-right
-    ctx.fillStyle = 'rgba(192,57,43,0.04)'; ctx.fillRect(PAD.l, PAD.t + plotH / 2, plotW / 2, plotH / 2); // bottom-left
-
-    // quadrant labels
-    ctx.font = `${Math.max(10, W * 0.012)}px Hanken Grotesk, sans-serif`;
-    ctx.fillStyle = 'rgba(27,79,216,0.35)';
-    ctx.textAlign = 'right'; ctx.textBaseline = 'top';
-    ctx.fillText('重点进攻 ★', PAD.l + plotW - 6, PAD.t + 6);
-    ctx.fillStyle = 'rgba(27,79,216,0.25)';
-    ctx.textAlign = 'left'; ctx.textBaseline = 'top';
-    ctx.fillText('防守巩固', PAD.l + 6, PAD.t + 6);
-    ctx.fillStyle = 'rgba(150,150,150,0.4)';
-    ctx.textAlign = 'right'; ctx.textBaseline = 'bottom';
-    ctx.fillText('机会培育', PAD.l + plotW - 6, PAD.t + plotH - 6);
-    ctx.textAlign = 'left';
-    ctx.fillText('观望审视', PAD.l + 6, PAD.t + plotH - 6);
-
-    // quadrant divider
-    ctx.strokeStyle = 'rgba(27,79,216,0.2)'; ctx.lineWidth = 1.5; ctx.setLineDash([4, 4]);
-    ctx.beginPath(); ctx.moveTo(midX, PAD.t); ctx.lineTo(midX, PAD.t + plotH); ctx.stroke();
-    ctx.beginPath(); ctx.moveTo(PAD.l, midY); ctx.lineTo(PAD.l + plotW, midY); ctx.stroke();
-    ctx.setLineDash([]);
-
-    // axis labels
-    ctx.fillStyle = '#6B6B6B';
-    ctx.font = `600 ${Math.max(10, W * 0.013)}px Hanken Grotesk, sans-serif`;
-    ctx.textAlign = 'center'; ctx.textBaseline = 'top';
-    ctx.fillText('Market Attractiveness →', PAD.l + plotW / 2, PAD.t + plotH + 8);
-    ctx.save(); ctx.translate(14, PAD.t + plotH / 2); ctx.rotate(-Math.PI / 2);
-    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-    ctx.fillText('Ability to Win →', 0, 0);
-    ctx.restore();
-
-    // bubbles
-    const maxGmv = Math.max(...data.map(d => d[3]));
-    const maxR = Math.min(plotW, plotH) * 0.12;
-    const minR = 6;
-
-    data.forEach(([name, ma, atw, gmv]) => {
-      const x = PAD.l + (ma / 10) * plotW;
-      const y = PAD.t + ((10 - atw) / 10) * plotH;
-      const r = minR + (gmv / maxGmv) * (maxR - minR);
-
-      const isTopRight = ma >= 5 && atw >= 5;
-      const color = isTopRight ? '27,79,216' : '100,100,120';
-
-      ctx.beginPath();
-      ctx.arc(x, y, r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(${color},0.18)`;
-      ctx.fill();
-      ctx.strokeStyle = `rgba(${color},0.7)`;
-      ctx.lineWidth = 1.5;
-      ctx.stroke();
-
-      // label
-      const fs = Math.max(8, W * 0.009);
-      ctx.font = `500 ${fs}px Hanken Grotesk, sans-serif`;
-      ctx.fillStyle = `rgba(${color},0.9)`;
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      const maxW = r * 2.5;
-      let label = name;
-      if (ctx.measureText(label).width > maxW) {
-        while (label.length > 2 && ctx.measureText(label + '…').width > maxW) label = label.slice(0, -1);
-        label += '…';
-      }
-      ctx.fillText(label, x, y);
+// S4: 投放柱状 + Takerate
+function renderAdBar(){
+  const c1=mkChart('c-ad-bar');
+  const c2=mkChart('c-takerate');
+  if(c1){
+    const sorted=[...AD_CATS].sort((a,b)=>b.ad-a.ad);
+    c1.setOption({...baseOpt,
+      tooltip:{trigger:'axis',formatter:p=>`${p[0].name}<br/>投放净额: ${p[0].value}万<br/>YoY: ${sorted[p[0].dataIndex].ad_yoy>0?'+':''}${sorted[p[0].dataIndex].ad_yoy}%`},
+      grid:{left:'2%',right:'2%',top:'5%',bottom:'5%',containLabel:true},
+      xAxis:{type:'value',axisLabel:{color:CL,fontSize:9},splitLine:{lineStyle:{color:GRID}},axisLine:{show:false}},
+      yAxis:{type:'category',data:sorted.map(d=>d.n),axisLabel:{color:'#1a1a1a',fontSize:10},axisLine:{show:false},axisTick:{show:false}},
+      series:[{type:'bar',data:sorted.map(d=>({value:d.ad,
+        itemStyle:{color:d.ad>2000?CO:d.ad>500?'rgba(27,79,216,.6)':'rgba(27,79,216,.35)',borderRadius:[0,2,2,0]}})),barMaxWidth:18,
+        label:{show:true,position:'right',fontSize:9,color:CL,formatter:p=>p.value+'万'}}]
     });
-
-    ctx.setTransform(1, 0, 0, 1, 0, 0);
   }
+  if(c2){
+    c2.setOption({...baseOpt,
+      tooltip:{trigger:'axis'},
+      grid:{left:'2%',right:'5%',top:'5%',bottom:'5%',containLabel:true},
+      xAxis:{type:'value',axisLabel:{color:CL,fontSize:9,formatter:v=>v+'%'},splitLine:{lineStyle:{color:GRID}},axisLine:{show:false}},
+      yAxis:{type:'category',data:AD_CATS.map(d=>d.n),axisLabel:{color:'#1a1a1a',fontSize:10},axisLine:{show:false},axisTick:{show:false}},
+      series:[{type:'bar',data:AD_CATS.map(d=>({value:d.tr,
+        itemStyle:{color:d.tr>1?DN:d.tr>0.3?'rgba(245,158,11,.8)':'rgba(27,79,216,.4)',borderRadius:[0,2,2,0]}})),barMaxWidth:18,
+        label:{show:true,position:'right',fontSize:9,color:CL,formatter:p=>p.value+'%'}}]
+    });
+  }
+}
 
-  resize();
-  window.addEventListener('resize', () => { ctx && ctx.setTransform && ctx.setTransform(1,0,0,1,0,0); resize(); });
+// S5: 赛道投放散点
+function renderAdScatter(){
+  const c=mkChart('c-ad-scatter');if(!c)return;
+  const withAd=TRACKS.filter(t=>t.ad>0);
+  const maxGmv=Math.max(...withAd.map(t=>t.gmv));
+  c.setOption({...baseOpt,
+    tooltip:{formatter:p=>`${p.name}<br/>GMV YoY: ${p.value[0]}%<br/>投放净额: ${p.value[1]}万<br/>Takerate: ${p.value[2]}%<br/>GMV: ${p.value[3]}亿`},
+    grid:{left:'10%',right:'5%',top:'5%',bottom:'8%',containLabel:true},
+    xAxis:{name:'GMV YoY %',nameTextStyle:{color:CL,fontSize:10},type:'value',splitLine:{lineStyle:{color:GRID}},
+      axisLabel:{color:CL,fontSize:10,formatter:v=>v+'%'},axisLine:{lineStyle:{color:GRID}},
+      markLine:{data:[{xAxis:0}],symbol:'none',lineStyle:{color:'rgba(27,79,216,.2)',type:'dashed'}}},
+    yAxis:{name:'投放净额（万元）',nameTextStyle:{color:CL,fontSize:10},type:'value',splitLine:{lineStyle:{color:GRID}},
+      axisLabel:{color:CL,fontSize:10},axisLine:{show:false}},
+    series:[{type:'scatter',
+      data:withAd.map(t=>({value:[t.yoy,t.ad,t.tr,t.gmv],name:t.n,
+        symbolSize:Math.max(10,Math.sqrt(t.gmv/maxGmv)*50),
+        itemStyle:{color:t.tr>2?DN:t.tr>0.5?'rgba(245,158,11,.8)':CO,opacity:.8,borderColor:'white',borderWidth:1.5}})),
+      label:{show:true,formatter:p=>withAd[p.dataIndex].n.replace(/[^\u4e00-\u9fa5\/]/g,'').slice(0,4),fontSize:9,color:'#1a1a1a',position:'top'},
+      emphasis:{focus:'self'}}],
+    graphic:[
+      {type:'text',right:'6%',top:'8%',style:{text:'Takerate>2% = 红色\n0.5-2% = 橙色\n<0.5% = 蓝色',fill:CL,fontSize:9}}
+    ]
+  });
+}
 
-  const ro = new ResizeObserver(resize);
-  ro.observe(canvas.parentElement);
+// S6: 打分表
+function renderScoreTable(){
+  const scored=TRACKS.map(t=>{
+    const {ma,atw}=scoreTrack(t);
+    const q=ma>=5&&atw>=5?'⭐重点进攻':ma<5&&atw>=5?'🛡防守巩固':ma>=5&&atw<5?'🚀机会培育':'👀观望审视';
+    return{...t,ma,atw,total:Math.round((ma+atw)*10)/10,q};
+  }).sort((a,b)=>b.total-a.total);
+
+  const colors={'⭐重点进攻':'#1B4FD8','🛡防守巩固':'#16a34a','🚀机会培育':'#f59e0b','👀观望审视':'#9ca3af'};
+  const tbody=document.getElementById('score-tbody');
+  tbody.innerHTML=scored.map((t,i)=>`<tr>
+    <td class="nr" style="color:var(--ink3)">${i+1}</td>
+    <td class="bd" style="white-space:nowrap">${t.n}</td>
+    <td class="nr"><b>${t.ma}</b>/10</td>
+    <td class="nr"><b>${t.atw}</b>/10</td>
+    <td class="nr" style="color:var(--co);font-weight:700">${t.total}</td>
+    <td class="nr">${t.gmv}</td>
+    <td><span class="score-tag" style="background:${colors[t.q]}">${t.q}</span></td>
+  </tr>`).join('');
+}
+
+// S7: 产品气泡
+function renderBubble1(){
+  const c=mkChart('c-bubble1');if(!c)return;
+  const maxGmv=Math.max(...TRACKS.map(t=>t.gmv));
+  const {ma:MA,atw:ATW}=({ma:TRACKS.map(t=>scoreTrack(t).ma),atw:TRACKS.map(t=>scoreTrack(t).atw)});
+  const data=TRACKS.map((t,i)=>{
+    const {ma,atw}=scoreTrack(t);
+    const isKey=t.gmv>8||t.ad>500;
+    return{value:[ma,atw,t.gmv],name:t.n,symbolSize:Math.max(10,Math.sqrt(t.gmv/maxGmv)*60),
+      label:{show:isKey,formatter:t.n.replace(/[^\u4e00-\u9fa5\/]/g,'').replace('养生茶','').trim().slice(0,4),fontSize:9,color:'#1a1a1a',position:'inside'},
+      itemStyle:{
+        color:ma>=5&&atw>=5?'rgba(27,79,216,.75)':ma<5&&atw>=5?'rgba(22,163,74,.65)':ma>=5&&atw<5?'rgba(245,158,11,.65)':'rgba(156,163,175,.55)',
+        borderColor:'rgba(255,255,255,.8)',borderWidth:1.5
+      }};
+  });
+  c.setOption({...baseOpt,
+    tooltip:{formatter:p=>{const t=TRACKS[p.dataIndex];const{ma,atw}=scoreTrack(t);return`${t.n}<br/>MA: ${ma} | ATW: ${atw}<br/>GMV: ${t.gmv}亿 YoY${t.yoy>0?'+':''}${t.yoy}%<br/>投放: ${t.ad}万 Takerate: ${t.tr}%`;}},
+    grid:{left:'8%',right:'5%',top:'5%',bottom:'8%',containLabel:true},
+    xAxis:{name:'Market Attractiveness →',nameLocation:'end',nameTextStyle:{color:CL,fontSize:10},type:'value',min:0,max:10,
+      splitLine:{lineStyle:{color:GRID}},axisLabel:{color:CL,fontSize:9},axisLine:{lineStyle:{color:GRID}},
+      markLine:{data:[{xAxis:5}],symbol:'none',lineStyle:{color:'rgba(27,79,216,.2)',type:'dashed'}}},
+    yAxis:{name:'↑ Ability to Win',nameTextStyle:{color:CL,fontSize:10},type:'value',min:0,max:10,
+      splitLine:{lineStyle:{color:GRID}},axisLabel:{color:CL,fontSize:9},axisLine:{show:false},
+      markLine:{data:[{yAxis:5}],symbol:'none',lineStyle:{color:'rgba(27,79,216,.2)',type:'dashed'}}},
+    series:[{type:'scatter',data,emphasis:{focus:'self'}}],
+    graphic:[
+      {type:'text',right:'6%',top:'8%',style:{text:'⭐ 重点进攻',fill:'rgba(27,79,216,.5)',fontSize:11,fontWeight:700}},
+      {type:'text',left:'6%',top:'8%',style:{text:'🛡 防守巩固',fill:'rgba(22,163,74,.5)',fontSize:11,fontWeight:700}},
+      {type:'text',right:'6%',bottom:'12%',style:{text:'🚀 机会培育',fill:'rgba(245,158,11,.6)',fontSize:11,fontWeight:700}},
+      {type:'text',left:'6%',bottom:'12%',style:{text:'👀 观望审视',fill:'rgba(156,163,175,.6)',fontSize:11,fontWeight:700}},
+    ]
+  });
+}
+
+// S8: 功效气泡
+function renderBubble2(){
+  const c=mkChart('c-bubble2');if(!c)return;
+  const maxGmv=Math.max(...EFFS.map(t=>t.gmv));
+  const data=EFFS.map(t=>({value:[t.ma,t.atw,t.gmv],name:t.n,
+    symbolSize:Math.max(14,Math.sqrt(t.gmv/maxGmv)*65),
+    label:{show:true,formatter:t.n.replace(/[^\u4e00-\u9fa5\/]/g,'').slice(0,5),fontSize:10,color:'#1a1a1a',position:'inside'},
+    itemStyle:{
+      color:t.ma>=5&&t.atw>=5?'rgba(27,79,216,.75)':t.ma<5&&t.atw>=5?'rgba(22,163,74,.65)':t.ma>=5&&t.atw<5?'rgba(245,158,11,.65)':'rgba(156,163,175,.55)',
+      borderColor:'rgba(255,255,255,.8)',borderWidth:2
+    }}));
+  c.setOption({...baseOpt,
+    tooltip:{formatter:p=>{const t=EFFS[p.dataIndex];return`${t.n}<br/>MA: ${t.ma} | ATW: ${t.atw}<br/>GMV: ${t.gmv}亿<br/>搜索YoY: ${t.sv_yoy>0?'+':''}${t.sv_yoy}%`;}},
+    grid:{left:'8%',right:'5%',top:'5%',bottom:'8%',containLabel:true},
+    xAxis:{name:'Market Attractiveness →',nameLocation:'end',nameTextStyle:{color:CL,fontSize:10},type:'value',min:0,max:10,
+      splitLine:{lineStyle:{color:GRID}},axisLabel:{color:CL,fontSize:9},axisLine:{lineStyle:{color:GRID}},
+      markLine:{data:[{xAxis:5}],symbol:'none',lineStyle:{color:'rgba(27,79,216,.2)',type:'dashed'}}},
+    yAxis:{name:'↑ Ability to Win',nameTextStyle:{color:CL,fontSize:10},type:'value',min:0,max:10,
+      splitLine:{lineStyle:{color:GRID}},axisLabel:{color:CL,fontSize:9},axisLine:{show:false},
+      markLine:{data:[{yAxis:5}],symbol:'none',lineStyle:{color:'rgba(27,79,216,.2)',type:'dashed'}}},
+    series:[{type:'scatter',data,emphasis:{focus:'self'}}],
+    graphic:[
+      {type:'text',right:'6%',top:'8%',style:{text:'⭐ 重点进攻',fill:'rgba(27,79,216,.5)',fontSize:11,fontWeight:700}},
+      {type:'text',left:'6%',top:'8%',style:{text:'🛡 防守巩固',fill:'rgba(22,163,74,.5)',fontSize:11,fontWeight:700}},
+      {type:'text',right:'6%',bottom:'12%',style:{text:'🚀 机会培育',fill:'rgba(245,158,11,.6)',fontSize:11,fontWeight:700}},
+      {type:'text',left:'6%',bottom:'12%',style:{text:'👀 观望审视',fill:'rgba(156,163,175,.6)',fontSize:11,fontWeight:700}},
+    ]
+  });
 }
 </script>
 </body>
