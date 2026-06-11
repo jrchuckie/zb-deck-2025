@@ -225,57 +225,84 @@ h2{font-family:"Newsreader",serif;font-style:italic;font-weight:600;font-size:cl
   <div class="sbar"></div>
   <div class="sc" style="padding-bottom:.25rem">
     <div class="sec">Part 05 · MA × ATW 评分框架（Market Attractiveness × Ability to Win）</div>
-    <div style="display:flex;flex-direction:column;gap:.3rem;flex:1;min-height:0;overflow-y:auto">
-      <div style="font-size:.65rem;font-weight:700;color:var(--co);letter-spacing:.05em;flex-shrink:0">横轴 — Market Attractiveness（市场吸引力）</div>
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.3rem;flex-shrink:0">
-        <div class="dim-box"><h4>GMV规模 <span style="font-size:.55rem;font-weight:400;color:var(--ink3)">35%</span></h4>
-            <div style="font-size:.58rem;color:var(--ink3);line-height:1.5;margin-bottom:.2em">衡量赛道整体市场体量，规模越大代表潜在GMV天花板越高</div>
-            <div class="dr" style="font-size:.62rem"><span style="color:var(--up);font-weight:600">≥30亿→5</span></div>
-            <div class="dr" style="font-size:.62rem">10-30亿→4</div><div class="dr" style="font-size:.62rem">5-10亿→3</div><div class="dr" style="font-size:.62rem">2-5亿→2</div>
-            <div class="dr" style="border:0;font-size:.62rem">&lt;2亿→1</div></div>
-          <div class="dim-box"><h4>GMV增速 <span style="font-size:.55rem;font-weight:400;color:var(--ink3)">35%</span></h4>
-            <div style="font-size:.58rem;color:var(--ink3);line-height:1.5;margin-bottom:.2em">增速快说明品类热度高，品牌更愿意在红利期加大营销投入</div>
-            <div class="dr" style="font-size:.62rem"><span style="color:var(--up);font-weight:600">≥50%→5</span></div>
-            <div class="dr" style="font-size:.62rem">20-49%→4</div><div class="dr" style="font-size:.62rem">8-19%→3</div><div class="dr" style="font-size:.62rem">0-7%→2</div>
-            <div class="dr" style="border:0;font-size:.62rem">负增长→1</div></div>
-          <div class="dim-box"><h4>CR20集中度 <span style="font-size:.55rem;font-weight:400;color:var(--ink3)">15%</span></h4>
-            <div style="font-size:.58rem;color:var(--ink3);line-height:1.5;margin-bottom:.2em">Top20占比高→客户集中、BD效率高；占比低→长尾碎片、维护成本高</div>
-            <div class="dr" style="font-size:.62rem"><span style="color:var(--up);font-weight:600">≥80%→5</span></div>
-            <div class="dr" style="font-size:.62rem">60-80%→4</div><div class="dr" style="font-size:.62rem">40-60%→3</div><div class="dr" style="font-size:.62rem">20-40%→2</div>
-            <div class="dr" style="border:0;font-size:.62rem">&lt;20%→1</div></div>
-          <div class="dim-box"><h4>VC新兴活跃 <span style="font-size:.55rem;font-weight:400;color:var(--ink3)">15%</span></h4>
-            <div style="font-size:.58rem;color:var(--ink3);line-height:1.5;margin-bottom:.2em">近2年VC/PE融资活跃→新品牌涌入、预算充足、投放意愿强</div>
-            <div class="dr" style="font-size:.62rem"><span style="color:var(--up);font-weight:600">🔥高热(养生茶/丸)→5</span></div>
-            <div class="dr" style="font-size:.62rem"><span style="color:var(--warn);font-weight:600">🌡️中热(燕窝)→3</span></div>
-            <div class="dr" style="border:0;font-size:.62rem"><span style="color:var(--ink3);font-weight:600">❄️冷静(大多药材)→1</span></div></div>
+    <div style="display:flex;flex-direction:column;gap:.4rem;flex:1;min-height:0">
+
+      <div style="font-size:.65rem;font-weight:700;color:var(--co);letter-spacing:.05em;flex-shrink:0;border-left:3px solid var(--co);padding-left:.4em">横轴 — Market Attractiveness（市场吸引力）</div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.35rem;flex-shrink:0">
+        <div class="dim-box">
+          <h4>GMV规模 <span style="font-size:.55rem;font-weight:400;color:var(--ink3)">35%</span></h4>
+          <div style="font-size:.58rem;color:var(--ink3);line-height:1.5;margin-bottom:.25em">衡量赛道整体市场体量，规模越大代表潜在GMV天花板越高</div>
+          <div class="dr" style="font-size:.62rem"><span style="color:var(--up);font-weight:600">≥30亿→5</span></div>
+          <div class="dr" style="font-size:.62rem">10-30亿→4</div>
+          <div class="dr" style="font-size:.62rem">5-10亿→3</div>
+          <div class="dr" style="font-size:.62rem">2-5亿→2</div>
+          <div class="dr" style="border:0;font-size:.62rem">&lt;2亿→1</div>
+        </div>
+        <div class="dim-box">
+          <h4>GMV增速 <span style="font-size:.55rem;font-weight:400;color:var(--ink3)">35%</span></h4>
+          <div style="font-size:.58rem;color:var(--ink3);line-height:1.5;margin-bottom:.25em">增速快说明品类热度高，品牌更愿意在红利期加大营销投入</div>
+          <div class="dr" style="font-size:.62rem"><span style="color:var(--up);font-weight:600">≥50%→5</span></div>
+          <div class="dr" style="font-size:.62rem">20-49%→4</div>
+          <div class="dr" style="font-size:.62rem">8-19%→3</div>
+          <div class="dr" style="font-size:.62rem">0-7%→2</div>
+          <div class="dr" style="border:0;font-size:.62rem">负增长→1</div>
+        </div>
+        <div class="dim-box">
+          <h4>CR20集中度 <span style="font-size:.55rem;font-weight:400;color:var(--ink3)">15%</span></h4>
+          <div style="font-size:.58rem;color:var(--ink3);line-height:1.5;margin-bottom:.25em">Top20占比高→客户集中、BD效率高；占比低→长尾碎片、维护成本高</div>
+          <div class="dr" style="font-size:.62rem"><span style="color:var(--up);font-weight:600">≥80%→5</span></div>
+          <div class="dr" style="font-size:.62rem">60-80%→4</div>
+          <div class="dr" style="font-size:.62rem">40-60%→3</div>
+          <div class="dr" style="font-size:.62rem">20-40%→2</div>
+          <div class="dr" style="border:0;font-size:.62rem">&lt;20%→1</div>
+        </div>
+        <div class="dim-box">
+          <h4>VC新兴活跃 <span style="font-size:.55rem;font-weight:400;color:var(--ink3)">15%</span></h4>
+          <div style="font-size:.58rem;color:var(--ink3);line-height:1.5;margin-bottom:.25em">近2年VC/PE融资活跃→新品牌涌入、预算充足、投放意愿强</div>
+          <div class="dr" style="font-size:.62rem"><span style="color:var(--up);font-weight:600">🔥 高热（养生茶/丸）→5</span></div>
+          <div class="dr" style="font-size:.62rem"><span style="color:var(--warn);font-weight:600">🌡️ 中热（燕窝）→3</span></div>
+          <div class="dr" style="border:0;font-size:.62rem"><span style="color:var(--ink3)">❄️ 冷静（大多药材）→1</span></div>
         </div>
       </div>
-      <div style="font-size:.65rem;font-weight:700;color:var(--up);letter-spacing:.05em;flex-shrink:0;margin-top:.1rem">纵轴 — Ability to Win（赢单能力）</div>
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.3rem;flex-shrink:0">
-  
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.3rem;flex-shrink:0">
-          <div class="dim-box"><h4>内容势能存量 <span style="font-size:.55rem;font-weight:400;color:var(--ink3)">20%</span></h4>
-            <div style="font-size:.58rem;color:var(--ink3);line-height:1.5;margin-bottom:.2em">笔记曝光量绝对值——存量越厚，内容生态越成熟，广告种草环境越好</div>
-            <div class="dr" style="font-size:.62rem"><span style="color:var(--up);font-weight:600">≥50亿→5</span></div>
-            <div class="dr" style="font-size:.62rem">20-50亿→4</div><div class="dr" style="font-size:.62rem">5-20亿→3</div><div class="dr" style="font-size:.62rem">1-5亿→2</div>
-            <div class="dr" style="border:0;font-size:.62rem">&lt;1亿→1</div></div>
-          <div class="dim-box"><h4>内容势能增速 <span style="font-size:.55rem;font-weight:400;color:var(--ink3)">15%</span></h4>
-            <div style="font-size:.58rem;color:var(--ink3);line-height:1.5;margin-bottom:.2em">曝光量YoY——增速快说明内容热度在上涨，是品牌加投的正向信号</div>
-            <div class="dr" style="font-size:.62rem"><span style="color:var(--up);font-weight:600">≥+50%→5</span></div>
-            <div class="dr" style="font-size:.62rem">+20-49%→4</div><div class="dr" style="font-size:.62rem">+8-19%→3</div><div class="dr" style="font-size:.62rem">+1-7%→2</div>
-            <div class="dr" style="border:0;font-size:.62rem">负增长→1</div></div>
-          <div class="dim-box"><h4>决策链路重要性 <span style="font-size:.55rem;font-weight:400;color:var(--ink3)">25%</span></h4>
-            <div style="font-size:.58rem;color:var(--ink3);line-height:1.5;margin-bottom:.2em">搜索量绝对值 &amp; 搜索YoY 平均分——消费者购前在XHS搜索越多，种草归因越强，续投意愿越高</div>
-            <div class="dr" style="font-size:.62rem"><span style="color:var(--up);font-weight:600">搜索≥200亿→5</span></div>
-            <div class="dr" style="font-size:.62rem">50-200亿→4 | 20-50亿→3</div>
-            <div class="dr" style="font-size:.62rem">5-20亿→2 | &lt;5亿→1</div>
-            <div class="dr" style="border:0;font-size:.62rem">搜索YoY同理 → 两分平均</div></div>
-          <div class="dim-box"><h4>解决方案成熟度 <span style="font-size:.55rem;font-weight:400;color:var(--ink3)">40%</span></h4>
-            <div style="font-size:.58rem;color:var(--ink3);line-height:1.5;margin-bottom:.2em">品牌维度：Top商家中有几家曾在XHS投过任何品类广告（口径A）</div>
-            <div class="dr" style="font-size:.62rem"><span style="color:var(--up);font-weight:600">≥5个→5</span></div>
-            <div class="dr" style="font-size:.62rem">3-4个→4</div><div class="dr" style="font-size:.62rem">1-2个→3</div>
-            <div class="dr" style="border:0;font-size:.62rem;color:var(--ink3)">0个→2（基础分，非0）</div>
+
+      <div style="font-size:.65rem;font-weight:700;color:var(--up);letter-spacing:.05em;flex-shrink:0;border-left:3px solid var(--up);padding-left:.4em">纵轴 — Ability to Win（赢单能力）</div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.35rem;flex-shrink:0">
+        <div class="dim-box">
+          <h4>内容势能存量 <span style="font-size:.55rem;font-weight:400;color:var(--ink3)">20%</span></h4>
+          <div style="font-size:.58rem;color:var(--ink3);line-height:1.5;margin-bottom:.25em">笔记曝光量绝对值——存量越厚，内容生态越成熟，广告种草环境越好</div>
+          <div class="dr" style="font-size:.62rem"><span style="color:var(--up);font-weight:600">≥50亿→5</span></div>
+          <div class="dr" style="font-size:.62rem">20-50亿→4</div>
+          <div class="dr" style="font-size:.62rem">5-20亿→3</div>
+          <div class="dr" style="font-size:.62rem">1-5亿→2</div>
+          <div class="dr" style="border:0;font-size:.62rem">&lt;1亿→1</div>
+        </div>
+        <div class="dim-box">
+          <h4>内容势能增速 <span style="font-size:.55rem;font-weight:400;color:var(--ink3)">15%</span></h4>
+          <div style="font-size:.58rem;color:var(--ink3);line-height:1.5;margin-bottom:.25em">曝光量YoY——增速快说明内容热度在上涨，是品牌加投的正向信号</div>
+          <div class="dr" style="font-size:.62rem"><span style="color:var(--up);font-weight:600">≥+50%→5</span></div>
+          <div class="dr" style="font-size:.62rem">+20-49%→4</div>
+          <div class="dr" style="font-size:.62rem">+8-19%→3</div>
+          <div class="dr" style="font-size:.62rem">+1-7%→2</div>
+          <div class="dr" style="border:0;font-size:.62rem">负增长→1</div>
+        </div>
+        <div class="dim-box">
+          <h4>决策链路重要性 <span style="font-size:.55rem;font-weight:400;color:var(--ink3)">25%</span></h4>
+          <div style="font-size:.58rem;color:var(--ink3);line-height:1.5;margin-bottom:.25em">搜索量绝对值 &amp; 搜索YoY 平均分——消费者购前在XHS搜索越多，种草归因越强，续投意愿越高</div>
+          <div class="dr" style="font-size:.62rem"><span style="color:var(--up);font-weight:600">搜索≥200亿→5</span></div>
+          <div class="dr" style="font-size:.62rem">50-200亿→4 | 20-50亿→3</div>
+          <div class="dr" style="font-size:.62rem">5-20亿→2 | &lt;5亿→1</div>
+          <div class="dr" style="border:0;font-size:.62rem">搜索YoY同理 → 两分平均</div>
+        </div>
+        <div class="dim-box">
+          <h4>解决方案成熟度 <span style="font-size:.55rem;font-weight:400;color:var(--ink3)">40%</span></h4>
+          <div style="font-size:.58rem;color:var(--ink3);line-height:1.5;margin-bottom:.25em">品牌维度：Top商家中有几家曾在XHS投过任何品类广告（口径A）</div>
+          <div class="dr" style="font-size:.62rem"><span style="color:var(--up);font-weight:600">≥5个→5</span></div>
+          <div class="dr" style="font-size:.62rem">3-4个→4</div>
+          <div class="dr" style="font-size:.62rem">1-2个→3</div>
+          <div class="dr" style="border:0;font-size:.62rem;color:var(--ink3)">0个→2（基础分，非0）</div>
+        </div>
       </div>
+
     </div>
   </div>
   <div class="sf"><span class="fn">MA × ATW 框架说明</span><span class="pg">09/15</span></div>
@@ -459,64 +486,64 @@ document.addEventListener("touchend",function(e){if(t0===null)return;var d=t0-e.
 updateNav();
 
 var TR=[
-  {n:"燕窝",gmv:67.49,yoy:10.8,cr20:77.7,cl:5,ad:2825,ad_yoy:20.0,pen:25.0,takerate:0.4186,top3:"小仙炖·燕之屋·官栈"},
-  {n:"枸杞",gmv:34.52,yoy:38.2,cr20:60.5,cl:2,ad:136,ad_yoy:627.0,pen:10.0,takerate:0.0394,top3:"劲家庄·福东海·宁夏枸杞"},
-  {n:"散装中药材",gmv:24.05,yoy:-25.4,cr20:39.2,cl:0,ad:0,ad_yoy:0,pen:0.0,takerate:0,top3:"大参林·健客·康美"},
-  {n:"阿胶",gmv:28.5,yoy:21.3,cr20:78.2,cl:6,ad:1376,ad_yoy:-1.0,pen:30.0,takerate:0.4828,top3:"东阿阿胶·桃花姬·创帝"},
-  {n:"男性养肾茶",gmv:26.44,yoy:-8.9,cr20:49.3,cl:3,ad:69,ad_yoy:-86.0,pen:15.0,takerate:0.0261,top3:"老谷头·益真堂·同仁堂"},
-  {n:"西洋参",gmv:15.11,yoy:13.2,cr20:50.9,cl:2,ad:83,ad_yoy:37.0,pen:10.0,takerate:0.0549,top3:"创帝·正官庄·九芝堂"},
-  {n:"蜂蜜/蜂产品",gmv:17.55,yoy:-2.4,cr20:40.4,cl:1,ad:2,ad_yoy:-97.0,pen:5.0,takerate:0.0011,top3:"森蜂园·冠生园·恒都"},
-  {n:"冬虫夏草",gmv:15.03,yoy:96.2,cr20:71.0,cl:3,ad:71,ad_yoy:-18.0,pen:15.0,takerate:0.0472,top3:"阿依舍·东阳光·九芝堂"},
-  {n:"灵芝/孢子粉",gmv:12.39,yoy:-2.8,cr20:57.1,cl:2,ad:2307,ad_yoy:-23.0,pen:10.0,takerate:1.862,top3:"VitaGreen·仙芝楼·森枫堂"},
-  {n:"五谷养生营养品",gmv:2.43,yoy:11.9,cr20:66.5,cl:0,ad:0,ad_yoy:0,pen:0.0,takerate:0,top3:"喜纯·汤达人·元气森林"},
-  {n:"海参",gmv:6.11,yoy:135.7,cr20:83.0,cl:2,ad:1042,ad_yoy:56.0,pen:10.0,takerate:1.7054,top3:"官栈·黑骑仕·辉煌"},
-  {n:"人参（原参/制品）",gmv:13.24,yoy:20.5,cr20:46.3,cl:3,ad:1315,ad_yoy:15.0,pen:15.0,takerate:0.9932,top3:"正官庄·官栈·九芝堂"},
-  {n:"养生膏",gmv:10.63,yoy:20.0,cr20:51.7,cl:6,ad:260,ad_yoy:59.0,pen:30.0,takerate:0.2446,top3:"花姐食养·李良济·童涵春堂"},
-  {n:"菊花/决明子茶",gmv:8.8,yoy:-16.0,cr20:65.0,cl:0,ad:0,ad_yoy:0,pen:0.0,takerate:0,top3:"百草味·同仁堂·健客"},
-  {n:"黄芪",gmv:5.27,yoy:20.9,cr20:47.5,cl:2,ad:3,ad_yoy:-97.0,pen:10.0,takerate:0.0057,top3:"草晶华·同仁堂·九芝堂"},
-  {n:"五黑丸/黑芝麻丸",gmv:7.4,yoy:-7.9,cr20:69.7,cl:5,ad:4888,ad_yoy:20.0,pen:25.0,takerate:6.6054,top3:"VitaGreen·五谷磨房·小主"},
-  {n:"女性向花茶",gmv:6.0,yoy:-16.0,cr20:60.0,cl:0,ad:0,ad_yoy:0,pen:0.0,takerate:0,top3:"百草味·花田萃·好想你"},
-  {n:"鹿茸",gmv:5.37,yoy:65.9,cr20:55.0,cl:0,ad:0,ad_yoy:0,pen:0.0,takerate:0,top3:"鹿博士·同仁堂·参茸世家"},
-  {n:"黄精",gmv:5.15,yoy:210.6,cr20:46.3,cl:3,ad:1066,ad_yoy:111.0,pen:15.0,takerate:2.0699,top3:"每日乔安·妈妈很忙·喜纯"},
-  {n:"滋补营养糖",gmv:5.83,yoy:30.0,cr20:76.0,cl:1,ad:167,ad_yoy:0,pen:5.0,takerate:0.2864,top3:"白云山·好想你·念念不忘"},
-  {n:"石斛/枫斗",gmv:5.32,yoy:15.0,cr20:52.8,cl:4,ad:227,ad_yoy:78.0,pen:20.0,takerate:0.4267,top3:"元斛·斛妈妈·铁枫堂"},
-  {n:"高丽参/红参",gmv:4.78,yoy:30.0,cr20:82.7,cl:3,ad:1331,ad_yoy:-6.0,pen:15.0,takerate:2.7845,top3:"正官庄·SKIGIN·创帝"},
-  {n:"祛湿茶",gmv:5.1,yoy:-16.0,cr20:55.0,cl:0,ad:0,ad_yoy:0,pen:0.0,takerate:0,top3:"百草味·修正·健客"},
-  {n:"花胶/鱼胶",gmv:4.67,yoy:-21.0,cr20:91.8,cl:4,ad:1130,ad_yoy:33.0,pen:20.0,takerate:2.4197,top3:"官栈·极盏·梦岭南"},
-  {n:"养生丸（其他）",gmv:4.7,yoy:-7.9,cr20:58.0,cl:0,ad:0,ad_yoy:0,pen:0.0,takerate:0,top3:"同仁堂·九芝堂·正官庄"},
-  {n:"天麻",gmv:2.39,yoy:187.1,cr20:51.1,cl:0,ad:0,ad_yoy:0,pen:0.0,takerate:0,top3:"云南白药·天麻世家"},
-  {n:"茯苓",gmv:1.94,yoy:37.6,cr20:47.4,cl:2,ad:106,ad_yoy:131.0,pen:10.0,takerate:0.5464,top3:"妈妈很忙·花姐食养"},
-  {n:"滋补养生原料-其他",gmv:2.56,yoy:11.9,cr20:65.4,cl:1,ad:115,ad_yoy:-8.0,pen:5.0,takerate:0.4492,top3:"道地药材专营"},
-  {n:"沙棘/沙棘原浆",gmv:3.26,yoy:3.0,cr20:62.9,cl:0,ad:0,ad_yoy:0,pen:0.0,takerate:0,top3:"沙棘原浆·健海堂"},
-  {n:"其他养生茶",gmv:3.4,yoy:36.6,cr20:55.0,cl:0,ad:0,ad_yoy:0,pen:0.0,takerate:0,top3:"老谷头·福东海·百草味"},
-  {n:"酸枣仁",gmv:2.63,yoy:44.3,cr20:78.9,cl:1,ad:115,ad_yoy:-8.0,pen:5.0,takerate:0.4373,top3:"花姐食养·助眠专研"},
-  {n:"橘皮/陈皮",gmv:1.37,yoy:150.1,cr20:63.3,cl:0,ad:0,ad_yoy:0,pen:0.0,takerate:0,top3:"新会陈皮·陈皮世家"},
-  {n:"熟地黄",gmv:1.15,yoy:946.5,cr20:66.8,cl:0,ad:0,ad_yoy:0,pen:0.0,takerate:0,top3:"道地药材专营"},
-  {n:"金银花",gmv:2.13,yoy:-57.6,cr20:67.5,cl:0,ad:0,ad_yoy:0,pen:0.0,takerate:0,top3:"同仁堂·修正·康美"},
-  {n:"高蛋白能量代餐",gmv:14.5,yoy:59.9,cr20:82.2,cl:2,ad:76,ad_yoy:2158.0,pen:10.0,takerate:0.0524,top3:"喜纯·汤达人·元气森林"},
-  {n:"党参",gmv:1.35,yoy:235.1,cr20:62.8,cl:0,ad:0,ad_yoy:0,pen:0.0,takerate:0,top3:"康美·德全堂"},
-  {n:"红枣枸杞补血茶",gmv:8.13,yoy:36.6,cr20:66.8,cl:4,ad:66,ad_yoy:-86.0,pen:20.0,takerate:0.0812,top3:"老谷头·福东海·九芝堂"},
-  {n:"桃胶",gmv:1.12,yoy:-39.2,cr20:58.6,cl:1,ad:38,ad_yoy:0.3,pen:5.0,takerate:0.3393,top3:"老谷头·桃胶专研"},
-  {n:"鸡内金",gmv:2.03,yoy:18.0,cr20:77.6,cl:4,ad:737,ad_yoy:-32.0,pen:20.0,takerate:3.6305,top3:"哈药·诺特兰德·江中"},
-  {n:"麦冬",gmv:1.55,yoy:98.3,cr20:57.0,cl:0,ad:0,ad_yoy:0,pen:0.0,takerate:0,top3:"道地药材专营"},
-  {n:"葛根",gmv:1.68,yoy:403.1,cr20:83.6,cl:1,ad:7,ad_yoy:0,pen:5.0,takerate:0.0417,top3:"葛根粉专研·道地堂"},
-  {n:"精制中药材/经典方",gmv:3.06,yoy:20.0,cr20:69.8,cl:3,ad:559,ad_yoy:-53.0,pen:15.0,takerate:1.8268,top3:"云南白药·康美·草晶华"},
-  {n:"当归",gmv:0.97,yoy:113.4,cr20:54.9,cl:0,ad:0,ad_yoy:0,pen:0.0,takerate:0,top3:"同仁堂·德全堂"}
-]
+  {n:"燕窝",gmv:67.49,yoy:10.8,imp:52.2,imp_yoy:0.4,sv:295.6,sv_yoy:13.1,cr20:0.777,vc:3,cl:5,ad:2825.0,ad_yoy:20.0,pen:25.0,takerate:0.4186,top3:"小仙炖·燕之屋·官栈"},
+  {n:"枸杞",gmv:34.52,yoy:38.2,imp:122.4,imp_yoy:-7.2,sv:209.3,sv_yoy:7.2,cr20:0.605,vc:1,cl:2,ad:136.0,ad_yoy:627.0,pen:10.0,takerate:0.0394,top3:"劲家庄·福东海·宁夏枸杞"},
+  {n:"散装中药材",gmv:24.05,yoy:-25.4,imp:20.1,imp_yoy:12.6,sv:9.9,sv_yoy:3.8,cr20:0.392,vc:1,cl:0,ad:0.0,ad_yoy:0.0,pen:0.0,takerate:0.0,top3:"大参林·健客·康美"},
+  {n:"阿胶",gmv:28.5,yoy:21.3,imp:31.8,imp_yoy:-7.3,sv:222.4,sv_yoy:11.5,cr20:0.782,vc:1,cl:6,ad:1376.0,ad_yoy:-1.0,pen:30.0,takerate:0.4828,top3:"东阿阿胶·桃花姬·创帝"},
+  {n:"男性养肾茶",gmv:26.44,yoy:-8.9,imp:13.1,imp_yoy:1.6,sv:134.8,sv_yoy:6.6,cr20:0.493,vc:5,cl:3,ad:69.0,ad_yoy:-86.0,pen:15.0,takerate:0.0261,top3:"老谷头·益真堂·同仁堂"},
+  {n:"西洋参",gmv:15.11,yoy:13.2,imp:13.3,imp_yoy:-13.6,sv:69.0,sv_yoy:11.8,cr20:0.509,vc:1,cl:2,ad:83.0,ad_yoy:37.0,pen:10.0,takerate:0.0549,top3:"创帝·正官庄·九芝堂"},
+  {n:"蜂蜜/蜂产品",gmv:17.55,yoy:-2.4,imp:188.3,imp_yoy:7.4,sv:327.7,sv_yoy:15.6,cr20:0.40399999999999997,vc:1,cl:1,ad:2.0,ad_yoy:-97.0,pen:5.0,takerate:0.0011,top3:"森蜂园·冠生园·恒都"},
+  {n:"冬虫夏草",gmv:15.03,yoy:96.2,imp:4.3,imp_yoy:-22.1,sv:15.3,sv_yoy:6.4,cr20:0.71,vc:1,cl:3,ad:71.0,ad_yoy:-18.0,pen:15.0,takerate:0.0472,top3:"阿依舍·东阳光·九芝堂"},
+  {n:"灵芝/孢子粉",gmv:12.39,yoy:-2.8,imp:30.0,imp_yoy:13.9,sv:70.3,sv_yoy:18.0,cr20:0.5710000000000001,vc:1,cl:2,ad:2307.0,ad_yoy:-23.0,pen:10.0,takerate:1.862,top3:"VitaGreen·仙芝楼·森枫堂"},
+  {n:"五谷养生营养品",gmv:2.43,yoy:11.9,imp:20.2,imp_yoy:-8.4,sv:38.5,sv_yoy:-2.1,cr20:0.665,vc:3,cl:0,ad:0.0,ad_yoy:0.0,pen:0.0,takerate:0.0,top3:"喜纯·汤达人·元气森林"},
+  {n:"海参",gmv:6.11,yoy:135.7,imp:33.2,imp_yoy:3.3,sv:334.8,sv_yoy:27.3,cr20:0.83,vc:1,cl:2,ad:1042.0,ad_yoy:56.0,pen:10.0,takerate:1.7054,top3:"官栈·黑骑仕·辉煌"},
+  {n:"人参（原参/制品）",gmv:13.24,yoy:20.5,imp:92.6,imp_yoy:1.1,sv:156.8,sv_yoy:28.8,cr20:0.46299999999999997,vc:1,cl:3,ad:1315.0,ad_yoy:15.0,pen:15.0,takerate:0.9932,top3:"正官庄·官栈·九芝堂"},
+  {n:"养生膏",gmv:10.63,yoy:20.0,imp:16.0,imp_yoy:-17.8,sv:43.9,sv_yoy:8.8,cr20:0.517,vc:3,cl:6,ad:260.0,ad_yoy:59.0,pen:30.0,takerate:0.2446,top3:"花姐食养·李良济·童涵春堂"},
+  {n:"菊花/决明子茶",gmv:8.8,yoy:-16.0,imp:23.7,imp_yoy:26.0,sv:53.1,sv_yoy:1.7,cr20:0.65,vc:5,cl:0,ad:0.0,ad_yoy:0.0,pen:0.0,takerate:0.0,top3:"百草味·同仁堂·健客"},
+  {n:"黄芪",gmv:5.27,yoy:20.9,imp:10.5,imp_yoy:5.2,sv:61.3,sv_yoy:0.0,cr20:0.475,vc:1,cl:2,ad:3.0,ad_yoy:-97.0,pen:10.0,takerate:0.0057,top3:"草晶华·同仁堂·九芝堂"},
+  {n:"五黑丸/黑芝麻丸",gmv:7.4,yoy:-7.9,imp:4.3,imp_yoy:62.1,sv:9.0,sv_yoy:-1.4,cr20:0.6970000000000001,vc:5,cl:5,ad:4888.0,ad_yoy:20.0,pen:25.0,takerate:6.6054,top3:"VitaGreen·五谷磨房·小主"},
+  {n:"女性向花茶",gmv:6.0,yoy:-16.0,imp:12.5,imp_yoy:10.0,sv:48.0,sv_yoy:5.0,cr20:0.6,vc:5,cl:0,ad:0.0,ad_yoy:0.0,pen:0.0,takerate:0.0,top3:"百草味·花田萃·好想你"},
+  {n:"鹿茸",gmv:5.37,yoy:65.9,imp:15.2,imp_yoy:18.5,sv:89.8,sv_yoy:69.6,cr20:0.55,vc:1,cl:0,ad:0.0,ad_yoy:0.0,pen:0.0,takerate:0.0,top3:"鹿博士·同仁堂·参茸世家"},
+  {n:"黄精",gmv:5.15,yoy:210.6,imp:13.5,imp_yoy:16.3,sv:38.1,sv_yoy:82.0,cr20:0.46299999999999997,vc:1,cl:3,ad:1066.0,ad_yoy:111.0,pen:15.0,takerate:2.0699,top3:"每日乔安·妈妈很忙·喜纯"},
+  {n:"滋补营养糖",gmv:5.83,yoy:30.0,imp:184.4,imp_yoy:-5.6,sv:152.7,sv_yoy:37.3,cr20:0.76,vc:1,cl:1,ad:167.0,ad_yoy:0.0,pen:5.0,takerate:0.2864,top3:"白云山·好想你·念念不忘"},
+  {n:"石斛/枫斗",gmv:5.32,yoy:15.0,imp:17.5,imp_yoy:12.0,sv:91.3,sv_yoy:26.8,cr20:0.528,vc:1,cl:4,ad:227.0,ad_yoy:78.0,pen:20.0,takerate:0.4267,top3:"元斛·斛妈妈·铁枫堂"},
+  {n:"高丽参/红参",gmv:4.78,yoy:30.0,imp:21.3,imp_yoy:-10.6,sv:91.4,sv_yoy:3.1,cr20:0.8270000000000001,vc:1,cl:3,ad:1331.0,ad_yoy:-6.0,pen:15.0,takerate:2.7845,top3:"正官庄·SKIGIN·创帝"},
+  {n:"祛湿茶",gmv:5.1,yoy:-16.0,imp:28.0,imp_yoy:8.0,sv:72.0,sv_yoy:12.0,cr20:0.55,vc:5,cl:0,ad:0.0,ad_yoy:0.0,pen:0.0,takerate:0.0,top3:"百草味·修正·健客"},
+  {n:"花胶/鱼胶",gmv:4.67,yoy:-21.0,imp:8.0,imp_yoy:5.0,sv:0.0,sv_yoy:0.0,cr20:0.9179999999999999,vc:1,cl:4,ad:1130.0,ad_yoy:33.0,pen:20.0,takerate:2.4197,top3:"官栈·极盏·梦岭南"},
+  {n:"养生丸（其他）",gmv:4.7,yoy:-7.9,imp:14.4,imp_yoy:15.8,sv:143.6,sv_yoy:25.0,cr20:0.58,vc:1,cl:0,ad:0.0,ad_yoy:0.0,pen:0.0,takerate:0.0,top3:"同仁堂·九芝堂·正官庄"},
+  {n:"天麻",gmv:2.39,yoy:187.1,imp:7.4,imp_yoy:0.6,sv:46.4,sv_yoy:48.5,cr20:0.511,vc:1,cl:0,ad:0.0,ad_yoy:0.0,pen:0.0,takerate:0.0,top3:"云南白药·天麻世家"},
+  {n:"茯苓",gmv:1.94,yoy:37.6,imp:85.1,imp_yoy:44.0,sv:118.1,sv_yoy:47.9,cr20:0.474,vc:1,cl:2,ad:106.0,ad_yoy:131.0,pen:10.0,takerate:0.5464,top3:"妈妈很忙·花姐食养"},
+  {n:"滋补养生原料-其他",gmv:2.56,yoy:11.9,imp:8.0,imp_yoy:5.0,sv:60.0,sv_yoy:10.0,cr20:0.654,vc:1,cl:1,ad:115.0,ad_yoy:-8.0,pen:5.0,takerate:0.4492,top3:"道地药材专营"},
+  {n:"沙棘/沙棘原浆",gmv:3.26,yoy:3.0,imp:13.8,imp_yoy:13.2,sv:56.3,sv_yoy:12.0,cr20:0.629,vc:3,cl:0,ad:0.0,ad_yoy:0.0,pen:0.0,takerate:0.0,top3:"沙棘原浆·健海堂"},
+  {n:"其他养生茶",gmv:3.4,yoy:36.6,imp:16.3,imp_yoy:53.4,sv:146.2,sv_yoy:13.9,cr20:0.55,vc:5,cl:0,ad:0.0,ad_yoy:0.0,pen:0.0,takerate:0.0,top3:"老谷头·福东海·百草味"},
+  {n:"酸枣仁",gmv:2.63,yoy:44.3,imp:9.8,imp_yoy:24.9,sv:25.9,sv_yoy:24.6,cr20:0.789,vc:1,cl:1,ad:115.0,ad_yoy:-8.0,pen:5.0,takerate:0.4373,top3:"花姐食养·助眠专研"},
+  {n:"橘皮/陈皮",gmv:1.37,yoy:150.1,imp:93.7,imp_yoy:14.7,sv:295.0,sv_yoy:28.4,cr20:0.633,vc:1,cl:0,ad:0.0,ad_yoy:0.0,pen:0.0,takerate:0.0,top3:"新会陈皮·陈皮世家"},
+  {n:"熟地黄",gmv:1.15,yoy:946.5,imp:4.0,imp_yoy:-7.6,sv:5.4,sv_yoy:70.6,cr20:0.6679999999999999,vc:1,cl:0,ad:0.0,ad_yoy:0.0,pen:0.0,takerate:0.0,top3:"道地药材专营"},
+  {n:"金银花",gmv:2.13,yoy:-57.6,imp:27.2,imp_yoy:12.2,sv:66.9,sv_yoy:18.7,cr20:0.675,vc:1,cl:0,ad:0.0,ad_yoy:0.0,pen:0.0,takerate:0.0,top3:"同仁堂·修正·康美"},
+  {n:"高蛋白能量代餐",gmv:14.5,yoy:59.9,imp:18.5,imp_yoy:8.0,sv:0.0,sv_yoy:0.0,cr20:0.8220000000000001,vc:1,cl:2,ad:76.0,ad_yoy:2158.0,pen:10.0,takerate:0.0524,top3:"喜纯·汤达人·元气森林"},
+  {n:"党参",gmv:1.35,yoy:235.1,imp:17.8,imp_yoy:-15.8,sv:33.5,sv_yoy:2.5,cr20:0.628,vc:1,cl:0,ad:0.0,ad_yoy:0.0,pen:0.0,takerate:0.0,top3:"康美·德全堂"},
+  {n:"红枣枸杞补血茶",gmv:8.13,yoy:36.6,imp:10.0,imp_yoy:13.9,sv:27.0,sv_yoy:13.0,cr20:0.6679999999999999,vc:5,cl:4,ad:66.0,ad_yoy:-86.0,pen:20.0,takerate:0.0812,top3:"老谷头·福东海·九芝堂"},
+  {n:"桃胶",gmv:1.12,yoy:-39.2,imp:16.9,imp_yoy:28.1,sv:86.5,sv_yoy:33.0,cr20:0.586,vc:1,cl:1,ad:38.0,ad_yoy:0.3,pen:5.0,takerate:0.3393,top3:"老谷头·桃胶专研"},
+  {n:"鸡内金",gmv:2.03,yoy:18.0,imp:7.9,imp_yoy:-3.7,sv:17.5,sv_yoy:13.3,cr20:0.7759999999999999,vc:1,cl:4,ad:737.0,ad_yoy:-32.0,pen:20.0,takerate:3.6305,top3:"哈药·诺特兰德·江中"},
+  {n:"麦冬",gmv:1.55,yoy:98.3,imp:31.4,imp_yoy:-17.0,sv:44.9,sv_yoy:43.3,cr20:0.57,vc:1,cl:0,ad:0.0,ad_yoy:0.0,pen:0.0,takerate:0.0,top3:"道地药材专营"},
+  {n:"葛根",gmv:1.68,yoy:403.1,imp:14.1,imp_yoy:17.9,sv:59.2,sv_yoy:36.8,cr20:0.836,vc:3,cl:1,ad:7.0,ad_yoy:0.0,pen:5.0,takerate:0.0417,top3:"葛根粉专研·道地堂"},
+  {n:"精制中药材/经典方",gmv:3.06,yoy:20.0,imp:56.2,imp_yoy:11.3,sv:101.2,sv_yoy:40.8,cr20:0.698,vc:1,cl:3,ad:559.0,ad_yoy:-53.0,pen:15.0,takerate:1.8268,top3:"云南白药·康美·草晶华"},
+  {n:"当归",gmv:0.97,yoy:113.4,imp:33.0,imp_yoy:-10.8,sv:61.3,sv_yoy:24.1,cr20:0.5489999999999999,vc:1,cl:0,ad:0.0,ad_yoy:0.0,pen:0.0,takerate:0.0,top3:"同仁堂·德全堂"}
+];
 
 var EFFS=[
-  {n:"通用滋补/送礼",gmv:65.83,yoy:-5.2,imp:51.8,imp_yoy:7.9,sv:96,sv_yoy:10.4,cr20:0.60,vc:1,cl:8},
-  {n:"免疫/补气",gmv:62.85,yoy:17.6,imp:39.1,imp_yoy:-0.9,sv:707,sv_yoy:21.2,cr20:0.55,vc:1,cl:6},
-  {n:"护肝/熬夜",gmv:49.88,yoy:15.4,imp:98.0,imp_yoy:14.3,sv:281,sv_yoy:44.0,cr20:0.50,vc:5,cl:5},
-  {n:"抗老/抗糖",gmv:42.10,yoy:12.3,imp:71.2,imp_yoy:4.3,sv:386,sv_yoy:-2.1,cr20:0.60,vc:3,cl:6},
-  {n:"气血/补铁",gmv:42.08,yoy:27.1,imp:31.0,imp_yoy:43.3,sv:651,sv_yoy:18.3,cr20:0.55,vc:1,cl:5},
-  {n:"男性滋补",gmv:40.80,yoy:32.7,imp:7.5,imp_yoy:-4.9,sv:92,sv_yoy:25.3,cr20:0.50,vc:1,cl:4},
-  {n:"女性/卵巢调理",gmv:40.72,yoy:9.3,imp:24.5,imp_yoy:2.3,sv:415,sv_yoy:18.6,cr20:0.55,vc:1,cl:5},
-  {n:"助眠",gmv:23.56,yoy:18.8,imp:73.1,imp_yoy:36.5,sv:729,sv_yoy:30.8,cr20:0.65,vc:3,cl:3},
-  {n:"润肺/护嗓",gmv:14.43,yoy:-0.3,imp:30.3,imp_yoy:-5.7,sv:854,sv_yoy:12.7,cr20:0.50,vc:1,cl:3},
-  {n:"祛湿",gmv:14.18,yoy:28.8,imp:41.8,imp_yoy:11.7,sv:599,sv_yoy:15.0,cr20:0.50,vc:1,cl:3},
-  {n:"明目/护眼/养肝",gmv:11.52,yoy:22.6,imp:56.0,imp_yoy:23.0,sv:799,sv_yoy:39.9,cr20:0.55,vc:5,cl:2},
-  {n:"减脂/体重管理",gmv:9.80,yoy:4.8,imp:60.6,imp_yoy:35.4,sv:533,sv_yoy:14.5,cr20:0.50,vc:3,cl:2}
+  {n:"通用滋补/送礼",gmv:65.83,yoy:-5.2,imp:51.8,imp_yoy:7.9,sv:96.0,sv_yoy:10.4,cr20:0.6,vc:1,cl:8},
+  {n:"免疫/补气",gmv:62.85,yoy:17.6,imp:39.1,imp_yoy:-0.9,sv:707.0,sv_yoy:21.2,cr20:0.55,vc:1,cl:6},
+  {n:"护肝/熬夜",gmv:49.88,yoy:15.4,imp:98.0,imp_yoy:14.3,sv:281.0,sv_yoy:44.0,cr20:0.5,vc:5,cl:5},
+  {n:"抗老/抗糖",gmv:42.1,yoy:12.3,imp:71.2,imp_yoy:4.3,sv:386.0,sv_yoy:-2.1,cr20:0.6,vc:3,cl:6},
+  {n:"气血/补铁",gmv:42.08,yoy:27.1,imp:31.0,imp_yoy:43.3,sv:651.0,sv_yoy:18.3,cr20:0.55,vc:1,cl:5},
+  {n:"男性滋补",gmv:40.8,yoy:32.7,imp:7.5,imp_yoy:-4.9,sv:92.0,sv_yoy:25.3,cr20:0.5,vc:1,cl:4},
+  {n:"女性/卵巢调理",gmv:40.72,yoy:9.3,imp:24.5,imp_yoy:2.3,sv:415.0,sv_yoy:18.6,cr20:0.55,vc:1,cl:5},
+  {n:"助眠",gmv:23.56,yoy:18.8,imp:73.1,imp_yoy:36.5,sv:729.0,sv_yoy:30.8,cr20:0.65,vc:3,cl:3},
+  {n:"润肺/护嗓",gmv:14.43,yoy:-0.3,imp:30.3,imp_yoy:-5.7,sv:854.0,sv_yoy:12.7,cr20:0.5,vc:1,cl:3},
+  {n:"祛湿",gmv:14.18,yoy:28.8,imp:41.8,imp_yoy:11.7,sv:599.0,sv_yoy:15.0,cr20:0.5,vc:1,cl:3},
+  {n:"明目/护眼",gmv:11.5,yoy:23.0,imp:56.0,imp_yoy:23.0,sv:799.0,sv_yoy:39.9,cr20:0.55,vc:5,cl:2},
+  {n:"减脂/体重",gmv:9.8,yoy:35.4,imp:60.6,imp_yoy:35.4,sv:533.0,sv_yoy:14.5,cr20:0.5,vc:3,cl:2}
 ];
 
 function sMA(t){
