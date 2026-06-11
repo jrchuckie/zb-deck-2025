@@ -605,6 +605,9 @@ function sATW(t){
 }
 
 var CO="#1B4FD8",UP="#16a34a",DN="#dc2626",WN="#d97706",CL="#6B6B6B",GL="rgba(27,79,216,.07)";
+var BASE_AD="https://picasso-private-1251524319.cos.ap-shanghai.myqcloud.com/formula-static/dibp/qxr00eip/zb-brand-ad.html";
+var TRACK_URLS={"燕窝":BASE_AD+"#race-0","枸杞":BASE_AD+"#race-1","散装中药材":BASE_AD+"#race-2","阿胶":BASE_AD+"#race-3","西洋参":BASE_AD+"#race-4","蜂蜜/蜂产品":BASE_AD+"#race-5","冬虫夏草":BASE_AD+"#race-6","灵芝/孢子粉":BASE_AD+"#race-7","五谷养生营养品":BASE_AD+"#race-8","海参":BASE_AD+"#race-9","人参（原参/制品）":BASE_AD+"#race-10","养生膏":BASE_AD+"#race-11","菊花/决明子茶":BASE_AD+"#race-12","黄芪":BASE_AD+"#race-13","鹿茸":BASE_AD+"#race-14","女性向花茶":BASE_AD+"#race-15","黄精":BASE_AD+"#race-16","滋补营养糖":BASE_AD+"#race-17","石斛/枫斗":BASE_AD+"#race-18","高丽参/红参":BASE_AD+"#race-19","祛湿茶":BASE_AD+"#race-20","花胶/鱼胶":BASE_AD+"#race-21","养生丸（其他）":BASE_AD+"#race-22","天麻":BASE_AD+"#race-23","茯苓":BASE_AD+"#race-24","滋补养生原料-其他":BASE_AD+"#race-25","沙棘/沙棘原浆":BASE_AD+"#race-26","其他养生茶":BASE_AD+"#race-27","酸枣仁":BASE_AD+"#race-28","橘皮/陈皮":BASE_AD+"#race-29","熟地黄":BASE_AD+"#race-30","金银花":BASE_AD+"#race-31","高蛋白能量代餐":BASE_AD+"#race-32","党参":BASE_AD+"#race-33","五黑丸/黑芝麻丸":BASE_AD+"#race-34","男性养肾茶":BASE_AD+"#race-35","当归":BASE_AD+"#race-36","精制中药材/经典方":BASE_AD+"#race-37","鸡内金":BASE_AD+"#race-38","麦冬":BASE_AD+"#race-39","葛根":BASE_AD+"#race-40","红枣枸杞补血茶":BASE_AD+"#race-41","桃胶":BASE_AD+"#race-42"};
+function trackLink(name){var u=TRACK_URLS[name];return u?"<a href='"+u+"' target='_blank' style='color:inherit;text-decoration:none;border-bottom:1px dashed rgba(27,79,216,.4);' title='查看Top20客户明细'>"+name+"</a>":name;}
 var inited={};
 function initC(i){if(inited[i])return;inited[i]=true;
   if(i===1)bldMkt();if(i===2)bldTbl();if(i===3)bldPQ();if(i===4)bldEQ();
@@ -717,7 +720,7 @@ function bldS6(){
     var rowBg=t.ad>0?"":"background:rgba(0,0,0,.02)";
     var adBold=t.ad>2000?"font-weight:700;color:var(--co)":t.ad>500?"color:var(--co)":"";
     return "<tr style='"+rowBg+"'>"
-      +"<td class='bd'>"+t.n+"</td>"
+      +"<td class='bd'>"+trackLink(t.n)+"</td>"
       +"<td class='nr'>"+t.gmv+"</td>"
       +"<td class='nr' style='color:"+gmvYc+"'>"+gmvY+"</td>"
       +"<td class='nr' style='"+adBold+"'>"+adCell+"</td>"
@@ -819,7 +822,7 @@ function mkScoreRow(t,mM,aM){
   var a4=t.cl>=5?5:t.cl>=3?4:t.cl>=1?3:2;
   var atw=parseFloat((a1*0.2+a2*0.15+a3*0.25+a4*0.4).toFixed(2));
   var qk=ma>=mM&&atw>=aM?"DD":ma<mM&&atw>=aM?"DH":ma>=mM&&atw<aM?"IW":"DP";
-  return "<tr style='background:"+QBGROW[qk]+"'><td style='font-weight:600'>"+t.n+"</td>"
+  return "<tr style='background:"+QBGROW[qk]+"'><td style='font-weight:600'>"+trackLink(t.n)+"</td>"
     +"<td class='"+scClass(s1)+"'>"+s1+"</td>"
     +"<td class='"+scClass(s2)+"'>"+s2+"</td>"
     +"<td class='"+scClass(s3)+"'>"+s3+"</td>"
