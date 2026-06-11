@@ -106,7 +106,7 @@ h2{font-family:"Newsreader",serif;font-style:italic;font-weight:600;font-size:cl
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.45rem;margin:.4rem 0;flex-shrink:0">
       <div style="background:white;border:1px solid rgba(27,79,216,.15);border-top:3px solid var(--co);padding:.6rem .7rem"><div style="font-size:.6rem;color:var(--ink3)">2025年大盘GMV</div><div style="font-family:'Newsreader',serif;font-style:italic;font-size:1.9rem;font-weight:600">398.7<span style="font-size:.5em">亿</span></div><div style="font-family:'JetBrains Mono',monospace;font-size:.58rem;color:var(--up)">↑ 13.1% YoY</div></div>
       <div style="background:white;border:1px solid rgba(27,79,216,.15);border-top:3px solid var(--co);padding:.6rem .7rem"><div style="font-size:.6rem;color:var(--ink3)">有效赛道数</div><div style="font-family:'Newsreader',serif;font-style:italic;font-size:1.9rem;font-weight:600">42<span style="font-size:.5em">条</span></div><div style="font-family:'JetBrains Mono',monospace;font-size:.58rem;color:var(--ink3)">产品细分口径</div></div>
-      <div style="background:white;border:1px solid rgba(27,79,216,.15);border-top:3px solid var(--co);padding:.6rem .7rem"><div style="font-size:.6rem;color:var(--ink3)">小红书匹配客户</div><div style="font-family:'Newsreader',serif;font-style:italic;font-size:1.9rem;font-weight:600">79<span style="font-size:.5em">家</span></div><div style="font-family:'JetBrains Mono',monospace;font-size:.58rem;color:var(--ink3)">投放净额 1.49亿</div></div>
+      <div style="background:white;border:1px solid rgba(27,79,216,.15);border-top:3px solid var(--co);padding:.6rem .7rem"><div style="font-size:.6rem;color:var(--ink3)">小红书匹配客户</div><div style="font-family:'Newsreader',serif;font-style:italic;font-size:1.9rem;font-weight:600">45<span style="font-size:.5em">家</span></div><div style="font-family:'JetBrains Mono',monospace;font-size:.58rem;color:var(--ink3)">投放净额 1.37亿（去重）</div></div>
       <div style="background:white;border:1px solid rgba(27,79,216,.15);border-top:3px solid var(--co);padding:.6rem .7rem"><div style="font-size:.6rem;color:var(--ink3)">整体Takerate</div><div style="font-family:'Newsreader',serif;font-style:italic;font-size:1.9rem;font-weight:600">0.37<span style="font-size:.5em">%</span></div><div style="font-family:'JetBrains Mono',monospace;font-size:.58rem;color:var(--ink3)">五黑丸6.71%最高</div></div>
     </div>
     <div style="flex:1;min-height:0" id="c-mkt"></div>
@@ -191,7 +191,7 @@ h2{font-family:"Newsreader",serif;font-style:italic;font-weight:600;font-size:cl
 <div class="slide" id="s6">
   <div class="sbar"></div>
   <div class="sc" style="padding-bottom:.25rem">
-    <div class="sec">Part 04 · 投放明细 · 全43条赛道 · 商家数 / 渗透率 / Top3品牌（有投放按金额降序，无投放附后）</div>
+    <div class="sec">Part 04 · 投放明细 · 全43条赛道 · 客户数（口径A）/ Top20渗透率 / Takerate（有投放按金额降序）</div>
     <h2 style="margin-bottom:.2rem">各赛道投放明细全表</h2>
     <div style="flex:1;min-height:0;overflow-y:auto">
       <table class="dt"><thead><tr>
@@ -435,7 +435,7 @@ h2{font-family:"Newsreader",serif;font-style:italic;font-weight:600;font-size:cl
       <div style="background:white;border:1px solid rgba(22,163,74,.2);border-top:3px solid var(--up);border-radius:3px;padding:.55rem .7rem">
         <div style="font-size:.58rem;color:var(--ink3);font-family:'JetBrains Mono',monospace;margin-bottom:.2em">DATA SOURCE 05</div>
         <div style="font-size:.8rem;font-weight:700;color:var(--ink);margin-bottom:.12em">小红书广告主投放明细</div>
-        <div style="font-size:.63rem;color:var(--ink3);margin-bottom:.25em">79家客户，投放净额/Takerate/YoY，按赛道分组</div>
+        <div style="font-size:.63rem;color:var(--ink3);margin-bottom:.25em">45家品牌客户（去重），投放净额/Takerate/YoY，按赛道分组</div>
         <a href="https://picasso-private-1251524319.cos.ap-shanghai.myqcloud.com/formula-static/dibp/ddny4jcn/zb-ad-reverse.html" target="_blank" style="font-size:.58rem;color:var(--up);word-break:break-all;text-decoration:none">↗ zb-ad-reverse.html</a>
       </div>
       <div style="background:white;border:1px solid rgba(22,163,74,.2);border-top:3px solid var(--up);border-radius:3px;padding:.55rem .7rem">
@@ -486,49 +486,49 @@ document.addEventListener("touchend",function(e){if(t0===null)return;var d=t0-e.
 updateNav();
 
 var TR=[
-  {n:"燕窝",gmv:67.49,yoy:10.8,imp:52.2,imp_yoy:0.4,sv:295.6,sv_yoy:13.1,cr20:0.777,vc:3,cl:5,ad:2825.0,ad_yoy:20.0,pen:25.0,takerate:0.4186,top3:"小仙炖·燕之屋·官栈"},
-  {n:"枸杞",gmv:34.52,yoy:38.2,imp:122.4,imp_yoy:-7.2,sv:209.3,sv_yoy:7.2,cr20:0.605,vc:1,cl:2,ad:136.0,ad_yoy:627.0,pen:10.0,takerate:0.0394,top3:"劲家庄·福东海·宁夏枸杞"},
-  {n:"散装中药材",gmv:24.05,yoy:-25.4,imp:20.1,imp_yoy:12.6,sv:9.9,sv_yoy:3.8,cr20:0.392,vc:1,cl:0,ad:0.0,ad_yoy:0.0,pen:0.0,takerate:0.0,top3:"大参林·健客·康美"},
-  {n:"阿胶",gmv:28.5,yoy:21.3,imp:31.8,imp_yoy:-7.3,sv:222.4,sv_yoy:11.5,cr20:0.782,vc:1,cl:6,ad:1376.0,ad_yoy:-1.0,pen:30.0,takerate:0.4828,top3:"东阿阿胶·桃花姬·创帝"},
-  {n:"男性养肾茶",gmv:26.44,yoy:-8.9,imp:13.1,imp_yoy:1.6,sv:134.8,sv_yoy:6.6,cr20:0.493,vc:5,cl:3,ad:69.0,ad_yoy:-86.0,pen:15.0,takerate:0.0261,top3:"老谷头·益真堂·同仁堂"},
-  {n:"西洋参",gmv:15.11,yoy:13.2,imp:13.3,imp_yoy:-13.6,sv:69.0,sv_yoy:11.8,cr20:0.509,vc:1,cl:2,ad:83.0,ad_yoy:37.0,pen:10.0,takerate:0.0549,top3:"创帝·正官庄·九芝堂"},
-  {n:"蜂蜜/蜂产品",gmv:17.55,yoy:-2.4,imp:188.3,imp_yoy:7.4,sv:327.7,sv_yoy:15.6,cr20:0.40399999999999997,vc:1,cl:1,ad:2.0,ad_yoy:-97.0,pen:5.0,takerate:0.0011,top3:"森蜂园·冠生园·恒都"},
-  {n:"冬虫夏草",gmv:15.03,yoy:96.2,imp:4.3,imp_yoy:-22.1,sv:15.3,sv_yoy:6.4,cr20:0.71,vc:1,cl:3,ad:71.0,ad_yoy:-18.0,pen:15.0,takerate:0.0472,top3:"阿依舍·东阳光·九芝堂"},
-  {n:"灵芝/孢子粉",gmv:12.39,yoy:-2.8,imp:30.0,imp_yoy:13.9,sv:70.3,sv_yoy:18.0,cr20:0.5710000000000001,vc:1,cl:2,ad:2307.0,ad_yoy:-23.0,pen:10.0,takerate:1.862,top3:"VitaGreen·仙芝楼·森枫堂"},
-  {n:"五谷养生营养品",gmv:2.43,yoy:11.9,imp:20.2,imp_yoy:-8.4,sv:38.5,sv_yoy:-2.1,cr20:0.665,vc:3,cl:0,ad:0.0,ad_yoy:0.0,pen:0.0,takerate:0.0,top3:"喜纯·汤达人·元气森林"},
-  {n:"海参",gmv:6.11,yoy:135.7,imp:33.2,imp_yoy:3.3,sv:334.8,sv_yoy:27.3,cr20:0.83,vc:1,cl:2,ad:1042.0,ad_yoy:56.0,pen:10.0,takerate:1.7054,top3:"官栈·黑骑仕·辉煌"},
-  {n:"人参（原参/制品）",gmv:13.24,yoy:20.5,imp:92.6,imp_yoy:1.1,sv:156.8,sv_yoy:28.8,cr20:0.46299999999999997,vc:1,cl:3,ad:1315.0,ad_yoy:15.0,pen:15.0,takerate:0.9932,top3:"正官庄·官栈·九芝堂"},
-  {n:"养生膏",gmv:10.63,yoy:20.0,imp:16.0,imp_yoy:-17.8,sv:43.9,sv_yoy:8.8,cr20:0.517,vc:3,cl:6,ad:260.0,ad_yoy:59.0,pen:30.0,takerate:0.2446,top3:"花姐食养·李良济·童涵春堂"},
-  {n:"菊花/决明子茶",gmv:8.8,yoy:-16.0,imp:23.7,imp_yoy:26.0,sv:53.1,sv_yoy:1.7,cr20:0.65,vc:5,cl:0,ad:0.0,ad_yoy:0.0,pen:0.0,takerate:0.0,top3:"百草味·同仁堂·健客"},
-  {n:"黄芪",gmv:5.27,yoy:20.9,imp:10.5,imp_yoy:5.2,sv:61.3,sv_yoy:0.0,cr20:0.475,vc:1,cl:2,ad:3.0,ad_yoy:-97.0,pen:10.0,takerate:0.0057,top3:"草晶华·同仁堂·九芝堂"},
-  {n:"五黑丸/黑芝麻丸",gmv:7.4,yoy:-7.9,imp:4.3,imp_yoy:62.1,sv:9.0,sv_yoy:-1.4,cr20:0.6970000000000001,vc:5,cl:5,ad:4888.0,ad_yoy:20.0,pen:25.0,takerate:6.6054,top3:"VitaGreen·五谷磨房·小主"},
-  {n:"女性向花茶",gmv:6.0,yoy:-16.0,imp:12.5,imp_yoy:10.0,sv:48.0,sv_yoy:5.0,cr20:0.6,vc:5,cl:0,ad:0.0,ad_yoy:0.0,pen:0.0,takerate:0.0,top3:"百草味·花田萃·好想你"},
-  {n:"鹿茸",gmv:5.37,yoy:65.9,imp:15.2,imp_yoy:18.5,sv:89.8,sv_yoy:69.6,cr20:0.55,vc:1,cl:0,ad:0.0,ad_yoy:0.0,pen:0.0,takerate:0.0,top3:"鹿博士·同仁堂·参茸世家"},
-  {n:"黄精",gmv:5.15,yoy:210.6,imp:13.5,imp_yoy:16.3,sv:38.1,sv_yoy:82.0,cr20:0.46299999999999997,vc:1,cl:3,ad:1066.0,ad_yoy:111.0,pen:15.0,takerate:2.0699,top3:"每日乔安·妈妈很忙·喜纯"},
-  {n:"滋补营养糖",gmv:5.83,yoy:30.0,imp:184.4,imp_yoy:-5.6,sv:152.7,sv_yoy:37.3,cr20:0.76,vc:1,cl:1,ad:167.0,ad_yoy:0.0,pen:5.0,takerate:0.2864,top3:"白云山·好想你·念念不忘"},
-  {n:"石斛/枫斗",gmv:5.32,yoy:15.0,imp:17.5,imp_yoy:12.0,sv:91.3,sv_yoy:26.8,cr20:0.528,vc:1,cl:4,ad:227.0,ad_yoy:78.0,pen:20.0,takerate:0.4267,top3:"元斛·斛妈妈·铁枫堂"},
-  {n:"高丽参/红参",gmv:4.78,yoy:30.0,imp:21.3,imp_yoy:-10.6,sv:91.4,sv_yoy:3.1,cr20:0.8270000000000001,vc:1,cl:3,ad:1331.0,ad_yoy:-6.0,pen:15.0,takerate:2.7845,top3:"正官庄·SKIGIN·创帝"},
-  {n:"祛湿茶",gmv:5.1,yoy:-16.0,imp:28.0,imp_yoy:8.0,sv:72.0,sv_yoy:12.0,cr20:0.55,vc:5,cl:0,ad:0.0,ad_yoy:0.0,pen:0.0,takerate:0.0,top3:"百草味·修正·健客"},
-  {n:"花胶/鱼胶",gmv:4.67,yoy:-21.0,imp:8.0,imp_yoy:5.0,sv:0.0,sv_yoy:0.0,cr20:0.9179999999999999,vc:1,cl:4,ad:1130.0,ad_yoy:33.0,pen:20.0,takerate:2.4197,top3:"官栈·极盏·梦岭南"},
-  {n:"养生丸（其他）",gmv:4.7,yoy:-7.9,imp:14.4,imp_yoy:15.8,sv:143.6,sv_yoy:25.0,cr20:0.58,vc:1,cl:0,ad:0.0,ad_yoy:0.0,pen:0.0,takerate:0.0,top3:"同仁堂·九芝堂·正官庄"},
-  {n:"天麻",gmv:2.39,yoy:187.1,imp:7.4,imp_yoy:0.6,sv:46.4,sv_yoy:48.5,cr20:0.511,vc:1,cl:0,ad:0.0,ad_yoy:0.0,pen:0.0,takerate:0.0,top3:"云南白药·天麻世家"},
-  {n:"茯苓",gmv:1.94,yoy:37.6,imp:85.1,imp_yoy:44.0,sv:118.1,sv_yoy:47.9,cr20:0.474,vc:1,cl:2,ad:106.0,ad_yoy:131.0,pen:10.0,takerate:0.5464,top3:"妈妈很忙·花姐食养"},
-  {n:"滋补养生原料-其他",gmv:2.56,yoy:11.9,imp:8.0,imp_yoy:5.0,sv:60.0,sv_yoy:10.0,cr20:0.654,vc:1,cl:1,ad:115.0,ad_yoy:-8.0,pen:5.0,takerate:0.4492,top3:"道地药材专营"},
-  {n:"沙棘/沙棘原浆",gmv:3.26,yoy:3.0,imp:13.8,imp_yoy:13.2,sv:56.3,sv_yoy:12.0,cr20:0.629,vc:3,cl:0,ad:0.0,ad_yoy:0.0,pen:0.0,takerate:0.0,top3:"沙棘原浆·健海堂"},
-  {n:"其他养生茶",gmv:3.4,yoy:36.6,imp:16.3,imp_yoy:53.4,sv:146.2,sv_yoy:13.9,cr20:0.55,vc:5,cl:0,ad:0.0,ad_yoy:0.0,pen:0.0,takerate:0.0,top3:"老谷头·福东海·百草味"},
-  {n:"酸枣仁",gmv:2.63,yoy:44.3,imp:9.8,imp_yoy:24.9,sv:25.9,sv_yoy:24.6,cr20:0.789,vc:1,cl:1,ad:115.0,ad_yoy:-8.0,pen:5.0,takerate:0.4373,top3:"花姐食养·助眠专研"},
-  {n:"橘皮/陈皮",gmv:1.37,yoy:150.1,imp:93.7,imp_yoy:14.7,sv:295.0,sv_yoy:28.4,cr20:0.633,vc:1,cl:0,ad:0.0,ad_yoy:0.0,pen:0.0,takerate:0.0,top3:"新会陈皮·陈皮世家"},
-  {n:"熟地黄",gmv:1.15,yoy:946.5,imp:4.0,imp_yoy:-7.6,sv:5.4,sv_yoy:70.6,cr20:0.6679999999999999,vc:1,cl:0,ad:0.0,ad_yoy:0.0,pen:0.0,takerate:0.0,top3:"道地药材专营"},
-  {n:"金银花",gmv:2.13,yoy:-57.6,imp:27.2,imp_yoy:12.2,sv:66.9,sv_yoy:18.7,cr20:0.675,vc:1,cl:0,ad:0.0,ad_yoy:0.0,pen:0.0,takerate:0.0,top3:"同仁堂·修正·康美"},
-  {n:"高蛋白能量代餐",gmv:14.5,yoy:59.9,imp:18.5,imp_yoy:8.0,sv:0.0,sv_yoy:0.0,cr20:0.8220000000000001,vc:1,cl:2,ad:76.0,ad_yoy:2158.0,pen:10.0,takerate:0.0524,top3:"喜纯·汤达人·元气森林"},
-  {n:"党参",gmv:1.35,yoy:235.1,imp:17.8,imp_yoy:-15.8,sv:33.5,sv_yoy:2.5,cr20:0.628,vc:1,cl:0,ad:0.0,ad_yoy:0.0,pen:0.0,takerate:0.0,top3:"康美·德全堂"},
-  {n:"红枣枸杞补血茶",gmv:8.13,yoy:36.6,imp:10.0,imp_yoy:13.9,sv:27.0,sv_yoy:13.0,cr20:0.6679999999999999,vc:5,cl:4,ad:66.0,ad_yoy:-86.0,pen:20.0,takerate:0.0812,top3:"老谷头·福东海·九芝堂"},
-  {n:"桃胶",gmv:1.12,yoy:-39.2,imp:16.9,imp_yoy:28.1,sv:86.5,sv_yoy:33.0,cr20:0.586,vc:1,cl:1,ad:38.0,ad_yoy:0.3,pen:5.0,takerate:0.3393,top3:"老谷头·桃胶专研"},
-  {n:"鸡内金",gmv:2.03,yoy:18.0,imp:7.9,imp_yoy:-3.7,sv:17.5,sv_yoy:13.3,cr20:0.7759999999999999,vc:1,cl:4,ad:737.0,ad_yoy:-32.0,pen:20.0,takerate:3.6305,top3:"哈药·诺特兰德·江中"},
-  {n:"麦冬",gmv:1.55,yoy:98.3,imp:31.4,imp_yoy:-17.0,sv:44.9,sv_yoy:43.3,cr20:0.57,vc:1,cl:0,ad:0.0,ad_yoy:0.0,pen:0.0,takerate:0.0,top3:"道地药材专营"},
-  {n:"葛根",gmv:1.68,yoy:403.1,imp:14.1,imp_yoy:17.9,sv:59.2,sv_yoy:36.8,cr20:0.836,vc:3,cl:1,ad:7.0,ad_yoy:0.0,pen:5.0,takerate:0.0417,top3:"葛根粉专研·道地堂"},
-  {n:"精制中药材/经典方",gmv:3.06,yoy:20.0,imp:56.2,imp_yoy:11.3,sv:101.2,sv_yoy:40.8,cr20:0.698,vc:1,cl:3,ad:559.0,ad_yoy:-53.0,pen:15.0,takerate:1.8268,top3:"云南白药·康美·草晶华"},
-  {n:"当归",gmv:0.97,yoy:113.4,imp:33.0,imp_yoy:-10.8,sv:61.3,sv_yoy:24.1,cr20:0.5489999999999999,vc:1,cl:0,ad:0.0,ad_yoy:0.0,pen:0.0,takerate:0.0,top3:"同仁堂·德全堂"}
+  {n:"燕窝",gmv:67.49,yoy:10.8,imp:52.2,imp_yoy:0.4,sv:295.6,sv_yoy:13.1,cr20:0.777,vc:3,cl:5,ad:2824.6,ad_yoy:20,pen:25.0,takerate:0.542,top3:"小仙炖·燕之屋·官栈"},
+  {n:"枸杞",gmv:34.52,yoy:38.2,imp:122.4,imp_yoy:-7.2,sv:209.3,sv_yoy:7.2,cr20:0.605,vc:1,cl:2,ad:136.2,ad_yoy:627,pen:10.0,takerate:0.0394,top3:"劲家庄·福东海·宁夏枸杞"},
+  {n:"散装中药材",gmv:24.05,yoy:-25.4,imp:20.1,imp_yoy:12.6,sv:9.9,sv_yoy:3.8,cr20:0.392,vc:1,cl:0,ad:0,ad_yoy:0,pen:0.0,takerate:0,top3:"大参林·健客·康美"},
+  {n:"阿胶",gmv:28.5,yoy:21.3,imp:31.8,imp_yoy:-7.3,sv:222.4,sv_yoy:11.5,cr20:0.782,vc:1,cl:6,ad:1376.2,ad_yoy:-1,pen:30.0,takerate:0.4828,top3:"东阿阿胶·桃花姬·创帝"},
+  {n:"男性养肾茶",gmv:26.44,yoy:-8.9,imp:13.1,imp_yoy:1.6,sv:134.8,sv_yoy:6.6,cr20:0.493,vc:5,cl:3,ad:68.7,ad_yoy:-86,pen:15.0,takerate:0.026,top3:"老谷头·益真堂·同仁堂"},
+  {n:"西洋参",gmv:15.11,yoy:13.2,imp:13.3,imp_yoy:-13.6,sv:69.0,sv_yoy:11.8,cr20:0.509,vc:1,cl:2,ad:82.8,ad_yoy:37,pen:10.0,takerate:0.0549,top3:"创帝·正官庄·九芝堂"},
+  {n:"蜂蜜/蜂产品",gmv:17.55,yoy:-2.4,imp:188.3,imp_yoy:7.4,sv:327.7,sv_yoy:15.6,cr20:0.40399999999999997,vc:1,cl:1,ad:0.2335,ad_yoy:-97,pen:5.0,takerate:0.0001,top3:"森蜂园·冠生园·恒都"},
+  {n:"冬虫夏草",gmv:15.03,yoy:96.2,imp:4.3,imp_yoy:-22.1,sv:15.3,sv_yoy:6.4,cr20:0.71,vc:1,cl:3,ad:71.4,ad_yoy:-18,pen:15.0,takerate:0.0472,top3:"阿依舍·东阳光·九芝堂"},
+  {n:"灵芝/孢子粉",gmv:12.39,yoy:-2.8,imp:30.0,imp_yoy:13.9,sv:70.3,sv_yoy:18.0,cr20:0.5710000000000001,vc:1,cl:2,ad:2306.9,ad_yoy:-23,pen:10.0,takerate:3.26,top3:"VitaGreen·仙芝楼·森枫堂"},
+  {n:"五谷养生营养品",gmv:2.43,yoy:11.9,imp:20.2,imp_yoy:-8.4,sv:38.5,sv_yoy:-2.1,cr20:0.665,vc:3,cl:0,ad:0,ad_yoy:0,pen:0.0,takerate:0,top3:"喜纯·汤达人·元气森林"},
+  {n:"海参",gmv:6.11,yoy:135.7,imp:33.2,imp_yoy:3.3,sv:334.8,sv_yoy:27.3,cr20:0.83,vc:1,cl:2,ad:1041.6,ad_yoy:56,pen:10.0,takerate:2.05,top3:"官栈·黑骑仕·辉煌"},
+  {n:"人参（原参/制品）",gmv:13.24,yoy:20.5,imp:92.6,imp_yoy:1.1,sv:156.8,sv_yoy:28.8,cr20:0.46299999999999997,vc:1,cl:3,ad:1315.1,ad_yoy:15,pen:15.0,takerate:2.154,top3:"正官庄·官栈·九芝堂"},
+  {n:"养生膏",gmv:10.63,yoy:20.0,imp:16.0,imp_yoy:-17.8,sv:43.9,sv_yoy:8.8,cr20:0.517,vc:3,cl:6,ad:260.2,ad_yoy:59,pen:30.0,takerate:0.2446,top3:"花姐食养·李良济·童涵春堂"},
+  {n:"菊花/决明子茶",gmv:8.8,yoy:-16.0,imp:23.7,imp_yoy:26.0,sv:53.1,sv_yoy:1.7,cr20:0.65,vc:5,cl:0,ad:0,ad_yoy:0,pen:0.0,takerate:0,top3:"百草味·同仁堂·健客"},
+  {n:"黄芪",gmv:5.27,yoy:20.9,imp:10.5,imp_yoy:5.2,sv:61.3,sv_yoy:0.0,cr20:0.475,vc:1,cl:2,ad:3.0,ad_yoy:-97,pen:10.0,takerate:0.0057,top3:"草晶华·同仁堂·九芝堂"},
+  {n:"五黑丸/黑芝麻丸",gmv:7.4,yoy:-7.9,imp:4.3,imp_yoy:62.1,sv:9.0,sv_yoy:-1.4,cr20:0.6970000000000001,vc:5,cl:5,ad:4888.0,ad_yoy:20,pen:25.0,takerate:9.4808,top3:"VitaGreen·五谷磨房·小主"},
+  {n:"女性向花茶",gmv:6.0,yoy:-16.0,imp:12.5,imp_yoy:10.0,sv:48.0,sv_yoy:5.0,cr20:0.6,vc:5,cl:0,ad:0,ad_yoy:0,pen:0.0,takerate:0,top3:"百草味·花田萃·好想你"},
+  {n:"鹿茸",gmv:5.37,yoy:65.9,imp:15.2,imp_yoy:18.5,sv:89.8,sv_yoy:69.6,cr20:0.55,vc:1,cl:0,ad:0,ad_yoy:0,pen:0.0,takerate:0,top3:"鹿博士·同仁堂·参茸世家"},
+  {n:"黄精",gmv:5.15,yoy:210.6,imp:13.5,imp_yoy:16.3,sv:38.1,sv_yoy:82.0,cr20:0.46299999999999997,vc:1,cl:3,ad:1066.2,ad_yoy:111,pen:15.0,takerate:4.46,top3:"每日乔安·妈妈很忙·喜纯"},
+  {n:"滋补营养糖",gmv:5.83,yoy:30.0,imp:184.4,imp_yoy:-5.6,sv:152.7,sv_yoy:37.3,cr20:0.76,vc:1,cl:1,ad:167.2,ad_yoy:0,pen:5.0,takerate:0.2864,top3:"白云山·好想你·念念不忘"},
+  {n:"石斛/枫斗",gmv:5.32,yoy:15.0,imp:17.5,imp_yoy:12.0,sv:91.3,sv_yoy:26.8,cr20:0.528,vc:1,cl:4,ad:226.5,ad_yoy:78,pen:20.0,takerate:0.4267,top3:"元斛·斛妈妈·铁枫堂"},
+  {n:"高丽参/红参",gmv:4.78,yoy:30.0,imp:21.3,imp_yoy:-10.6,sv:91.4,sv_yoy:3.1,cr20:0.8270000000000001,vc:1,cl:3,ad:1331.3,ad_yoy:-6,pen:15.0,takerate:3.37,top3:"正官庄·SKIGIN·创帝"},
+  {n:"祛湿茶",gmv:5.1,yoy:-16.0,imp:28.0,imp_yoy:8.0,sv:72.0,sv_yoy:12.0,cr20:0.55,vc:5,cl:0,ad:0,ad_yoy:0,pen:0.0,takerate:0,top3:"百草味·修正·健客"},
+  {n:"花胶/鱼胶",gmv:4.67,yoy:-21.0,imp:8.0,imp_yoy:5.0,sv:0.0,sv_yoy:0.0,cr20:0.9179999999999999,vc:1,cl:4,ad:1129.8,ad_yoy:33,pen:20.0,takerate:2.64,top3:"官栈·极盏·梦岭南"},
+  {n:"养生丸（其他）",gmv:4.7,yoy:-7.9,imp:14.4,imp_yoy:15.8,sv:143.6,sv_yoy:25.0,cr20:0.58,vc:1,cl:0,ad:0,ad_yoy:0,pen:0.0,takerate:0,top3:"同仁堂·九芝堂·正官庄"},
+  {n:"天麻",gmv:2.39,yoy:187.1,imp:7.4,imp_yoy:0.6,sv:46.4,sv_yoy:48.5,cr20:0.511,vc:1,cl:0,ad:0,ad_yoy:0,pen:0.0,takerate:0,top3:"云南白药·天麻世家"},
+  {n:"茯苓",gmv:1.94,yoy:37.6,imp:85.1,imp_yoy:44.0,sv:118.1,sv_yoy:47.9,cr20:0.474,vc:1,cl:2,ad:105.8,ad_yoy:131,pen:10.0,takerate:1.15,top3:"妈妈很忙·花姐食养"},
+  {n:"滋补养生原料-其他",gmv:2.56,yoy:11.9,imp:8.0,imp_yoy:5.0,sv:60.0,sv_yoy:10.0,cr20:0.654,vc:1,cl:1,ad:115.2,ad_yoy:-8,pen:5.0,takerate:0.4492,top3:"道地药材专营"},
+  {n:"沙棘/沙棘原浆",gmv:3.26,yoy:3.0,imp:13.8,imp_yoy:13.2,sv:56.3,sv_yoy:12.0,cr20:0.629,vc:3,cl:0,ad:0,ad_yoy:0,pen:0.0,takerate:0,top3:"沙棘原浆·健海堂"},
+  {n:"其他养生茶",gmv:3.4,yoy:36.6,imp:16.3,imp_yoy:53.4,sv:146.2,sv_yoy:13.9,cr20:0.55,vc:5,cl:0,ad:0,ad_yoy:0,pen:0.0,takerate:0,top3:"老谷头·福东海·百草味"},
+  {n:"酸枣仁",gmv:2.63,yoy:44.3,imp:9.8,imp_yoy:24.9,sv:25.9,sv_yoy:24.6,cr20:0.789,vc:1,cl:1,ad:115.2,ad_yoy:-8,pen:5.0,takerate:0.55,top3:"花姐食养·助眠专研"},
+  {n:"橘皮/陈皮",gmv:1.37,yoy:150.1,imp:93.7,imp_yoy:14.7,sv:295.0,sv_yoy:28.4,cr20:0.633,vc:1,cl:0,ad:0,ad_yoy:0,pen:0.0,takerate:0,top3:"新会陈皮·陈皮世家"},
+  {n:"熟地黄",gmv:1.15,yoy:946.5,imp:4.0,imp_yoy:-7.6,sv:5.4,sv_yoy:70.6,cr20:0.6679999999999999,vc:1,cl:0,ad:0,ad_yoy:0,pen:0.0,takerate:0,top3:"道地药材专营"},
+  {n:"金银花",gmv:2.13,yoy:-57.6,imp:27.2,imp_yoy:12.2,sv:66.9,sv_yoy:18.7,cr20:0.675,vc:1,cl:0,ad:0,ad_yoy:0,pen:0.0,takerate:0,top3:"同仁堂·修正·康美"},
+  {n:"高蛋白能量代餐",gmv:14.5,yoy:59.9,imp:18.5,imp_yoy:8.0,sv:0.0,sv_yoy:0.0,cr20:0.8220000000000001,vc:1,cl:2,ad:75.7,ad_yoy:2158,pen:10.0,takerate:0.0522,top3:"喜纯·汤达人·元气森林"},
+  {n:"党参",gmv:1.35,yoy:235.1,imp:17.8,imp_yoy:-15.8,sv:33.5,sv_yoy:2.5,cr20:0.628,vc:1,cl:0,ad:0,ad_yoy:0,pen:0.0,takerate:0,top3:"康美·德全堂"},
+  {n:"红枣枸杞补血茶",gmv:8.13,yoy:36.6,imp:10.0,imp_yoy:13.9,sv:27.0,sv_yoy:13.0,cr20:0.6679999999999999,vc:5,cl:4,ad:65.9,ad_yoy:-86,pen:20.0,takerate:0.0812,top3:"老谷头·福东海·九芝堂"},
+  {n:"桃胶",gmv:1.12,yoy:-39.2,imp:16.9,imp_yoy:28.1,sv:86.5,sv_yoy:33.0,cr20:0.586,vc:1,cl:1,ad:37.9,ad_yoy:0,pen:5.0,takerate:0.58,top3:"老谷头·桃胶专研"},
+  {n:"鸡内金",gmv:2.03,yoy:18.0,imp:7.9,imp_yoy:-3.7,sv:17.5,sv_yoy:13.3,cr20:0.7759999999999999,vc:1,cl:4,ad:736.5,ad_yoy:-32,pen:20.0,takerate:4.68,top3:"哈药·诺特兰德·江中"},
+  {n:"麦冬",gmv:1.55,yoy:98.3,imp:31.4,imp_yoy:-17.0,sv:44.9,sv_yoy:43.3,cr20:0.57,vc:1,cl:0,ad:0,ad_yoy:0,pen:0.0,takerate:0,top3:"道地药材专营"},
+  {n:"葛根",gmv:1.68,yoy:403.1,imp:14.1,imp_yoy:17.9,sv:59.2,sv_yoy:36.8,cr20:0.836,vc:3,cl:1,ad:6.7,ad_yoy:0,pen:5.0,takerate:0.0417,top3:"葛根粉专研·道地堂"},
+  {n:"精制中药材/经典方",gmv:3.06,yoy:20.0,imp:56.2,imp_yoy:11.3,sv:101.2,sv_yoy:40.8,cr20:0.698,vc:1,cl:3,ad:558.9,ad_yoy:-53,pen:15.0,takerate:1.8268,top3:"云南白药·康美·草晶华"},
+  {n:"当归",gmv:0.97,yoy:113.4,imp:33.0,imp_yoy:-10.8,sv:61.3,sv_yoy:24.1,cr20:0.5489999999999999,vc:1,cl:0,ad:0,ad_yoy:0,pen:0.0,takerate:0,top3:"同仁堂·德全堂"}
 ];
 
 var EFFS=[
