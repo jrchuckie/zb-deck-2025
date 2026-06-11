@@ -640,7 +640,8 @@ function bldMkt(){
            {type:"value",name:"YoY%",nameTextStyle:{color:CL,fontSize:9},axisLabel:{color:CL,fontSize:9,formatter:function(v){return v+"%";}},splitLine:{show:false},axisLine:{show:false},min:0,max:18}],
     series:[
       {name:"GMV（历史）",type:"bar",barMaxWidth:32,
-        data:gmvAll.map(function(v,i){return {value:v,itemStyle:{color:isProj[i]?"rgba(27,79,216,.28)":CO,borderRadius:[3,3,0,0],opacity:isProj[i]?.8:.95}};}),
+        data:gmvAll,
+        itemStyle:{color:function(p){return isProj[p.dataIndex]?"rgba(27,79,216,.32)":CO;},borderRadius:[3,3,0,0],opacity:.9},
         label:{show:true,position:"top",fontSize:8,color:CL,formatter:function(p){return p.value+"亿"+(isProj[p.dataIndex]?"E":"");}}},
       {name:"YoY%",type:"line",yAxisIndex:1,
         data:yoyAll.map(function(v,i){return v===null?null:{value:v,lineStyle:{type:isProjY[i]?"dashed":"solid"}};}),
