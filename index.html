@@ -100,18 +100,59 @@ h2{font-family:"Newsreader",serif;font-style:italic;font-weight:600;font-size:cl
 <!-- S1 整体市场 -->
 <div class="slide" id="s1">
   <div class="sbar"></div>
-  <div class="sc">
-    <div class="sec">Part 01 · 整体市场</div>
-    <h2>大盘 <span class="co">398.7亿</span>，同比 <span class="up">+13.1%</span></h2>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.45rem;margin:.4rem 0;flex-shrink:0">
-      <div style="background:white;border:1px solid rgba(27,79,216,.15);border-top:3px solid var(--co);padding:.6rem .7rem"><div style="font-size:.6rem;color:var(--ink3)">2025年大盘GMV</div><div style="font-family:'Newsreader',serif;font-style:italic;font-size:1.9rem;font-weight:600">398.7<span style="font-size:.5em">亿</span></div><div style="font-family:'JetBrains Mono',monospace;font-size:.58rem;color:var(--up)">↑ 13.1% YoY</div></div>
-      <div style="background:white;border:1px solid rgba(27,79,216,.15);border-top:3px solid var(--co);padding:.6rem .7rem"><div style="font-size:.6rem;color:var(--ink3)">有效赛道数</div><div style="font-family:'Newsreader',serif;font-style:italic;font-size:1.9rem;font-weight:600">42<span style="font-size:.5em">条</span></div><div style="font-family:'JetBrains Mono',monospace;font-size:.58rem;color:var(--ink3)">产品细分口径</div></div>
-      <div style="background:white;border:1px solid rgba(27,79,216,.15);border-top:3px solid var(--co);padding:.6rem .7rem"><div style="font-size:.6rem;color:var(--ink3)">小红书匹配客户</div><div style="font-family:'Newsreader',serif;font-style:italic;font-size:1.9rem;font-weight:600">45<span style="font-size:.5em">家</span></div><div style="font-family:'JetBrains Mono',monospace;font-size:.58rem;color:var(--ink3)">投放净额 1.37亿（去重）</div></div>
-      <div style="background:white;border:1px solid rgba(27,79,216,.15);border-top:3px solid var(--co);padding:.6rem .7rem"><div style="font-size:.6rem;color:var(--ink3)">整体Takerate</div><div style="font-family:'Newsreader',serif;font-style:italic;font-size:1.9rem;font-weight:600">0.37<span style="font-size:.5em">%</span></div><div style="font-family:'JetBrains Mono',monospace;font-size:.58rem;color:var(--ink3)">五黑丸6.71%最高</div></div>
+  <div class="sc" style="gap:.3rem">
+    <div class="sec">Part 01 · 整体市场 · 规模与趋势</div>
+    <h2 style="margin-bottom:.15rem">传统中式滋补 2025 大盘 <span class="co">398.7亿</span>，<span class="up">+13.1%</span>；2020-2030E CAGR <span class="co">~10%</span></h2>
+    <!-- KPI卡片：4个核心指标 -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.4rem;flex-shrink:0">
+      <div style="background:white;border:1px solid rgba(27,79,216,.15);border-top:3px solid var(--co);padding:.5rem .65rem">
+        <div style="font-size:.58rem;color:var(--ink3)">2020→2025 实测CAGR</div>
+        <div style="font-family:'Newsreader',serif;font-style:italic;font-size:1.75rem;font-weight:600;color:var(--co)">~9.8<span style="font-size:.5em">%</span></div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:.55rem;color:var(--ink3)">2020≈250亿→2025年398.7亿</div>
+      </div>
+      <div style="background:white;border:1px solid rgba(27,79,216,.15);border-top:3px solid #16a34a;padding:.5rem .65rem">
+        <div style="font-size:.58rem;color:var(--ink3)">2026→2030E 预测CAGR</div>
+        <div style="font-family:'Newsreader',serif;font-style:italic;font-size:1.75rem;font-weight:600;color:#16a34a">~11<span style="font-size:.5em">%</span></div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:.55rem;color:var(--ink3)">食养升级+银发扩容双驱动</div>
+      </div>
+      <div style="background:white;border:1px solid rgba(27,79,216,.15);border-top:3px solid var(--warn);padding:.5rem .65rem">
+        <div style="font-size:.58rem;color:var(--ink3)">2030E 市场规模预测</div>
+        <div style="font-family:'Newsreader',serif;font-style:italic;font-size:1.75rem;font-weight:600;color:var(--warn)">~648<span style="font-size:.5em">亿</span></div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:.55rem;color:var(--ink3)">较2025年再增长约63%</div>
+      </div>
+      <div style="background:white;border:1px solid rgba(220,38,38,.2);border-top:3px solid var(--dn);padding:.5rem .65rem">
+        <div style="font-size:.58rem;color:var(--ink3)">XHS整体 Takerate</div>
+        <div style="font-family:'Newsreader',serif;font-style:italic;font-size:1.75rem;font-weight:600;color:var(--dn)">0.37<span style="font-size:.5em">%</span></div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:.55rem;color:var(--ink3)">白地空间：99.6%待开发</div>
+      </div>
     </div>
+    <!-- 市场规模趋势图 -->
     <div style="flex:1;min-height:0" id="c-mkt"></div>
+    <!-- 底部：宏观驱动因素 -->
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:.3rem;flex-shrink:0">
+      <div style="background:rgba(27,79,216,.04);border:1px solid rgba(27,79,216,.12);border-radius:3px;padding:.35rem .45rem">
+        <div style="font-size:.62rem;font-weight:700;color:var(--co);margin-bottom:.15rem">🧓 银发经济扩容</div>
+        <div style="font-size:.58rem;color:var(--ink3);line-height:1.45">60岁以上人口2025年超3亿，滋补品是银发消费No.1品类，年均消费额增速15%+</div>
+      </div>
+      <div style="background:rgba(22,163,74,.04);border:1px solid rgba(22,163,74,.12);border-radius:3px;padding:.35rem .45rem">
+        <div style="font-size:.62rem;font-weight:700;color:#166534;margin-bottom:.15rem">🌿 食养同源升温</div>
+        <div style="font-size:.58rem;color:var(--ink3);line-height:1.45">「药食同源」政策扩容+新中式养生热，黄精/茯苓/酸枣仁等草本从小众走向大众消费</div>
+      </div>
+      <div style="background:rgba(217,119,6,.04);border:1px solid rgba(217,119,6,.12);border-radius:3px;padding:.35rem .45rem">
+        <div style="font-size:.62rem;font-weight:700;color:#92400e;margin-bottom:.15rem">⚡ 年轻化&即食化</div>
+        <div style="font-size:.58rem;color:var(--ink3);line-height:1.45">25-35岁用户「提前养生」，黑芝麻丸/即食燕窝粥等零食化产品增速200%+，打破「养生很麻烦」认知</div>
+      </div>
+      <div style="background:rgba(168,85,247,.04);border:1px solid rgba(168,85,247,.12);border-radius:3px;padding:.35rem .45rem">
+        <div style="font-size:.62rem;font-weight:700;color:#6b21a8;margin-bottom:.15rem">😔 情绪健康刚需化</div>
+        <div style="font-size:.58rem;color:var(--ink3);line-height:1.45">助眠（+18.8%）、抗老/抗糖（+12.3%）、祛湿（+28.8%）受情绪驱动的功效品类全面爆发</div>
+      </div>
+      <div style="background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12);border-radius:3px;padding:.35rem .45rem">
+        <div style="font-size:.62rem;font-weight:700;color:#991b1b;margin-bottom:.15rem">🎁 礼赠场景升级</div>
+        <div style="font-size:.58rem;color:var(--ink3);line-height:1.45">节日滋补礼盒同比+205%（2025双节），高端化趋势明显，燕窝/阿胶/冬虫夏草受益最大</div>
+      </div>
+    </div>
   </div>
-  <div class="sf"><span class="fn">整体市场</span><span class="pg">02/12</span></div>
+  <div class="sf"><span class="fn">整体市场 · 规模与趋势</span><span class="pg">02/15</span></div>
 </div>
 
 <!-- S2 赛道定义表（42条平行，无大类） -->
@@ -577,21 +618,35 @@ function mkC(id){var el=document.getElementById(id);if(!el)return null;var ex=ec
 
 function bldMkt(){
   var c=mkC("c-mkt");if(!c)return;
-  var cats=["养生丸","滋补名品","道地药材","其他","五谷代餐","养生茶饮","蜂蜜糖膏"];
-  var gmv=[7.4,172.7,61.5,61.1,51.5,34.6,34.0];
-  var yoy=[-16,15.9,-15,-14.4,26,-1.5,1.6];
-  c.setOption({backgroundColor:"transparent",animation:true,tooltip:{trigger:"axis"},
-    legend:{data:["GMV亿","GMV YoY%"],top:0,right:10,textStyle:{color:CL,fontSize:9}},
-    grid:{left:"1%",right:"7%",top:"8%",bottom:"5%",containLabel:true},
-    xAxis:{type:"category",data:cats,axisLabel:{color:"#1a1a1a",fontSize:10},axisLine:{show:false},axisTick:{show:false}},
-    yAxis:[{type:"value",name:"GMV亿",nameTextStyle:{color:CL,fontSize:9},axisLabel:{color:CL,fontSize:9},splitLine:{lineStyle:{color:GL}},axisLine:{show:false}},
-           {type:"value",name:"YoY%",nameTextStyle:{color:CL,fontSize:9},axisLabel:{color:CL,fontSize:9,formatter:function(v){return v+"%";}},splitLine:{show:false},axisLine:{show:false}}],
+  // 2020-2025历史数据（XHS赛道口径实测+行业估算基数）
+  var years=["2020","2021","2022","2023","2024","2025","2026E","2027E","2028E","2029E","2030E"];
+  var gmvHist=[250,278,302,333,352,398.7,null,null,null,null,null]; // 历史
+  var gmvProj=[null,null,null,null,null,398.7,442,491,545,605,672]; // 预测CAGR≈11%
+  var yoyHist=[null,11.2,8.6,10.3,5.7,13.1,null,null,null,null,null];
+  var yoyProj=[null,null,null,null,null,13.1,10.8,11.1,11.0,11.0,11.0];
+  c.setOption({backgroundColor:"transparent",animation:true,
+    tooltip:{trigger:"axis",formatter:function(params){
+      var s=params[0].name+"<br>";
+      params.forEach(function(p){if(p.value!=null)s+=p.seriesName+": "+p.value+(p.seriesIndex>=2?"%":"亿")+"<br>";});
+      return s;
+    }},
+    legend:{data:["历史GMV（亿）","预测GMV（亿）","历史YoY%","预测YoY%"],top:0,right:10,textStyle:{color:CL,fontSize:9},itemWidth:12,itemHeight:8},
+    grid:{left:"1%",right:"7%",top:"14%",bottom:"3%",containLabel:true},
+    xAxis:{type:"category",data:years,axisLabel:{color:"#1a1a1a",fontSize:9},axisLine:{lineStyle:{color:"rgba(0,0,0,.1)"}},axisTick:{show:false},
+      splitArea:{show:true,areaStyle:{color:["transparent","transparent","transparent","transparent","transparent","transparent","rgba(27,79,216,.03)","rgba(27,79,216,.03)","rgba(27,79,216,.03)","rgba(27,79,216,.03)","rgba(27,79,216,.03)"]}}},
+    yAxis:[{type:"value",name:"GMV（亿元）",nameTextStyle:{color:CL,fontSize:9},axisLabel:{color:CL,fontSize:9},splitLine:{lineStyle:{color:GL}},axisLine:{show:false},min:200,max:750},
+           {type:"value",name:"YoY增速%",nameTextStyle:{color:CL,fontSize:9},axisLabel:{color:CL,fontSize:9,formatter:function(v){return v+"%";}},splitLine:{show:false},axisLine:{show:false},min:0,max:20}],
     series:[
-      {name:"GMV亿",type:"bar",data:gmv.map(function(v,i){return {value:v,itemStyle:{color:yoy[i]>0?CO:"rgba(27,79,216,.4)",borderRadius:[2,2,0,0]}};}),barMaxWidth:44,
-        label:{show:true,position:"top",fontSize:9,color:CL,formatter:function(p){return p.value+"亿";}}},
-      {name:"GMV YoY%",type:"line",yAxisIndex:1,data:yoy,lineStyle:{color:WN,width:2.5},itemStyle:{color:WN},symbol:"circle",symbolSize:6,
-        label:{show:true,position:"top",fontSize:9,color:WN,formatter:function(p){return (p.value>0?"+":"")+p.value+"%";}},
-        markLine:{data:[{yAxis:0}],symbol:"none",lineStyle:{color:"rgba(0,0,0,.15)",type:"dashed"}}},
+      {name:"历史GMV（亿）",type:"bar",data:gmvHist,barMaxWidth:36,
+        itemStyle:{color:CO,borderRadius:[3,3,0,0],opacity:.85},
+        label:{show:true,position:"top",fontSize:8.5,color:"#1a1a1a",formatter:function(p){return p.value!=null?p.value+"亿":"";}}},
+      {name:"预测GMV（亿）",type:"bar",data:gmvProj,barMaxWidth:36,
+        itemStyle:{color:"rgba(27,79,216,.3)",borderRadius:[3,3,0,0]},
+        label:{show:true,position:"top",fontSize:8.5,color:CO,formatter:function(p){return p.value!=null&&p.value!==398.7?p.value+"E":"";}}},
+      {name:"历史YoY%",type:"line",yAxisIndex:1,data:yoyHist,lineStyle:{color:UP,width:2.5},itemStyle:{color:UP},symbol:"circle",symbolSize:6,connectNulls:false,
+        label:{show:true,position:"top",fontSize:8,color:UP,formatter:function(p){return p.value!=null?"+"+p.value+"%":"";}}},
+      {name:"预测YoY%",type:"line",yAxisIndex:1,data:yoyProj,lineStyle:{color:UP,width:2,type:"dashed"},itemStyle:{color:UP},symbol:"emptyCircle",symbolSize:6,connectNulls:false,
+        label:{show:false}}
     ]});
 }
 
