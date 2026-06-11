@@ -618,37 +618,39 @@ function mkC(id){var el=document.getElementById(id);if(!el)return null;var ex=ec
 
 function bldMkt(){
   var c=mkC("c-mkt");if(!c)return;
-  // 2020-2025历史数据（XHS赛道口径实测+行业估算基数）
+  // 2020-2030 市场规模趋势（历史实测+预测）
   var years=["2020","2021","2022","2023","2024","2025","2026E","2027E","2028E","2029E","2030E"];
-  var gmvHist=[250,278,302,333,352,398.7,null,null,null,null,null]; // 历史
-  var gmvProj=[null,null,null,null,null,398.7,442,491,545,605,672]; // 预测CAGR≈11%
-  var yoyHist=[null,11.2,8.6,10.3,5.7,13.1,null,null,null,null,null];
-  var yoyProj=[null,null,null,null,null,13.1,10.8,11.1,11.0,11.0,11.0];
+  // bar: 历史实搟 vs 预测，ECharts bar 用 {value,itemStyle} 来区分颜色
+  var gmvAll=[250,278,302,333,352,399,442,491,545,605,672];
+  var isProj=[0,0,0,0,0,0,1,1,1,1,1];
+  var yoyAll=[null,11.2,8.6,10.3,5.7,13.1,10.8,11.1,11.0,11.0,11.0];
+  var isProjY=[0,0,0,0,0,0,1,1,1,1,1];
   c.setOption({backgroundColor:"transparent",animation:true,
     tooltip:{trigger:"axis",formatter:function(params){
-      var s=params[0].name+"<br>";
-      params.forEach(function(p){if(p.value!=null)s+=p.seriesName+": "+p.value+(p.seriesIndex>=2?"%":"亿")+"<br>";});
+      var s="<b>"+params[0].name+"</b><br>";
+      params.forEach(function(p){
+        if(p.value!=null) s+=p.marker+p.seriesName+": "+p.value+(p.seriesIndex===1?"%":"亿")+"<br>";
+      });
       return s;
     }},
-    legend:{data:["历史GMV（亿）","预测GMV（亿）","历史YoY%","预测YoY%"],top:0,right:10,textStyle:{color:CL,fontSize:9},itemWidth:12,itemHeight:8},
-    grid:{left:"1%",right:"7%",top:"14%",bottom:"3%",containLabel:true},
-    xAxis:{type:"category",data:years,axisLabel:{color:"#1a1a1a",fontSize:9},axisLine:{lineStyle:{color:"rgba(0,0,0,.1)"}},axisTick:{show:false},
-      splitArea:{show:true,areaStyle:{color:["transparent","transparent","transparent","transparent","transparent","transparent","rgba(27,79,216,.03)","rgba(27,79,216,.03)","rgba(27,79,216,.03)","rgba(27,79,216,.03)","rgba(27,79,216,.03)"]}}},
-    yAxis:[{type:"value",name:"GMV（亿元）",nameTextStyle:{color:CL,fontSize:9},axisLabel:{color:CL,fontSize:9},splitLine:{lineStyle:{color:GL}},axisLine:{show:false},min:200,max:750},
-           {type:"value",name:"YoY增速%",nameTextStyle:{color:CL,fontSize:9},axisLabel:{color:CL,fontSize:9,formatter:function(v){return v+"%";}},splitLine:{show:false},axisLine:{show:false},min:0,max:20}],
+    legend:{data:["GMV（历史）","GMV（预测）","YoY%"],top:0,right:10,textStyle:{color:CL,fontSize:9},itemWidth:12,itemHeight:8},
+    grid:{left:"2%",right:"6%",top:"13%",bottom:"3%",containLabel:true},
+    xAxis:{type:"category",data:years,axisLabel:{color:"#1a1a1a",fontSize:9},axisLine:{lineStyle:{color:"rgba(0,0,0,.15)"}},axisTick:{show:false}},
+    yAxis:[{type:"value",name:"GMV（亿元）",nameTextStyle:{color:CL,fontSize:9},axisLabel:{color:CL,fontSize:9,formatter:function(v){return v+"亿";}},splitLine:{lineStyle:{color:GL}},axisLine:{show:false},min:200,max:720},
+           {type:"value",name:"YoY%",nameTextStyle:{color:CL,fontSize:9},axisLabel:{color:CL,fontSize:9,formatter:function(v){return v+"%";}},splitLine:{show:false},axisLine:{show:false},min:0,max:18}],
     series:[
-      {name:"历史GMV（亿）",type:"bar",data:gmvHist,barMaxWidth:36,
-        itemStyle:{color:CO,borderRadius:[3,3,0,0],opacity:.85},
-        label:{show:true,position:"top",fontSize:8.5,color:"#1a1a1a",formatter:function(p){return p.value!=null?p.value+"亿":"";}}},
-      {name:"预测GMV（亿）",type:"bar",data:gmvProj,barMaxWidth:36,
-        itemStyle:{color:"rgba(27,79,216,.3)",borderRadius:[3,3,0,0]},
-        label:{show:true,position:"top",fontSize:8.5,color:CO,formatter:function(p){return p.value!=null&&p.value!==398.7?p.value+"E":"";}}},
-      {name:"历史YoY%",type:"line",yAxisIndex:1,data:yoyHist,lineStyle:{color:UP,width:2.5},itemStyle:{color:UP},symbol:"circle",symbolSize:6,connectNulls:false,
-        label:{show:true,position:"top",fontSize:8,color:UP,formatter:function(p){return p.value!=null?"+"+p.value+"%":"";}}},
-      {name:"预测YoY%",type:"line",yAxisIndex:1,data:yoyProj,lineStyle:{color:UP,width:2,type:"dashed"},itemStyle:{color:UP},symbol:"emptyCircle",symbolSize:6,connectNulls:false,
-        label:{show:false}}
+      {name:"GMV（历史）",type:"bar",barMaxWidth:32,
+        data:gmvAll.map(function(v,i){return {value:v,itemStyle:{color:isProj[i]?"rgba(27,79,216,.28)":CO,borderRadius:[3,3,0,0],opacity:isProj[i]?.8:.95}};}),
+        label:{show:true,position:"top",fontSize:8,color:CL,formatter:function(p){return p.value+"亿"+(isProj[p.dataIndex]?"E":"");}}},
+      {name:"YoY%",type:"line",yAxisIndex:1,
+        data:yoyAll.map(function(v,i){return v===null?null:{value:v,lineStyle:{type:isProjY[i]?"dashed":"solid"}};}),
+        lineStyle:{color:UP,width:2.5},itemStyle:{color:UP},symbol:"circle",symbolSize:5,connectNulls:false,
+        label:{show:true,position:"top",fontSize:8,color:UP,formatter:function(p){return p.value!=null?(p.value>0?"+":"")+p.value+"%":"";}},
+        markArea:{silent:true,data:[[{xAxis:"2026E",itemStyle:{color:"rgba(27,79,216,.04)"}},{xAxis:"2030E"}]],
+          label:{show:true,position:"insideTop",fontSize:8,color:CO,formatter:"Projected (预测)"}}
+      }
     ]});
-  setTimeout(function(){c.resize();},120);
+  setTimeout(function(){c.resize();},80);
 }
 
 function bldTbl(){
