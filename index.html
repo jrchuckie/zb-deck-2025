@@ -625,7 +625,7 @@ function bldMkt(){
   var isProj=[0,0,0,0,0,0,1,1,1,1,1];
   var yoyAll=[null,11.2,8.6,10.3,5.7,13.1,10.8,11.1,11.0,11.0,11.0];
   var isProjY=[0,0,0,0,0,0,1,1,1,1,1];
-  c.setOption({backgroundColor:"transparent",animation:true,
+  c.setOption({backgroundColor:"transparent",animation:false,
     tooltip:{trigger:"axis",formatter:function(params){
       var s="<b>"+params[0].name+"</b><br>";
       params.forEach(function(p){
@@ -651,7 +651,6 @@ function bldMkt(){
           label:{show:true,position:"insideTop",fontSize:8,color:CO,formatter:"Projected (预测)"}}
       }
     ]});
-  setTimeout(function(){c.resize();},80);
 }
 
 function bldTbl(){
