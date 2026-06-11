@@ -648,6 +648,7 @@ function bldMkt(){
       {name:"预测YoY%",type:"line",yAxisIndex:1,data:yoyProj,lineStyle:{color:UP,width:2,type:"dashed"},itemStyle:{color:UP},symbol:"emptyCircle",symbolSize:6,connectNulls:false,
         label:{show:false}}
     ]});
+  setTimeout(function(){c.resize();},120);
 }
 
 function bldTbl(){
